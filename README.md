@@ -1,72 +1,10 @@
-# Causal Discovery Benchmark Dataset
+# Causal Discovery Benchmark Dataset Structure
 
-## Overview
+## Repository Overview
 
-This repository provides a unified benchmark suite for causal discovery research.
-
-The benchmark contains 20 directed acyclic graph (DAG) structures from two widely used families:
-
-| Family     | Graphs | Nodes | Edges |
-| ---------- | ------ | ----- | ----- |
-| BNLearn    | 9      | 5–37  | 4–52  |
-| LLM-Graphs | 11     | 5–27  | 4–52  |
-| Total      | 20     | 5–37  | 4–52  |
-
-For each graph, observational datasets are generated under multiple sample sizes and random seeds.
-
-### Sample Sizes
-
-BNLearn:
-
-* n = 250
-* n = 500
-* n = 1000
-* n = 5000
-* n = 10000
-
-LLM-Graphs:
-
-* n = 250
-* n = 500
-* n = 1000
-* n = 5000
-
-### Random Seeds
-
-Each configuration is generated using:
+This repository provides a unified benchmark suite for causal discovery research, containing both BNLearn and LLM-Graphs benchmark families.
 
 ```text
-seed = {1,2,3,4,5}
-```
-
-### Benchmark Scale
-
-* 20 DAGs
-* 5 random seeds
-* 24 experimental configurations
-* 10,680 completed runs
-
----
-
-## Dataset Families
-
-### BNLearn
-
-The BNLearn family contains canonical Bayesian-network benchmarks:
-
-* Asia
-* Cancer
-* Earthquake
-* Survey
-* Sachs
-* Child
-* Insurance
-* Alarm
-* Mildew
-
-Ground-truth DAGs are obtained from published Bayesian-network structures and observational samples are generated through conditional probability table (CPT) sampling.
-
-
 causal-discovery-benchmark/
 │
 ├── README.md
@@ -77,13 +15,6 @@ causal-discovery-benchmark/
 ├── datasets/
 │   ├── bnlearn/
 │   │   ├── asia/
-│   │   │   ├── dag.graphml
-│   │   │   ├── adjacency.csv
-│   │   │   ├── metadata.json
-│   │   │   ├── n250_seed1.csv
-│   │   │   ├── n250_seed2.csv
-│   │   │   └── ...
-│   │   │
 │   │   ├── cancer/
 │   │   ├── earthquake/
 │   │   ├── survey/
@@ -96,22 +27,190 @@ causal-discovery-benchmark/
 │   └── llm-graphs/
 │       ├── graph01/
 │       ├── graph02/
-│       ├── ...
+│       ├── graph03/
+│       ├── graph04/
+│       ├── graph05/
+│       ├── graph06/
+│       ├── graph07/
+│       ├── graph08/
+│       ├── graph09/
+│       ├── graph10/
 │       └── graph11/
 │
 ├── generators/
 │   ├── generate_bnlearn.py
 │   ├── generate_llm_graphs.py
-│   └── sem_models.py
+│   ├── sem_models.py
+│   └── utils.py
+│
+├── configs/
+│   ├── sample_sizes.yaml
+│   ├── benchmark.yaml
+│   └── seeds.yaml
 │
 ├── benchmarks/
-│   ├── configs/
 │   ├── run_all.sh
-│   └── evaluation.py
+│   ├── evaluation.py
+│   ├── metrics.py
+│   └── experiment_configs/
 │
 ├── docs/
-│   ├── dataset_description.pdf
-│   └── benchmark_protocol.md
+│   ├── dataset_card.md
+│   ├── benchmark_protocol.md
+│   └── dataset_description.pdf
+│
+├── metadata/
+│   ├── graph_catalog.csv
+│   └── benchmark_summary.csv
 │
 └── results/
     └── example_runs/
+```
+
+---
+
+# Dataset Directory Structure
+
+Each graph is stored in an independent directory.
+
+Example:
+
+```text
+datasets/
+└── bnlearn/
+    └── asia/
+        ├── dag.graphml
+        ├── adjacency.csv
+        ├── metadata.json
+        ├── n250_seed1.csv
+        ├── n250_seed2.csv
+        ├── n250_seed3.csv
+        ├── n250_seed4.csv
+        ├── n250_seed5.csv
+        ├── n500_seed1.csv
+        ├── n500_seed2.csv
+        ├── ...
+        └── n10000_seed5.csv
+```
+
+---
+
+# Graph Files
+
+## dag.graphml
+
+Ground-truth directed acyclic graph (DAG).
+
+Used by:
+
+* NetworkX
+* Graphviz
+* Gephi
+* Cytoscape
+
+---
+
+## adjacency.csv
+
+Binary adjacency matrix representation.
+
+Example:
+
+```csv
+,X1,X2,X3
+X1,0,1,0
+X2,0,0,1
+X3,0,0,0
+```
+
+Interpretation:
+
+* X1 → X2
+* X2 → X3
+
+---
+
+## metadata.json
+
+Graph metadata.
+
+Example:
+
+```json
+{
+  "graph_name": "asia",
+  "family": "BNLearn",
+  "nodes": 8,
+  "edges": 8,
+  "generator": "CPT",
+  "source": "BNLearn"
+}
+```
+
+---
+
+# Observational Data Files
+
+Each CSV file contains observational samples generated from the corresponding DAG.
+
+Naming convention:
+
+```text
+n{sample_size}_seed{seed}.csv
+```
+
+Examples:
+
+```text
+n250_seed1.csv
+n250_seed2.csv
+n500_seed1.csv
+n1000_seed3.csv
+n5000_seed5.csv
+```
+
+For BNLearn datasets:
+
+```text
+n ∈ {250, 500, 1000, 5000, 10000}
+```
+
+For LLM-Graphs datasets:
+
+```text
+n ∈ {250, 500, 1000, 5000}
+```
+
+Random seeds:
+
+```text
+seed ∈ {1,2,3,4,5}
+```
+
+---
+
+# Benchmark Families
+
+## BNLearn
+
+The BNLearn family contains 9 published Bayesian-network structures:
+
+| Graph      |
+| ---------- |
+| Asia       |
+| Cancer     |
+| Earthquake |
+| Survey     |
+| Sachs      |
+| Child      |
+| Insurance  |
+| Alarm      |
+| Mildew     |
+
+Data generation:
+
+* Conditional Probability Tables (CPTs)
+* Ancestral sampling
+
+---
+
