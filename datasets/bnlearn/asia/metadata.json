@@ -1,0 +1,33 @@
+{
+  "name": "asia",
+  "collection": "bnlearn",
+  "title": "ASIA / Lung Cancer",
+  "source": "https://www.bnlearn.com/bnrepository/asia/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Respiratory diagnosis network for a patient who recently visited Asia; used by Vashishtha et al. and Ban et al.",
+  "reference": "S. Lauritzen and D. Spiegelhalter, Local Computation with Probabilities on Graphical Structures and their Application to Expert Systems, 1988.",
+  "node_count_repository": 8,
+  "arc_count_repository": 8,
+  "parameter_count_repository": 18,
+  "node_count_parsed": 8,
+  "edge_count_parsed": 8,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "asia.bif": "9f770c96940dc4d860b581602120790ac538983b30b28d38631b8184dc7b5f89",
+    "asia.bif.gz": "7d5e7b8549834824c1b05f367eb7860fa3fca3adaf3649f0c7be6035af197197",
+    "asia.dsc": "be124e251b095430f14a37f09deb3f71ddc94d88b10d716d7d951c9a27f143e2",
+    "asia.dsc.gz": "33f1b9bf2299cd49b785c2ae7e6c952ad0f66b15a80b1c333fdc7aa7ddab2378",
+    "asia.net": "b76b377d5adc74cdf659bc532ff2986006930b1938f44e1ce067eff4aa43f84e",
+    "asia.net.gz": "6a33b310ba39f7ea237bd4430ce1da423bb83446bc25e0ae32b168ba025f3008",
+    "asia.rda": "a450187cfb49c09d9baddedb766fdb83448f9d39cdc24be87ce9de6a4b8cfd81",
+    "asia.rds": "16f11c74d00ecd40d9f75dcca44c876316e26b14c7949d44a4f681791d9fa24f"
+  }
+}

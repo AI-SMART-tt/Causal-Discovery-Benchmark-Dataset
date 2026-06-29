@@ -1,0 +1,33 @@
+{
+  "name": "insurance",
+  "collection": "bnlearn",
+  "title": "INSURANCE",
+  "source": "https://www.bnlearn.com/bnrepository/insurance/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Car-insurance claim-cost network used by Ban et al.; good medium-density benchmark for LLM priors.",
+  "reference": "J. Binder, D. Koller, S. Russell and K. Kanazawa, Adaptive probabilistic networks with hidden variables, 1997.",
+  "node_count_repository": 27,
+  "arc_count_repository": 52,
+  "parameter_count_repository": 1008,
+  "node_count_parsed": 27,
+  "edge_count_parsed": 52,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "insurance.bif": "39f9e706e9208e720a55a98b6811188b33a7292335a53373a9343a0c7065dab4",
+    "insurance.bif.gz": "92bcecd1b85387726af564bf1b50cd400ddbbea1b017303cc54d4654e50a8971",
+    "insurance.dsc": "749d100ff95ba2f2d975d363bcbbf2956033cc21622d1e69333fdc321560210d",
+    "insurance.dsc.gz": "6fac14baa3292ad58401ee0f2811ed37a65a660df61041256940889568a0edda",
+    "insurance.net": "c9e3bb9b0a144e784cf6f35b56e2703361b2beedac2b260ec86840c8ded0e651",
+    "insurance.net.gz": "f2904bc5db503397e99d64b46f2935a6a817c377ccd4b9d4946272a132f50c73",
+    "insurance.rda": "bd7df8ff1772d0d948ca13b958f5c9c79b14957d3f6eca007e075648e8d10ba6",
+    "insurance.rds": "88d1ce510820c47542aebb698f90fc870378644d77cb88eff10ec3648422391d"
+  }
+}

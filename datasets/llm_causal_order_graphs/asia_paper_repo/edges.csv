@@ -1,0 +1,9 @@
+source,target
+visit to Asia,tuberculosis
+tuberculosis,either tuberculosis or lung cancer
+either tuberculosis or lung cancer,positive X-ray
+smoking,lung cancer
+smoking,bronchitis
+lung cancer,either tuberculosis or lung cancer
+either tuberculosis or lung cancer,dyspnoea
+bronchitis,dyspnoea

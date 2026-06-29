@@ -1,0 +1,6 @@
+node,description,in_raw_node_list
+Burglary,burglar entering,true
+Earthquake,earthquake hitting,true
+Alarm,home alarm going off in a house,true
+JohnCalls,first neighbor to call to inform the alarm sound,true
+Marycalls,second neighbor to call to inform the alarm sound,true

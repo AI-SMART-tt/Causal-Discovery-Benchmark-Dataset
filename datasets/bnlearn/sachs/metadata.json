@@ -1,0 +1,33 @@
+{
+  "name": "sachs",
+  "collection": "bnlearn",
+  "title": "SACHS",
+  "source": "https://www.bnlearn.com/bnrepository/sachs/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Protein-signaling Bayesian network included as a useful supplementary biological benchmark.",
+  "reference": "K. Sachs et al., Causal Protein-Signaling Networks Derived from Multiparameter Single-Cell Data, Science, 2005.",
+  "node_count_repository": 11,
+  "arc_count_repository": 17,
+  "parameter_count_repository": 178,
+  "node_count_parsed": 11,
+  "edge_count_parsed": 17,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "sachs.bif": "b7bd3931192f9e529f0f88bba15fca6cc61ba3c805d5c8ae57eba57ed3b332ec",
+    "sachs.bif.gz": "ed1830fbde101ed50cce3c7a3c8cbf1d2f5225531cf35ff09fb3cec0af101bce",
+    "sachs.dsc": "25822a3e37fbabe2202ff60713e4a3bcc668de4bd151bb74a251c9a99e9bb68a",
+    "sachs.dsc.gz": "5a699139da96845ab922fbc71328efc0afc5dbcc82b77c7daee7a3c8f21db162",
+    "sachs.net": "1bd08b236d94e79721c68831a9d3309ebefdb6e30139c20d5f83e4ee3ac4ec1b",
+    "sachs.net.gz": "3aa4b51d4ac5dc402a0ae4a5bc081136305dc68d93c522334f6abe5ececb2f1d",
+    "sachs.rda": "d6261f95353316bf5f38deb4f8bcf0ce64945b6622fc7afcf6e05c1245fffbcd",
+    "sachs.rds": "63c96b9b1a8d40b72a2fe1e354e88ebd8f9b3fc29f5d94b2eac374881a105b3a"
+  }
+}

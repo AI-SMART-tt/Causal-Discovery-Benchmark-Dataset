@@ -1,0 +1,21 @@
+node,description,in_raw_node_list
+BirthAsphyxia,lack of oxygen to the blood during the infant's birth,true
+HypDistrib,low oxygen areas equally distributed around the body,true
+HypoxiaInO2,hypoxia when breathing oxygen,true
+CO2,level of carbon dioxide in the body,true
+ChestXray,having a chest x-ray,true
+Grunting,grunting in infants,true
+LVHreport,report of having left ventricular hypertrophy,true
+LowerBodyO2,level of oxygen in the lower body,true
+RUQO2,level of oxygen in the right up quadricep muscule,true
+CO2Report,a document reporting high level of CO2 levels in blood,true
+XrayReport,lung excessively filled with blood,true
+Disease,infant methemoglobinemia,true
+GruntingReport,report of infant grunting,true
+Age,age of infant at disease presentation,true
+LVH,thickening of the left ventricle,true
+DuctFlow,blood flow across the ductus arteriosus,true
+CardiacMixing,mixing of oxygenated and deoxygenated blood,true
+LungParench,the state of the blood vessels in the lungs,true
+LungFlow,low blood flow in the lungs,true
+Sick,presence of an illness,true

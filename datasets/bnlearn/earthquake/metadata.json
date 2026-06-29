@@ -1,0 +1,33 @@
+{
+  "name": "earthquake",
+  "collection": "bnlearn",
+  "title": "EARTHQUAKE",
+  "source": "https://www.bnlearn.com/bnrepository/earthquake/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Burglary/earthquake/alarm network used in the Vashishtha causal-order experiments.",
+  "reference": "K. B. Korb and A. E. Nicholson, Bayesian Artificial Intelligence, 2nd edition, Section 2.5.1, 2010.",
+  "node_count_repository": 5,
+  "arc_count_repository": 4,
+  "parameter_count_repository": 10,
+  "node_count_parsed": 5,
+  "edge_count_parsed": 4,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "earthquake.bif": "74dd131e2c6437a39de17f2963d2d16fadd91e70450d1fc20501df05e8dc4f2e",
+    "earthquake.bif.gz": "77a41f1d509cea15eb7caf9dba932907837149e7145a2cc9d6c95c80849e62b0",
+    "earthquake.dsc": "05f596d2e2320a9586194433bd61944040a01f111869f18755689839163add6e",
+    "earthquake.dsc.gz": "93d310bbda123f2f3d11da09730ab86798316b680dbc674cfcb5d6ece41e979a",
+    "earthquake.net": "6179e82526a3a3f0c76e6ca91fa923bb2504c03f3f8f5ebdbaa335eadaa7117e",
+    "earthquake.net.gz": "b69b44b6e33da3b8f7611e36c8cdf34d4225aab4139807a1e659f803222ca6bc",
+    "earthquake.rda": "06b3e0f5b09f1384ffa591f29a32adefc2beb1f0055e36111f5268f1a990a608",
+    "earthquake.rds": "20d5aab991b53a8f0c8eb6b802a247dfdd029393d23bb96ac171bc973c67d5c9"
+  }
+}

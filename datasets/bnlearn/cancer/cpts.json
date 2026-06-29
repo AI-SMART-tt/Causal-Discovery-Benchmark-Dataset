@@ -1,0 +1,74 @@
+{
+  "Pollution": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.9,
+        0.1
+      ]
+    }
+  },
+  "Smoker": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.3,
+        0.7
+      ]
+    }
+  },
+  "Cancer": {
+    "parents": [
+      "Pollution",
+      "Smoker"
+    ],
+    "rows": {
+      "low|True": [
+        0.03,
+        0.97
+      ],
+      "high|True": [
+        0.05,
+        0.95
+      ],
+      "low|False": [
+        0.001,
+        0.999
+      ],
+      "high|False": [
+        0.02,
+        0.98
+      ]
+    }
+  },
+  "Xray": {
+    "parents": [
+      "Cancer"
+    ],
+    "rows": {
+      "True": [
+        0.9,
+        0.1
+      ],
+      "False": [
+        0.2,
+        0.8
+      ]
+    }
+  },
+  "Dyspnoea": {
+    "parents": [
+      "Cancer"
+    ],
+    "rows": {
+      "True": [
+        0.65,
+        0.35
+      ],
+      "False": [
+        0.3,
+        0.7
+      ]
+    }
+  }
+}

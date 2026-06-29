@@ -1,0 +1,1496 @@
+{
+  "HISTORY": {
+    "parents": [
+      "LVFAILURE"
+    ],
+    "rows": {
+      "TRUE": [
+        0.9,
+        0.1
+      ],
+      "FALSE": [
+        0.01,
+        0.99
+      ]
+    }
+  },
+  "CVP": {
+    "parents": [
+      "LVEDVOLUME"
+    ],
+    "rows": {
+      "LOW": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "NORMAL": [
+        0.04,
+        0.95,
+        0.01
+      ],
+      "HIGH": [
+        0.01,
+        0.29,
+        0.7
+      ]
+    }
+  },
+  "PCWP": {
+    "parents": [
+      "LVEDVOLUME"
+    ],
+    "rows": {
+      "LOW": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "NORMAL": [
+        0.04,
+        0.95,
+        0.01
+      ],
+      "HIGH": [
+        0.01,
+        0.04,
+        0.95
+      ]
+    }
+  },
+  "HYPOVOLEMIA": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.2,
+        0.8
+      ]
+    }
+  },
+  "LVEDVOLUME": {
+    "parents": [
+      "HYPOVOLEMIA",
+      "LVFAILURE"
+    ],
+    "rows": {
+      "TRUE|TRUE": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "FALSE|TRUE": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "TRUE|FALSE": [
+        0.01,
+        0.09,
+        0.9
+      ],
+      "FALSE|FALSE": [
+        0.05,
+        0.9,
+        0.05
+      ]
+    }
+  },
+  "LVFAILURE": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.05,
+        0.95
+      ]
+    }
+  },
+  "STROKEVOLUME": {
+    "parents": [
+      "HYPOVOLEMIA",
+      "LVFAILURE"
+    ],
+    "rows": {
+      "TRUE|TRUE": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "FALSE|TRUE": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "TRUE|FALSE": [
+        0.5,
+        0.49,
+        0.01
+      ],
+      "FALSE|FALSE": [
+        0.05,
+        0.9,
+        0.05
+      ]
+    }
+  },
+  "ERRLOWOUTPUT": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.05,
+        0.95
+      ]
+    }
+  },
+  "HRBP": {
+    "parents": [
+      "ERRLOWOUTPUT",
+      "HR"
+    ],
+    "rows": {
+      "TRUE|LOW": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "FALSE|LOW": [
+        0.4,
+        0.59,
+        0.01
+      ],
+      "TRUE|NORMAL": [
+        0.3,
+        0.4,
+        0.3
+      ],
+      "FALSE|NORMAL": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "TRUE|HIGH": [
+        0.01,
+        0.98,
+        0.01
+      ],
+      "FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.98
+      ]
+    }
+  },
+  "HREKG": {
+    "parents": [
+      "ERRCAUTER",
+      "HR"
+    ],
+    "rows": {
+      "TRUE|LOW": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "FALSE|LOW": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "TRUE|NORMAL": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "FALSE|NORMAL": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "TRUE|HIGH": [
+        0.01,
+        0.98,
+        0.01
+      ],
+      "FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.98
+      ]
+    }
+  },
+  "ERRCAUTER": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.1,
+        0.9
+      ]
+    }
+  },
+  "HRSAT": {
+    "parents": [
+      "ERRCAUTER",
+      "HR"
+    ],
+    "rows": {
+      "TRUE|LOW": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "FALSE|LOW": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "TRUE|NORMAL": [
+        0.3333333,
+        0.3333333,
+        0.3333333
+      ],
+      "FALSE|NORMAL": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "TRUE|HIGH": [
+        0.01,
+        0.98,
+        0.01
+      ],
+      "FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.98
+      ]
+    }
+  },
+  "INSUFFANESTH": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.1,
+        0.9
+      ]
+    }
+  },
+  "ANAPHYLAXIS": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.01,
+        0.99
+      ]
+    }
+  },
+  "TPR": {
+    "parents": [
+      "ANAPHYLAXIS"
+    ],
+    "rows": {
+      "TRUE": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "FALSE": [
+        0.3,
+        0.4,
+        0.3
+      ]
+    }
+  },
+  "EXPCO2": {
+    "parents": [
+      "ARTCO2",
+      "VENTLUNG"
+    ],
+    "rows": {
+      "LOW|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|ZERO": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "HIGH|ZERO": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "LOW|LOW": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "HIGH|LOW": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "LOW|NORMAL": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "HIGH|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "LOW|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "NORMAL|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "HIGH|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ]
+    }
+  },
+  "KINKEDTUBE": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.04,
+        0.96
+      ]
+    }
+  },
+  "MINVOL": {
+    "parents": [
+      "INTUBATION",
+      "VENTLUNG"
+    ],
+    "rows": {
+      "NORMAL|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|ZERO": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|ZERO": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ESOPHAGEAL|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|LOW": [
+        0.6,
+        0.38,
+        0.01,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.5,
+        0.48,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|NORMAL": [
+        0.5,
+        0.48,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|HIGH": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|HIGH": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "ONESIDED|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ]
+    }
+  },
+  "FIO2": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.05,
+        0.95
+      ]
+    }
+  },
+  "PVSAT": {
+    "parents": [
+      "FIO2",
+      "VENTALV"
+    ],
+    "rows": {
+      "LOW|ZERO": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "NORMAL|ZERO": [
+        0.99,
+        0.01,
+        0.0
+      ],
+      "LOW|LOW": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "LOW|NORMAL": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "NORMAL|NORMAL": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "LOW|HIGH": [
+        0.01,
+        0.95,
+        0.04
+      ],
+      "NORMAL|HIGH": [
+        0.01,
+        0.01,
+        0.98
+      ]
+    }
+  },
+  "SAO2": {
+    "parents": [
+      "PVSAT",
+      "SHUNT"
+    ],
+    "rows": {
+      "LOW|NORMAL": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.01,
+        0.98,
+        0.01
+      ],
+      "HIGH|NORMAL": [
+        0.01,
+        0.01,
+        0.98
+      ],
+      "LOW|HIGH": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "NORMAL|HIGH": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "HIGH|HIGH": [
+        0.69,
+        0.3,
+        0.01
+      ]
+    }
+  },
+  "PAP": {
+    "parents": [
+      "PULMEMBOLUS"
+    ],
+    "rows": {
+      "TRUE": [
+        0.01,
+        0.19,
+        0.8
+      ],
+      "FALSE": [
+        0.05,
+        0.9,
+        0.05
+      ]
+    }
+  },
+  "PULMEMBOLUS": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.01,
+        0.99
+      ]
+    }
+  },
+  "SHUNT": {
+    "parents": [
+      "INTUBATION",
+      "PULMEMBOLUS"
+    ],
+    "rows": {
+      "NORMAL|TRUE": [
+        0.1,
+        0.9
+      ],
+      "ESOPHAGEAL|TRUE": [
+        0.1,
+        0.9
+      ],
+      "ONESIDED|TRUE": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|FALSE": [
+        0.95,
+        0.05
+      ],
+      "ESOPHAGEAL|FALSE": [
+        0.95,
+        0.05
+      ],
+      "ONESIDED|FALSE": [
+        0.05,
+        0.95
+      ]
+    }
+  },
+  "INTUBATION": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.92,
+        0.03,
+        0.05
+      ]
+    }
+  },
+  "PRESS": {
+    "parents": [
+      "INTUBATION",
+      "KINKEDTUBE",
+      "VENTTUBE"
+    ],
+    "rows": {
+      "NORMAL|TRUE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|ZERO": [
+        0.01,
+        0.3,
+        0.49,
+        0.2
+      ],
+      "ONESIDED|TRUE|ZERO": [
+        0.01,
+        0.01,
+        0.08,
+        0.9
+      ],
+      "NORMAL|FALSE|ZERO": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ESOPHAGEAL|FALSE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|FALSE|ZERO": [
+        0.1,
+        0.84,
+        0.05,
+        0.01
+      ],
+      "NORMAL|TRUE|LOW": [
+        0.05,
+        0.25,
+        0.25,
+        0.45
+      ],
+      "ESOPHAGEAL|TRUE|LOW": [
+        0.01,
+        0.15,
+        0.25,
+        0.59
+      ],
+      "ONESIDED|TRUE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|FALSE|LOW": [
+        0.01,
+        0.29,
+        0.3,
+        0.4
+      ],
+      "ESOPHAGEAL|FALSE|LOW": [
+        0.01,
+        0.01,
+        0.08,
+        0.9
+      ],
+      "ONESIDED|FALSE|LOW": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "NORMAL|TRUE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|NORMAL": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|TRUE|NORMAL": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "NORMAL|FALSE|NORMAL": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ESOPHAGEAL|FALSE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|FALSE|NORMAL": [
+        0.4,
+        0.58,
+        0.01,
+        0.01
+      ],
+      "NORMAL|TRUE|HIGH": [
+        0.2,
+        0.75,
+        0.04,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|HIGH": [
+        0.2,
+        0.7,
+        0.09,
+        0.01
+      ],
+      "ONESIDED|TRUE|HIGH": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|FALSE|HIGH": [
+        0.01,
+        0.9,
+        0.08,
+        0.01
+      ],
+      "ESOPHAGEAL|FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.38,
+        0.6
+      ],
+      "ONESIDED|FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ]
+    }
+  },
+  "DISCONNECT": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.1,
+        0.9
+      ]
+    }
+  },
+  "MINVOLSET": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.05,
+        0.9,
+        0.05
+      ]
+    }
+  },
+  "VENTMACH": {
+    "parents": [
+      "MINVOLSET"
+    ],
+    "rows": {
+      "LOW": [
+        0.05,
+        0.93,
+        0.01,
+        0.01
+      ],
+      "NORMAL": [
+        0.05,
+        0.01,
+        0.93,
+        0.01
+      ],
+      "HIGH": [
+        0.05,
+        0.01,
+        0.01,
+        0.93
+      ]
+    }
+  },
+  "VENTTUBE": {
+    "parents": [
+      "DISCONNECT",
+      "VENTMACH"
+    ],
+    "rows": {
+      "TRUE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "FALSE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "TRUE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "FALSE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "TRUE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "FALSE|NORMAL": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "TRUE|HIGH": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ]
+    }
+  },
+  "VENTLUNG": {
+    "parents": [
+      "INTUBATION",
+      "KINKEDTUBE",
+      "VENTTUBE"
+    ],
+    "rows": {
+      "NORMAL|TRUE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|ZERO": [
+        0.95,
+        0.03,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|TRUE|ZERO": [
+        0.4,
+        0.58,
+        0.01,
+        0.01
+      ],
+      "NORMAL|FALSE|ZERO": [
+        0.3,
+        0.68,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|FALSE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|FALSE|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|TRUE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|TRUE|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|FALSE|LOW": [
+        0.95,
+        0.03,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|FALSE|LOW": [
+        0.5,
+        0.48,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|FALSE|LOW": [
+        0.3,
+        0.68,
+        0.01,
+        0.01
+      ],
+      "NORMAL|TRUE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|NORMAL": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|TRUE|NORMAL": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "NORMAL|FALSE|NORMAL": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ESOPHAGEAL|FALSE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|FALSE|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|TRUE|HIGH": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|TRUE|HIGH": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|TRUE|HIGH": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|FALSE|HIGH": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "ONESIDED|FALSE|HIGH": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ]
+    }
+  },
+  "VENTALV": {
+    "parents": [
+      "INTUBATION",
+      "VENTLUNG"
+    ],
+    "rows": {
+      "NORMAL|ZERO": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|ZERO": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|ZERO": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ESOPHAGEAL|LOW": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ONESIDED|LOW": [
+        0.01,
+        0.97,
+        0.01,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.01,
+        0.01,
+        0.97,
+        0.01
+      ],
+      "ESOPHAGEAL|NORMAL": [
+        0.01,
+        0.01,
+        0.01,
+        0.97
+      ],
+      "ONESIDED|NORMAL": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "NORMAL|HIGH": [
+        0.03,
+        0.95,
+        0.01,
+        0.01
+      ],
+      "ESOPHAGEAL|HIGH": [
+        0.01,
+        0.94,
+        0.04,
+        0.01
+      ],
+      "ONESIDED|HIGH": [
+        0.01,
+        0.88,
+        0.1,
+        0.01
+      ]
+    }
+  },
+  "ARTCO2": {
+    "parents": [
+      "VENTALV"
+    ],
+    "rows": {
+      "ZERO": [
+        0.01,
+        0.01,
+        0.98
+      ],
+      "LOW": [
+        0.01,
+        0.01,
+        0.98
+      ],
+      "NORMAL": [
+        0.04,
+        0.92,
+        0.04
+      ],
+      "HIGH": [
+        0.9,
+        0.09,
+        0.01
+      ]
+    }
+  },
+  "CATECHOL": {
+    "parents": [
+      "ARTCO2",
+      "INSUFFANESTH",
+      "SAO2",
+      "TPR"
+    ],
+    "rows": {
+      "LOW|TRUE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|TRUE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "HIGH|TRUE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|FALSE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "HIGH|FALSE|LOW|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|TRUE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "HIGH|TRUE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|FALSE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "HIGH|FALSE|NORMAL|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|HIGH|LOW": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|TRUE|HIGH|LOW": [
+        0.01,
+        0.99
+      ],
+      "HIGH|TRUE|HIGH|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|HIGH|LOW": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|FALSE|HIGH|LOW": [
+        0.05,
+        0.95
+      ],
+      "HIGH|FALSE|HIGH|LOW": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|LOW|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "NORMAL|TRUE|LOW|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "HIGH|TRUE|LOW|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|LOW|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|FALSE|LOW|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "HIGH|FALSE|LOW|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|NORMAL|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|TRUE|NORMAL|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "HIGH|TRUE|NORMAL|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|NORMAL|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|FALSE|NORMAL|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "HIGH|FALSE|NORMAL|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|HIGH|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|TRUE|HIGH|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "HIGH|TRUE|HIGH|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|FALSE|HIGH|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "NORMAL|FALSE|HIGH|NORMAL": [
+        0.05,
+        0.95
+      ],
+      "HIGH|FALSE|HIGH|NORMAL": [
+        0.01,
+        0.99
+      ],
+      "LOW|TRUE|LOW|HIGH": [
+        0.7,
+        0.3
+      ],
+      "NORMAL|TRUE|LOW|HIGH": [
+        0.7,
+        0.3
+      ],
+      "HIGH|TRUE|LOW|HIGH": [
+        0.1,
+        0.9
+      ],
+      "LOW|FALSE|LOW|HIGH": [
+        0.7,
+        0.3
+      ],
+      "NORMAL|FALSE|LOW|HIGH": [
+        0.7,
+        0.3
+      ],
+      "HIGH|FALSE|LOW|HIGH": [
+        0.1,
+        0.9
+      ],
+      "LOW|TRUE|NORMAL|HIGH": [
+        0.7,
+        0.3
+      ],
+      "NORMAL|TRUE|NORMAL|HIGH": [
+        0.7,
+        0.3
+      ],
+      "HIGH|TRUE|NORMAL|HIGH": [
+        0.1,
+        0.9
+      ],
+      "LOW|FALSE|NORMAL|HIGH": [
+        0.95,
+        0.05
+      ],
+      "NORMAL|FALSE|NORMAL|HIGH": [
+        0.99,
+        0.01
+      ],
+      "HIGH|FALSE|NORMAL|HIGH": [
+        0.3,
+        0.7
+      ],
+      "LOW|TRUE|HIGH|HIGH": [
+        0.95,
+        0.05
+      ],
+      "NORMAL|TRUE|HIGH|HIGH": [
+        0.99,
+        0.01
+      ],
+      "HIGH|TRUE|HIGH|HIGH": [
+        0.3,
+        0.7
+      ],
+      "LOW|FALSE|HIGH|HIGH": [
+        0.95,
+        0.05
+      ],
+      "NORMAL|FALSE|HIGH|HIGH": [
+        0.99,
+        0.01
+      ],
+      "HIGH|FALSE|HIGH|HIGH": [
+        0.3,
+        0.7
+      ]
+    }
+  },
+  "HR": {
+    "parents": [
+      "CATECHOL"
+    ],
+    "rows": {
+      "NORMAL": [
+        0.05,
+        0.9,
+        0.05
+      ],
+      "HIGH": [
+        0.01,
+        0.09,
+        0.9
+      ]
+    }
+  },
+  "CO": {
+    "parents": [
+      "HR",
+      "STROKEVOLUME"
+    ],
+    "rows": {
+      "LOW|LOW": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "HIGH|LOW": [
+        0.8,
+        0.19,
+        0.01
+      ],
+      "LOW|NORMAL": [
+        0.95,
+        0.04,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.04,
+        0.95,
+        0.01
+      ],
+      "HIGH|NORMAL": [
+        0.01,
+        0.04,
+        0.95
+      ],
+      "LOW|HIGH": [
+        0.3,
+        0.69,
+        0.01
+      ],
+      "NORMAL|HIGH": [
+        0.01,
+        0.3,
+        0.69
+      ],
+      "HIGH|HIGH": [
+        0.01,
+        0.01,
+        0.98
+      ]
+    }
+  },
+  "BP": {
+    "parents": [
+      "CO",
+      "TPR"
+    ],
+    "rows": {
+      "LOW|LOW": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "NORMAL|LOW": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "HIGH|LOW": [
+        0.9,
+        0.09,
+        0.01
+      ],
+      "LOW|NORMAL": [
+        0.98,
+        0.01,
+        0.01
+      ],
+      "NORMAL|NORMAL": [
+        0.1,
+        0.85,
+        0.05
+      ],
+      "HIGH|NORMAL": [
+        0.05,
+        0.2,
+        0.75
+      ],
+      "LOW|HIGH": [
+        0.3,
+        0.6,
+        0.1
+      ],
+      "NORMAL|HIGH": [
+        0.05,
+        0.4,
+        0.55
+      ],
+      "HIGH|HIGH": [
+        0.01,
+        0.09,
+        0.9
+      ]
+    }
+  }
+}

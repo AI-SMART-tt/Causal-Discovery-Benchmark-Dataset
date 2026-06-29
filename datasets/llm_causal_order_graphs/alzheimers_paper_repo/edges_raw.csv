@@ -1,0 +1,22 @@
+source,target
+sex,ventricular volume
+sex,brain volume
+age,ventricular volume
+age,brain volume
+age,av45
+age,tau
+age,moca
+ventricular volume,brain MRI
+brain volume,ventricular volume
+brain volume,moca
+brain volume,ventricular volume
+brain volume,brain MRI
+brain volume,moca
+av45,brain volume
+av45,tau
+tau,moca
+tau,ventricular volume
+tau,brain volume
+slice number,brain MRI
+education,moca
+APOE4,av45

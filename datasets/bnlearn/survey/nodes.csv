@@ -1,0 +1,7 @@
+node,state_count,states,description
+A,3,young|adult|old,
+S,2,M|F,
+E,2,high|uni,
+O,2,emp|self,
+R,2,small|big,
+T,3,car|train|other,

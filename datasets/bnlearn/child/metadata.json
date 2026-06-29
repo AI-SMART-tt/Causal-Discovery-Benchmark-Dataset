@@ -1,0 +1,33 @@
+{
+  "name": "child",
+  "collection": "bnlearn",
+  "title": "CHILD",
+  "source": "https://www.bnlearn.com/bnrepository/child/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Congenital heart disease network; medium-sized and important in both Vashishtha et al. and Ban et al.",
+  "reference": "D. J. Spiegelhalter and S. L. Lauritzen, Sequential updating of conditional probabilities on directed graphical structures, 1990.",
+  "node_count_repository": 20,
+  "arc_count_repository": 25,
+  "parameter_count_repository": 230,
+  "node_count_parsed": 20,
+  "edge_count_parsed": 25,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "child.bif": "432c22e661cd0e8235c8d95599ac22ccc261002459f5c4e6e7235b057908fe6e",
+    "child.bif.gz": "2bc3236dcbdbf9c9f1bbdeb060aa93c0bdee389d23a549b7248b9d89ed8a980c",
+    "child.dsc": "d232253287e987bed5e06c4e547892f44386742c24a248e8dc3f1b42225257a2",
+    "child.dsc.gz": "4d4b8764f42338402711e53f27cf71cdda254beace96dc2a5ffeb583606dd5e5",
+    "child.net": "7baa8ffe6a52154ce4a3e5dbdbdc1202daba1079f2117d2fb536381d3c5e8fa3",
+    "child.net.gz": "4697e600b0099bef5f2e554052c15ed2d1e289300f31e54cfad162d556a095ea",
+    "child.rda": "0827871440f3a6b3330b9c5737520232109894ed597ba0a9ab22ca4f4f362161",
+    "child.rds": "ed11359aceb295e617677462abc7053239ddcfe0b9af90f40da80dfee1e3460c"
+  }
+}

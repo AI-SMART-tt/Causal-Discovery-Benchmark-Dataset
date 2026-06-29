@@ -1,0 +1,33 @@
+{
+  "name": "cancer",
+  "collection": "bnlearn",
+  "title": "CANCER",
+  "source": "https://www.bnlearn.com/bnrepository/cancer/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Small cancer/outcome Bayesian network; heavily used for LLM pairwise and causal-order examples.",
+  "reference": "K. B. Korb and A. E. Nicholson, Bayesian Artificial Intelligence, 2nd edition, Section 2.2.2, 2010.",
+  "node_count_repository": 5,
+  "arc_count_repository": 4,
+  "parameter_count_repository": 10,
+  "node_count_parsed": 5,
+  "edge_count_parsed": 4,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "cancer.bif": "05d4ea00a758450eed6fe68ea6de4da05ce0e3e919bd3e8ff7f0bc80a1db4b48",
+    "cancer.bif.gz": "dcfafbaadabcd1b8c9ec531e16721a19fc06829e980a3967d6345496ea081818",
+    "cancer.dsc": "cc723385a538914be88963eb465205c4b96df802027110727fe440fdfba8d814",
+    "cancer.dsc.gz": "d2654109ebba10dbbfd7450d792f7972d69503c006bd213ede4666095e9446d3",
+    "cancer.net": "07cf0c247603efda40a2ab895aeb65a08c73603ac3e52eed9f78c243f26f9928",
+    "cancer.net.gz": "10c6f8831318e11ac132d81c63f14e94a16e593fd7c96cc147f472dae9bc4846",
+    "cancer.rda": "3cacd73003db2e6107ab77a1a1106282ff7b79392fc45c6d7b64614fb367ddc5",
+    "cancer.rds": "c9b897f4d89639d1dc3ec3816053a8cf33899998a07a83e038097e595dd8eb20"
+  }
+}

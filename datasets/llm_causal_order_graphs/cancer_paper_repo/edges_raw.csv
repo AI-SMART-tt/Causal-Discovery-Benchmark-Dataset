@@ -1,0 +1,5 @@
+source,target
+smoker,cancer
+pollution,cancer
+cancer,xray
+cancer,dyspnoea

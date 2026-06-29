@@ -1,0 +1,74 @@
+{
+  "Burglary": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.01,
+        0.99
+      ]
+    }
+  },
+  "Earthquake": {
+    "parents": [],
+    "rows": {
+      "": [
+        0.02,
+        0.98
+      ]
+    }
+  },
+  "Alarm": {
+    "parents": [
+      "Burglary",
+      "Earthquake"
+    ],
+    "rows": {
+      "True|True": [
+        0.95,
+        0.05
+      ],
+      "False|True": [
+        0.29,
+        0.71
+      ],
+      "True|False": [
+        0.94,
+        0.06
+      ],
+      "False|False": [
+        0.001,
+        0.999
+      ]
+    }
+  },
+  "JohnCalls": {
+    "parents": [
+      "Alarm"
+    ],
+    "rows": {
+      "True": [
+        0.9,
+        0.1
+      ],
+      "False": [
+        0.05,
+        0.95
+      ]
+    }
+  },
+  "MaryCalls": {
+    "parents": [
+      "Alarm"
+    ],
+    "rows": {
+      "True": [
+        0.7,
+        0.3
+      ],
+      "False": [
+        0.01,
+        0.99
+      ]
+    }
+  }
+}

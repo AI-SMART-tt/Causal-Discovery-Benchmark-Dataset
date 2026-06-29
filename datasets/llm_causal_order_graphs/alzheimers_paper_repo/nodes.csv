@@ -1,0 +1,12 @@
+node,description,in_raw_node_list
+sex,Biological Sex of Patient,true
+age,Age of Patient,true
+ventricular volume,Total Ventricular Volume of Patient,true
+brain volume,Total Brain Matter Volume of Patient,true
+av45,Beta Amyloid protein level measured by Florbetapir F18,true
+tau,Phosphorylated-tau deposition,true
+brain MRI,brain MRI,true
+slice number,MRI Image slice number,true
+education,Educational attainment (years),true
+moca, Montreal Cognitive Assessment Score,true
+APOE4,Expression level of APOE4 gene,true

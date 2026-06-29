@@ -1,0 +1,28 @@
+node,description,in_raw_node_list
+GoodStudent,Car driver being a good student in driving school,true
+Age,Car driver age,true
+SocioEcon,Socio-economic status of the car driver,true
+RiskAversion,Car driver being risk-averse,true
+VehicleYear,Year in which car was bought,true
+ThisCarDam,Damage occurred to the car,true
+RuggedAuto,Ruggedness of the car,true
+Accident,Severity of the accident,true
+MakeModel,Car model,true
+DrivQuality,Driving quality,true
+Mileage,Car giving good mileage,true
+Antilock,Car having an anti-lock braking system,true
+DrivingSkill,Driving skills,true
+SeniorTrain,Driver receiving training from seniors,true
+ThisCarCost,Costs for the insured car,true
+Theft,Whether the car has been stolen,true
+CarValue,Value of the car,true
+HomeBase,Residential area of the car location,true
+AntiTheft,Car having an anti-theft system,true
+PropCost,Ratio of the cost for the two cars involved in the accident,true
+OtherCarCost,Insurance costs for the other car involved in an accident,true
+OtherCar,Whether any other car involved in the accident or not,true
+MedCost,Cost of medical treatment for the driver,true
+Cushioning,Car having cushioning,true
+Airbag,Car having an airbag,true
+ILiCost,Costs of inspection for insurance,true
+DrivHist,Driving records of the driver,true

@@ -1,0 +1,21 @@
+source,target
+Virus Enters Upper Respiratory Tract,Upper Respiratory Tract epithelial infection
+Virus Enters Upper Respiratory Tract,Alveolar epithelial infection
+Upper Respiratory Tract epithelial infection,Alveolar epithelial infection
+Upper Respiratory Tract epithelial infection,Infection of olfactory epithelium
+Upper Respiratory Tract epithelial infection,Dry cough
+Upper Respiratory Tract epithelial infection,Systemic immune/inflammatory response
+Upper Respiratory Tract epithelial infection,Viremia
+Infection of olfactory epithelium,Anosmia and/or aguesia
+Alveolar epithelial infection,Productive cough
+Alveolar epithelial infection,Pulmonary capillary leakage
+Alveolar epithelial infection,Systemic immune/inflammatory response
+Alveolar epithelial infection,Viremia
+Alveolar epithelial infection,Alveolar endothelial infection
+Alveolar endothelial infection,Pulmonary capillary leakage
+Alveolar endothelial infection,Systemic immune/inflammatory response
+Alveolar endothelial infection,Viremia
+Pulmonary capillary leakage,Productive cough
+Pulmonary capillary leakage,Dry cough
+Systemic immune/inflammatory response,Pulmonary capillary leakage
+Viremia,Systemic immune/inflammatory response

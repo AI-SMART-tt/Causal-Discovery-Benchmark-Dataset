@@ -1,0 +1,6 @@
+node,description,in_raw_node_list
+smoker,smoking habit,true
+pollution,exposure to pollutants,true
+cancer,cancer,true
+xray,getting positive xray result,true
+dyspnoea,dyspnoea,true

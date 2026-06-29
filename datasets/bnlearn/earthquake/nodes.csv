@@ -1,0 +1,6 @@
+node,state_count,states,description
+Burglary,2,True|False,
+Earthquake,2,True|False,
+Alarm,2,True|False,
+JohnCalls,2,True|False,
+MaryCalls,2,True|False,

@@ -1,0 +1,7 @@
+node,description,in_raw_node_list
+Age,Age of people using transport,true
+Sex,male or female,true
+Education,up to high school or university degree,true
+Occupation,employee or self-employed,true
+Residence,"the size of the city the individual lives in, recorded as either small or big",true
+Travel,the means of transport favoured by the individual,true

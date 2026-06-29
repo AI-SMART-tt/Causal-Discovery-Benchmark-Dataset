@@ -1,0 +1,14 @@
+{
+  "name": "asia_m",
+  "collection": "llm_causal_order_graphs",
+  "context": "Asia-M derived from Asia by removing the semantically awkward 'either' node.",
+  "node_count": 7,
+  "edge_count": 4,
+  "source": "Derived from Causal_Order_Imperfect_Experts ASIA definition.",
+  "missing_edge_endpoints_in_raw_node_list": [],
+  "csv_generation": "No public CPT/observational data is bundled with this graph. CSV files are generated from a simple continuous SEM for algorithm testing.",
+  "sample_sizes": [
+    1000,
+    5000
+  ]
+}

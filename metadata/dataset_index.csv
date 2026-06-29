@@ -1,0 +1,21 @@
+collection,dataset,nodes,edges,csv_files,path,notes
+bnlearn,asia,8,8,5,bnlearn/asia,BN CPT samples generated from BIF.
+bnlearn,cancer,5,4,5,bnlearn/cancer,BN CPT samples generated from BIF.
+bnlearn,earthquake,5,4,5,bnlearn/earthquake,BN CPT samples generated from BIF.
+bnlearn,survey,6,6,5,bnlearn/survey,BN CPT samples generated from BIF.
+bnlearn,sachs,11,17,5,bnlearn/sachs,BN CPT samples generated from BIF.
+bnlearn,child,20,25,5,bnlearn/child,BN CPT samples generated from BIF.
+bnlearn,insurance,27,52,5,bnlearn/insurance,BN CPT samples generated from BIF.
+bnlearn,alarm,37,46,5,bnlearn/alarm,BN CPT samples generated from BIF.
+bnlearn,mildew,35,46,5,bnlearn/mildew,BN CPT samples generated from BIF.
+llm_causal_order_graphs,cancer_paper_repo,5,4,2,llm_causal_order_graphs/cancer_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,asia_paper_repo,8,8,2,llm_causal_order_graphs/asia_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,child_paper_repo,20,25,2,llm_causal_order_graphs/child_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,earthquake_paper_repo,5,4,2,llm_causal_order_graphs/earthquake_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,survey_paper_repo,6,6,2,llm_causal_order_graphs/survey_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,insurance_paper_repo,27,52,2,llm_causal_order_graphs/insurance_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,covid_paper_repo,11,20,2,llm_causal_order_graphs/covid_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,alzheimers_paper_repo,11,19,2,llm_causal_order_graphs/alzheimers_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,neuropathic_paper_repo,24,25,2,llm_causal_order_graphs/neuropathic_paper_repo,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,asia_m,7,4,2,llm_causal_order_graphs/asia_m,Graph-only source; CSV is synthetic SEM data.
+llm_causal_order_graphs,neuropathic_observable_c6c7,26,26,2,llm_causal_order_graphs/neuropathic_observable_c6c7,Graph-only source; CSV is synthetic SEM data.

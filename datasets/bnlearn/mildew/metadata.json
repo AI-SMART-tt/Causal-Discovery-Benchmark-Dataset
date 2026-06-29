@@ -1,0 +1,33 @@
+{
+  "name": "mildew",
+  "collection": "bnlearn",
+  "title": "MILDEW",
+  "source": "https://www.bnlearn.com/bnrepository/mildew/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Large-parameter agricultural network used by Ban et al.; useful for testing robustness to weaker LLM priors.",
+  "reference": "K. G. Olesen et al., A MUNIN network for diagnosis and treatment of mildew in winter wheat, 1989.",
+  "node_count_repository": 35,
+  "arc_count_repository": 46,
+  "parameter_count_repository": 540150,
+  "node_count_parsed": 35,
+  "edge_count_parsed": 46,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "mildew.bif": "bc1cf6af78a9b289249b6805a65f83af8be9a742aca5d789188d4737b80cfd9b",
+    "mildew.bif.gz": "06f4342f1bef2eef67988b41382b327ca7bf4b308841534c9a3b3c48ff61189a",
+    "mildew.dsc": "4490c5b7014aae432dae5f8a0a1b21673d7900449c3bfa8d7d5d6743ee8d0036",
+    "mildew.dsc.gz": "50a039ff93e4d578dd04c3b9c37dd38ce09184495e92ff84de2604ac9b353e3d",
+    "mildew.net": "fdafa1739216b71651cc7328f603f9b0494631bf35cc26f943f120ee92333610",
+    "mildew.net.gz": "740e0286f09da3b9e450d0bdce07202fb4281560e80c1d683f960ca555ef6b24",
+    "mildew.rda": "12658f228f4e9202a9cd457968c526ce63299fd7a9eb8ff5c9778473ccfe806a",
+    "mildew.rds": "ad5e94db771aa678937ef47fe2006ed79f201a067548fe79ab9f2aa4f52b962d"
+  }
+}

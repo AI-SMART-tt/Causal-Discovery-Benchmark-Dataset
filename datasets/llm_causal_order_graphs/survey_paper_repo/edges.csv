@@ -1,0 +1,7 @@
+source,target
+Age,Education
+Sex,Education
+Education,Occupation
+Education,Residence
+Occupation,Travel
+Residence,Travel

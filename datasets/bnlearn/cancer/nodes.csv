@@ -1,0 +1,6 @@
+node,state_count,states,description
+Pollution,2,low|high,
+Smoker,2,True|False,
+Cancer,2,True|False,
+Xray,2,positive|negative,
+Dyspnoea,2,True|False,

@@ -1,0 +1,27 @@
+source,target
+L C7,L Neck problems
+L C7,neck pain
+R C7,neck pain
+R C7,R neck
+L C7,L Shoulder problems
+L C7,L Shoulder trouble
+R C7,R Shoulder problems
+R C7,R Shoulder trouble
+L C7,L Elbow problems
+R C7,R Elbow trouble
+L C7,L Arm
+L C7,L Wrist problems
+R C7,R Wrist problems
+L C7,L lower arm disorders
+R C7,R lower arm disorders
+L C7,L Hand problems
+R C7,R Hand problems
+L C7,L bend of arm problems
+R C7,R Armband
+R C7,R bend of arm discomfort
+L C7,L Medial elbow problems
+R C7,R Medial elbow problems
+L C7,L Finger trouble
+R C7,R Finger trouble
+DLS C6-C7,L C7
+DLS C6-C7,R C7

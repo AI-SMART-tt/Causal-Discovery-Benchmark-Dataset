@@ -1,0 +1,14 @@
+{
+  "name": "covid_paper_repo",
+  "collection": "llm_causal_order_graphs",
+  "context": "modeling the initial pathophysiological process of SARS-CoV-2 in the respiratory system involves outlining the various pathways from viral infection to key complications.",
+  "node_count": 11,
+  "edge_count": 20,
+  "source": "Causal_Order_Imperfect_Experts graph definitions",
+  "missing_edge_endpoints_in_raw_node_list": [],
+  "csv_generation": "No public CPT/observational data is bundled with this graph. CSV files are generated from a simple continuous SEM for algorithm testing.",
+  "sample_sizes": [
+    1000,
+    5000
+  ]
+}

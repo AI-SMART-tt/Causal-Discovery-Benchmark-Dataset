@@ -1,0 +1,33 @@
+{
+  "name": "alarm",
+  "collection": "bnlearn",
+  "title": "ALARM",
+  "source": "https://www.bnlearn.com/bnrepository/alarm/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "A Logical Alarm Reduction Mechanism for patient monitoring; used by Ban et al. as a medium-sized medical-style benchmark.",
+  "reference": "I. Beinlich et al., The ALARM Monitoring System: A Case Study with Two Probabilistic Inference Techniques for Belief Networks, 1989.",
+  "node_count_repository": 37,
+  "arc_count_repository": 46,
+  "parameter_count_repository": 509,
+  "node_count_parsed": 37,
+  "edge_count_parsed": 46,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "alarm.bif": "701e6c561f71b55669070c29614f0724b761289aa2c4a35bcc97b638ee881fa2",
+    "alarm.bif.gz": "f5860caa7137b5817e0c4f169cce0f1451ce6c246b96f5ce4fb4a8167993be29",
+    "alarm.dsc": "fb163ef079fa6f067283c232c685d5ef3bc8cacb136ecf4df2d5765f46444074",
+    "alarm.dsc.gz": "775bbb903d306e1477563fd5b25d32958d516cc20ad5f501a05532968bd6d54e",
+    "alarm.net": "408e07c9a94ffa323ac524f049153af93055b4bd816bd6cb409d96da71dd07a7",
+    "alarm.net.gz": "bb4f862efaee9ee0d979066ee043353c4426d5f2cf665faee5722fb866efb5f6",
+    "alarm.rda": "ef0b3bc5573d7ed1023807a84afd90d6b1441fbb0818e62ecdc157a62ad7df59",
+    "alarm.rds": "72d0ebb884819c705cf6b77137f526f7f5c87891173b5351b0b6f14f3df14a16"
+  }
+}

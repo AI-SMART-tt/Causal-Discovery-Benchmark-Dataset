@@ -1,0 +1,33 @@
+{
+  "name": "survey",
+  "collection": "bnlearn",
+  "title": "SURVEY",
+  "source": "https://www.bnlearn.com/bnrepository/survey/",
+  "source_repository": "https://www.bnlearn.com/bnrepository/",
+  "license_note": "bnlearn repository pages are licensed CC BY-SA; check individual data references.",
+  "context": "Hypothetical transport survey network used in Vashishtha et al.",
+  "reference": "M. Scutari and J.-B. Denis, Bayesian Networks: with Examples in R, 2nd edition, 2021.",
+  "node_count_repository": 6,
+  "arc_count_repository": 6,
+  "parameter_count_repository": 21,
+  "node_count_parsed": 6,
+  "edge_count_parsed": 6,
+  "sample_sizes": [
+    250,
+    500,
+    1000,
+    5000,
+    10000
+  ],
+  "csv_generation": "Samples generated from the downloaded BIF CPTs with a fixed seed.",
+  "raw_checksums_sha256": {
+    "survey.bif": "3698ccc0f1f74b9f935617d91989e4cdb39edb5360b558216af64047fc88b3b0",
+    "survey.bif.gz": "676e1fe97efec18b31d1a0a3bcd9b7d52985129c60a78b69172c99e82902ef96",
+    "survey.dsc": "286d39256c978682eea25388393d07ab0a61ac5e4cdbea9e413bdea9a46bfdd2",
+    "survey.dsc.gz": "c2f59d55141e3a90aadf41a05e0b33950fa6c408cdec8317af72a4756bc0bf59",
+    "survey.net": "e6e778cbcb435e051defba0b652fcfa64064b312d3c3391ff9f2ec03076fd973",
+    "survey.net.gz": "7b3b0ba1983edbd4f4153d5db249eca1b856425763873f589ae2fb049a3fd1cf",
+    "survey.rda": "b13eec918e86803998578e1803f224d0637c414948c08c9f9814525baa313a64",
+    "survey.rds": "5f1418d74c7caa01d0d8760b1e7de5916717dff69e44f63fe211b6371321df6e"
+  }
+}

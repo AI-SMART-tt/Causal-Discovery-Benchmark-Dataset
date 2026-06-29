@@ -1,0 +1,14 @@
+{
+  "name": "cancer_paper_repo",
+  "collection": "llm_causal_order_graphs",
+  "context": "model the relation between various variables responsible for causing Cancer and its possible outcomes",
+  "node_count": 5,
+  "edge_count": 4,
+  "source": "Causal_Order_Imperfect_Experts graph definitions",
+  "missing_edge_endpoints_in_raw_node_list": [],
+  "csv_generation": "No public CPT/observational data is bundled with this graph. CSV files are generated from a simple continuous SEM for algorithm testing.",
+  "sample_sizes": [
+    1000,
+    5000
+  ]
+}
