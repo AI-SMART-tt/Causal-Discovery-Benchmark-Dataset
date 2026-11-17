@@ -1,0 +1,61 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "earthquake_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:26:18.362204+00:00",
+  "prompt_hash": "42e2ac15940dc569",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"second neighbor to call to inform the alarm sound\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"earthquake hitting\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"burglar entering\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"home alarm going off in a house\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"first neighbor to call to inform the alarm sound\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V02\", \"V03\", \"V04\", \"V05\", \"V01\"],\n  \"confidence\": 0.9,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V02\", \"after\": \"V04\", \"confidence\": 0.98},\n    {\"before\": \"V03\", \"after\": \"V04\", \"confidence\": 0.98},\n    {\"before\": \"V04\", \"after\": \"V05\", \"confidence\": 0.95},\n    {\"before\": \"V04\", \"after\": \"V01\", \"confidence\": 0.95},\n    {\"before\": \"V05\", \"after\": \"V01\", \"confidence\": 0.75}\n  ],\n  \"rationale\": \"Earthquake hitting and burglar entering are upstream causes that can trigger the home alarm. The alarm going off precedes notifying neighbors. The first neighbor call is plausibly earlier than the second neighbor call, as a downstream sequence of notifications.\"\n}",
+  "id_map": {
+    "V01": "Marycalls",
+    "V02": "Earthquake",
+    "V03": "Burglary",
+    "V04": "Alarm",
+    "V05": "JohnCalls"
+  },
+  "ordered_nodes": [
+    "Earthquake",
+    "Burglary",
+    "Alarm",
+    "JohnCalls",
+    "Marycalls"
+  ],
+  "confidence": 0.9,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Earthquake",
+      "after": "Alarm",
+      "confidence": 0.98
+    },
+    {
+      "before": "Burglary",
+      "after": "Alarm",
+      "confidence": 0.98
+    },
+    {
+      "before": "Alarm",
+      "after": "JohnCalls",
+      "confidence": 0.95
+    },
+    {
+      "before": "Alarm",
+      "after": "Marycalls",
+      "confidence": 0.95
+    },
+    {
+      "before": "JohnCalls",
+      "after": "Marycalls",
+      "confidence": 0.75
+    }
+  ],
+  "rationale": "Earthquake hitting and burglar entering are upstream causes that can trigger the home alarm. The alarm going off precedes notifying neighbors. The first neighbor call is plausibly earlier than the second neighbor call, as a downstream sequence of notifications.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

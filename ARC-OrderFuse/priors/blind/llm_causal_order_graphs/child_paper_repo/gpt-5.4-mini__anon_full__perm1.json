@@ -1,0 +1,131 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "child_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:25:19.369913+00:00",
+  "prompt_hash": "0f0edc25d724ca60",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"low oxygen areas equally distributed around the body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"mixing of oxygenated and deoxygenated blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"low blood flow in the lungs\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"report of infant grunting\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"lung excessively filled with blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"blood flow across the ductus arteriosus\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"grunting in infants\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"level of oxygen in the right up quadricep muscule\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"infant methemoglobinemia\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"report of having left ventricular hypertrophy\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"the state of the blood vessels in the lungs\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V12\",\n    \"description\": \"thickening of the left ventricle\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V13\",\n    \"description\": \"a document reporting high level of CO2 levels in blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V14\",\n    \"description\": \"level of oxygen in the lower body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V15\",\n    \"description\": \"level of carbon dioxide in the body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V16\",\n    \"description\": \"lack of oxygen to the blood during the infant's birth\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V17\",\n    \"description\": \"presence of an illness\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V18\",\n    \"description\": \"having a chest x-ray\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V19\",\n    \"description\": \"hypoxia when breathing oxygen\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V20\",\n    \"description\": \"age of infant at disease presentation\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V17\", \"V16\", \"V20\", \"V11\", \"V03\", \"V05\", \"V06\", \"V02\", \"V01\", \"V14\", \"V08\", \"V15\", \"V19\", \"V09\", \"V12\", \"V10\", \"V04\", \"V07\", \"V13\", \"V18\"],\n  \"confidence\": 0.62,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V17\", \"after\": \"V16\", \"confidence\": 0.86},\n    {\"before\": \"V16\", \"after\": \"V03\", \"confidence\": 0.82},\n    {\"before\": \"V11\", \"after\": \"V05\", \"confidence\": 0.8},\n    {\"before\": \"V05\", \"after\": \"V06\", \"confidence\": 0.78},\n    {\"before\": \"V06\", \"after\": \"V02\", \"confidence\": 0.81},\n    {\"before\": \"V02\", \"after\": \"V01\", \"confidence\": 0.74},\n    {\"before\": \"V02\", \"after\": \"V14\", \"confidence\": 0.72},\n    {\"before\": \"V02\", \"after\": \"V08\", \"confidence\": 0.7},\n    {\"before\": \"V15\", \"after\": \"V19\", \"confidence\": 0.76},\n    {\"before\": \"V19\", \"after\": \"V07\", \"confidence\": 0.75},\n    {\"before\": \"V07\", \"after\": \"V04\", \"confidence\": 0.84},\n    {\"before\": \"V12\", \"after\": \"V10\", \"confidence\": 0.85},\n    {\"before\": \"V13\", \"after\": \"V18\", \"confidence\": 0.8}\n  ],\n  \"rationale\": \"I ordered likely upstream disease/physiology first, then hemodynamic and oxygenation abnormalities, then symptoms, reports, and tests. Congenital or illness states precede lung blood flow, shunting, and hypoxemia; systemic oxygen and CO2 measures follow. Clinical findings and documentation are downstream of the underlying physiology. This is a semantic prior, not a ground-truth causal graph.\"\n}",
+  "id_map": {
+    "V01": "HypDistrib",
+    "V02": "CardiacMixing",
+    "V03": "LungFlow",
+    "V04": "GruntingReport",
+    "V05": "XrayReport",
+    "V06": "DuctFlow",
+    "V07": "Grunting",
+    "V08": "RUQO2",
+    "V09": "Disease",
+    "V10": "LVHreport",
+    "V11": "LungParench",
+    "V12": "LVH",
+    "V13": "CO2Report",
+    "V14": "LowerBodyO2",
+    "V15": "CO2",
+    "V16": "BirthAsphyxia",
+    "V17": "Sick",
+    "V18": "ChestXray",
+    "V19": "HypoxiaInO2",
+    "V20": "Age"
+  },
+  "ordered_nodes": [
+    "Sick",
+    "BirthAsphyxia",
+    "Age",
+    "LungParench",
+    "LungFlow",
+    "XrayReport",
+    "DuctFlow",
+    "CardiacMixing",
+    "HypDistrib",
+    "LowerBodyO2",
+    "RUQO2",
+    "CO2",
+    "HypoxiaInO2",
+    "Disease",
+    "LVH",
+    "LVHreport",
+    "GruntingReport",
+    "Grunting",
+    "CO2Report",
+    "ChestXray"
+  ],
+  "confidence": 0.62,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Sick",
+      "after": "BirthAsphyxia",
+      "confidence": 0.86
+    },
+    {
+      "before": "BirthAsphyxia",
+      "after": "LungFlow",
+      "confidence": 0.82
+    },
+    {
+      "before": "LungParench",
+      "after": "XrayReport",
+      "confidence": 0.8
+    },
+    {
+      "before": "XrayReport",
+      "after": "DuctFlow",
+      "confidence": 0.78
+    },
+    {
+      "before": "DuctFlow",
+      "after": "CardiacMixing",
+      "confidence": 0.81
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "HypDistrib",
+      "confidence": 0.74
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "LowerBodyO2",
+      "confidence": 0.72
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "RUQO2",
+      "confidence": 0.7
+    },
+    {
+      "before": "CO2",
+      "after": "HypoxiaInO2",
+      "confidence": 0.76
+    },
+    {
+      "before": "HypoxiaInO2",
+      "after": "Grunting",
+      "confidence": 0.75
+    },
+    {
+      "before": "Grunting",
+      "after": "GruntingReport",
+      "confidence": 0.84
+    },
+    {
+      "before": "LVH",
+      "after": "LVHreport",
+      "confidence": 0.85
+    },
+    {
+      "before": "CO2Report",
+      "after": "ChestXray",
+      "confidence": 0.8
+    }
+  ],
+  "rationale": "I ordered likely upstream disease/physiology first, then hemodynamic and oxygenation abnormalities, then symptoms, reports, and tests. Congenital or illness states precede lung blood flow, shunting, and hypoxemia; systemic oxygen and CO2 measures follow. Clinical findings and documentation are downstream of the underlying physiology. This is a semantic prior, not a ground-truth causal graph.",
+  "direct_edge_accuracy": 0.6,
+  "pair_accuracy": 0.734375
+}

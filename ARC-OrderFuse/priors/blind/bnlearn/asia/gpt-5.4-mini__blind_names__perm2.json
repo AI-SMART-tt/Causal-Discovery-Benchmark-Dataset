@@ -1,0 +1,82 @@
+{
+  "collection": "bnlearn",
+  "dataset": "asia",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:12:01.657733+00:00",
+  "prompt_hash": "002772ee105c1c55",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"bronc\"\n  },\n  {\n    \"id\": \"dysp\"\n  },\n  {\n    \"id\": \"tub\"\n  },\n  {\n    \"id\": \"lung\"\n  },\n  {\n    \"id\": \"either\"\n  },\n  {\n    \"id\": \"asia\"\n  },\n  {\n    \"id\": \"xray\"\n  },\n  {\n    \"id\": \"smoke\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"asia\", \"smoke\", \"tub\", \"lung\", \"bronc\", \"either\", \"dysp\", \"xray\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"asia\", \"after\": \"tub\", \"confidence\": 0.97},\n    {\"before\": \"smoke\", \"after\": \"lung\", \"confidence\": 0.92},\n    {\"before\": \"smoke\", \"after\": \"bronc\", \"confidence\": 0.92},\n    {\"before\": \"tub\", \"after\": \"either\", \"confidence\": 0.95},\n    {\"before\": \"lung\", \"after\": \"either\", \"confidence\": 0.95},\n    {\"before\": \"either\", \"after\": \"xray\", \"confidence\": 0.88},\n    {\"before\": \"either\", \"after\": \"dysp\", \"confidence\": 0.83},\n    {\"before\": \"bronc\", \"after\": \"dysp\", \"confidence\": 0.8}\n  ],\n  \"rationale\": \"Asia travel exposure can precede tuberculosis; smoking can precede lung disease and bronchitis. Tuberculosis or lung cancer may each cause the binary 'either' outcome. Symptoms like dyspnea and diagnostic x-ray results are downstream of disease. This is a plausible prior, not ground truth.\"\n}",
+  "id_map": {
+    "bronc": "bronc",
+    "dysp": "dysp",
+    "tub": "tub",
+    "lung": "lung",
+    "either": "either",
+    "asia": "asia",
+    "xray": "xray",
+    "smoke": "smoke"
+  },
+  "ordered_nodes": [
+    "asia",
+    "smoke",
+    "tub",
+    "lung",
+    "bronc",
+    "either",
+    "dysp",
+    "xray"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "asia",
+      "after": "tub",
+      "confidence": 0.97
+    },
+    {
+      "before": "smoke",
+      "after": "lung",
+      "confidence": 0.92
+    },
+    {
+      "before": "smoke",
+      "after": "bronc",
+      "confidence": 0.92
+    },
+    {
+      "before": "tub",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "lung",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "either",
+      "after": "xray",
+      "confidence": 0.88
+    },
+    {
+      "before": "either",
+      "after": "dysp",
+      "confidence": 0.83
+    },
+    {
+      "before": "bronc",
+      "after": "dysp",
+      "confidence": 0.8
+    }
+  ],
+  "rationale": "Asia travel exposure can precede tuberculosis; smoking can precede lung disease and bronchitis. Tuberculosis or lung cancer may each cause the binary 'either' outcome. Symptoms like dyspnea and diagnostic x-ray results are downstream of disease. This is a plausible prior, not ground truth.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

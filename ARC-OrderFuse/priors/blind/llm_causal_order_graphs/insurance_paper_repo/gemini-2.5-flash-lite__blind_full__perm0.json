@@ -1,0 +1,130 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "insurance_paper_repo",
+  "model": "gemini-2.5-flash-lite",
+  "provider": "gemini",
+  "source": "gemini_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-15T05:22:04.168149+00:00",
+  "prompt_hash": "34689e7d1bd3c606",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"PropCost\",\n    \"description\": \"Ratio of the cost for the two cars involved in the accident\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"OtherCar\",\n    \"description\": \"Whether any other car involved in the accident or not\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"MedCost\",\n    \"description\": \"Cost of medical treatment for the driver\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"ThisCarCost\",\n    \"description\": \"Costs for the insured car\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"AntiTheft\",\n    \"description\": \"Car having an anti-theft system\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"DrivHist\",\n    \"description\": \"Driving records of the driver\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Accident\",\n    \"description\": \"Severity of the accident\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"SeniorTrain\",\n    \"description\": \"Driver receiving training from seniors\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Antilock\",\n    \"description\": \"Car having an anti-lock braking system\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"ThisCarDam\",\n    \"description\": \"Damage occurred to the car\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Mileage\",\n    \"description\": \"Car giving good mileage\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Cushioning\",\n    \"description\": \"Car having cushioning\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Airbag\",\n    \"description\": \"Car having an airbag\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"ILiCost\",\n    \"description\": \"Costs of inspection for insurance\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"SocioEcon\",\n    \"description\": \"Socio-economic status of the car driver\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Age\",\n    \"description\": \"Car driver age\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"OtherCarCost\",\n    \"description\": \"Insurance costs for the other car involved in an accident\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"GoodStudent\",\n    \"description\": \"Car driver being a good student in driving school\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"MakeModel\",\n    \"description\": \"Car model\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"RiskAversion\",\n    \"description\": \"Car driver being risk-averse\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"DrivQuality\",\n    \"description\": \"Driving quality\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"VehicleYear\",\n    \"description\": \"Year in which car was bought\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"CarValue\",\n    \"description\": \"Value of the car\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"DrivingSkill\",\n    \"description\": \"Driving skills\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Theft\",\n    \"description\": \"Whether the car has been stolen\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"RuggedAuto\",\n    \"description\": \"Ruggedness of the car\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"HomeBase\",\n    \"description\": \"Residential area of the car location\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"SocioEcon\",\n    \"Age\",\n    \"RiskAversion\",\n    \"GoodStudent\",\n    \"SeniorTrain\",\n    \"DrivHist\",\n    \"DrivingSkill\",\n    \"DrivQuality\",\n    \"HomeBase\",\n    \"VehicleYear\",\n    \"MakeModel\",\n    \"RuggedAuto\",\n    \"Mileage\",\n    \"CarValue\",\n    \"AntiTheft\",\n    \"Antilock\",\n    \"Cushioning\",\n    \"Airbag\",\n    \"Theft\",\n    \"OtherCar\",\n    \"Accident\",\n    \"ThisCarDam\",\n    \"PropCost\",\n    \"OtherCarCost\",\n    \"MedCost\",\n    \"ThisCarCost\",\n    \"ILiCost\"\n  ],\n  \"confidence\": 0.6,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Age\", \"after\": \"DrivHist\", \"confidence\": 0.8},\n    {\"before\": \"DrivHist\", \"after\": \"DrivingSkill\", \"confidence\": 0.7},\n    {\"before\": \"DrivingSkill\", \"after\": \"DrivQuality\", \"confidence\": 0.7},\n    {\"before\": \"VehicleYear\", \"after\": \"CarValue\", \"confidence\": 0.8},\n    {\"before\": \"CarValue\", \"after\": \"ThisCarCost\", \"confidence\": 0.7},\n    {\"before\": \"Accident\", \"after\": \"ThisCarDam\", \"confidence\": 0.9},\n    {\"before\": \"Accident\", \"after\": \"MedCost\", \"confidence\": 0.8},\n    {\"before\": \"Accident\", \"after\": \"PropCost\", \"confidence\": 0.8},\n    {\"before\": \"Accident\", \"after\": \"OtherCarCost\", \"confidence\": 0.8},\n    {\"before\": \"Accident\", \"after\": \"ILiCost\", \"confidence\": 0.7}\n  ],\n  \"rationale\": \"Driver characteristics (socioeconomic, age, risk aversion, history, skills) influence driving quality and decisions. Vehicle attributes (year, make, features) affect value and safety. These factors, along with location, contribute to accident likelihood and severity, which in turn determine costs.\"\n}",
+  "id_map": {
+    "PropCost": "PropCost",
+    "OtherCar": "OtherCar",
+    "MedCost": "MedCost",
+    "ThisCarCost": "ThisCarCost",
+    "AntiTheft": "AntiTheft",
+    "DrivHist": "DrivHist",
+    "Accident": "Accident",
+    "SeniorTrain": "SeniorTrain",
+    "Antilock": "Antilock",
+    "ThisCarDam": "ThisCarDam",
+    "Mileage": "Mileage",
+    "Cushioning": "Cushioning",
+    "Airbag": "Airbag",
+    "ILiCost": "ILiCost",
+    "SocioEcon": "SocioEcon",
+    "Age": "Age",
+    "OtherCarCost": "OtherCarCost",
+    "GoodStudent": "GoodStudent",
+    "MakeModel": "MakeModel",
+    "RiskAversion": "RiskAversion",
+    "DrivQuality": "DrivQuality",
+    "VehicleYear": "VehicleYear",
+    "CarValue": "CarValue",
+    "DrivingSkill": "DrivingSkill",
+    "Theft": "Theft",
+    "RuggedAuto": "RuggedAuto",
+    "HomeBase": "HomeBase"
+  },
+  "ordered_nodes": [
+    "SocioEcon",
+    "Age",
+    "RiskAversion",
+    "GoodStudent",
+    "SeniorTrain",
+    "DrivHist",
+    "DrivingSkill",
+    "DrivQuality",
+    "HomeBase",
+    "VehicleYear",
+    "MakeModel",
+    "RuggedAuto",
+    "Mileage",
+    "CarValue",
+    "AntiTheft",
+    "Antilock",
+    "Cushioning",
+    "Airbag",
+    "Theft",
+    "OtherCar",
+    "Accident",
+    "ThisCarDam",
+    "PropCost",
+    "OtherCarCost",
+    "MedCost",
+    "ThisCarCost",
+    "ILiCost"
+  ],
+  "confidence": 0.6,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "DrivHist",
+      "confidence": 0.8
+    },
+    {
+      "before": "DrivHist",
+      "after": "DrivingSkill",
+      "confidence": 0.7
+    },
+    {
+      "before": "DrivingSkill",
+      "after": "DrivQuality",
+      "confidence": 0.7
+    },
+    {
+      "before": "VehicleYear",
+      "after": "CarValue",
+      "confidence": 0.8
+    },
+    {
+      "before": "CarValue",
+      "after": "ThisCarCost",
+      "confidence": 0.7
+    },
+    {
+      "before": "Accident",
+      "after": "ThisCarDam",
+      "confidence": 0.9
+    },
+    {
+      "before": "Accident",
+      "after": "MedCost",
+      "confidence": 0.8
+    },
+    {
+      "before": "Accident",
+      "after": "PropCost",
+      "confidence": 0.8
+    },
+    {
+      "before": "Accident",
+      "after": "OtherCarCost",
+      "confidence": 0.8
+    },
+    {
+      "before": "Accident",
+      "after": "ILiCost",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "Driver characteristics (socioeconomic, age, risk aversion, history, skills) influence driving quality and decisions. Vehicle attributes (year, make, features) affect value and safety. These factors, along with location, contribute to accident likelihood and severity, which in turn determine costs.",
+  "direct_edge_accuracy": 0.903846,
+  "pair_accuracy": 0.970238
+}

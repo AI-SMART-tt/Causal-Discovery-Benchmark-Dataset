@@ -1,0 +1,139 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:31:41.568854+00:00",
+  "prompt_hash": "16fcc0f38a5d35d4",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"right lower arm disorders\"\n  },\n  {\n    \"id\": \"left lower arm disorders\"\n  },\n  {\n    \"id\": \"right finger trouble\"\n  },\n  {\n    \"id\": \"right wrist problem\"\n  },\n  {\n    \"id\": \"left medival elbow problems\"\n  },\n  {\n    \"id\": \"right arm band\"\n  },\n  {\n    \"id\": \"left C7\"\n  },\n  {\n    \"id\": \"left bend of arm problem\"\n  },\n  {\n    \"id\": \"right neck\"\n  },\n  {\n    \"id\": \"left arm\"\n  },\n  {\n    \"id\": \"left wrist problems\"\n  },\n  {\n    \"id\": \"right elbow trouble\"\n  },\n  {\n    \"id\": \"right shoulder problem\"\n  },\n  {\n    \"id\": \"neck pain\"\n  },\n  {\n    \"id\": \"left finger trouble\"\n  },\n  {\n    \"id\": \"right hand problem\"\n  },\n  {\n    \"id\": \"left elbow problem\"\n  },\n  {\n    \"id\": \"left hand problem\"\n  },\n  {\n    \"id\": \"right shoulder trouble\"\n  },\n  {\n    \"id\": \"left shoulder problem\"\n  },\n  {\n    \"id\": \"right C7\"\n  },\n  {\n    \"id\": \"left shoulder trouble\"\n  },\n  {\n    \"id\": \"left neck problems\"\n  },\n  {\n    \"id\": \"discoligment injury C6-C7\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"discoligment injury C6-C7\",\n    \"left C7\",\n    \"right C7\",\n    \"left neck problems\",\n    \"right neck\",\n    \"neck pain\",\n    \"left arm\",\n    \"right arm band\",\n    \"left shoulder problem\",\n    \"right shoulder problem\",\n    \"left shoulder trouble\",\n    \"right shoulder trouble\",\n    \"left bend of arm problem\",\n    \"left medival elbow problems\",\n    \"left elbow problem\",\n    \"right elbow trouble\",\n    \"left lower arm disorders\",\n    \"right lower arm disorders\",\n    \"left wrist problems\",\n    \"right wrist problem\",\n    \"left hand problem\",\n    \"right hand problem\",\n    \"left finger trouble\",\n    \"right finger trouble\"\n  ],\n  \"confidence\": 0.49,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"discoligment injury C6-C7\",\n      \"after\": \"left C7\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"discoligment injury C6-C7\",\n      \"after\": \"right C7\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"left C7\",\n      \"after\": \"left neck problems\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"right C7\",\n      \"after\": \"right neck\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"neck pain\",\n      \"after\": \"right shoulder problem\",\n      \"confidence\": 0.63\n    },\n    {\n      \"before\": \"left shoulder problem\",\n      \"after\": \"left elbow problem\",\n      \"confidence\": 0.66\n    },\n    {\n      \"before\": \"left elbow problem\",\n      \"after\": \"left wrist problems\",\n      \"confidence\": 0.66\n    },\n    {\n      \"before\": \"left wrist problems\",\n      \"after\": \"left hand problem\",\n      \"confidence\": 0.68\n    },\n    {\n      \"before\": \"left hand problem\",\n      \"after\": \"left finger trouble\",\n      \"confidence\": 0.67\n    },\n    {\n      \"before\": \"right shoulder problem\",\n      \"after\": \"right elbow trouble\",\n      \"confidence\": 0.66\n    },\n    {\n      \"before\": \"right elbow trouble\",\n      \"after\": \"right wrist problem\",\n      \"confidence\": 0.66\n    },\n    {\n      \"before\": \"right wrist problem\",\n      \"after\": \"right hand problem\",\n      \"confidence\": 0.68\n    },\n    {\n      \"before\": \"right hand problem\",\n      \"after\": \"right finger trouble\",\n      \"confidence\": 0.67\n    }\n  ],\n  \"rationale\": \"A cervical disc injury is plausibly upstream of side-specific C7/neck symptoms, which can propagate to shoulder, elbow, wrist, hand, and finger complaints. I ordered proximal neck/root variables before distal upper-limb disorders, with left/right versions grouped similarly. This is only a semantic causal prior, not a claim of actual temporal or clinical causality.\"\n}",
+  "id_map": {
+    "right lower arm disorders": "right lower arm disorders",
+    "left lower arm disorders": "left lower arm disorders",
+    "right finger trouble": "right finger trouble",
+    "right wrist problem": "right wrist problem",
+    "left medival elbow problems": "left medival elbow problems",
+    "right arm band": "right arm band",
+    "left C7": "left C7",
+    "left bend of arm problem": "left bend of arm problem",
+    "right neck": "right neck",
+    "left arm": "left arm",
+    "left wrist problems": "left wrist problems",
+    "right elbow trouble": "right elbow trouble",
+    "right shoulder problem": "right shoulder problem",
+    "neck pain": "neck pain",
+    "left finger trouble": "left finger trouble",
+    "right hand problem": "right hand problem",
+    "left elbow problem": "left elbow problem",
+    "left hand problem": "left hand problem",
+    "right shoulder trouble": "right shoulder trouble",
+    "left shoulder problem": "left shoulder problem",
+    "right C7": "right C7",
+    "left shoulder trouble": "left shoulder trouble",
+    "left neck problems": "left neck problems",
+    "discoligment injury C6-C7": "discoligment injury C6-C7"
+  },
+  "ordered_nodes": [
+    "discoligment injury C6-C7",
+    "left C7",
+    "right C7",
+    "left neck problems",
+    "right neck",
+    "neck pain",
+    "left arm",
+    "right arm band",
+    "left shoulder problem",
+    "right shoulder problem",
+    "left shoulder trouble",
+    "right shoulder trouble",
+    "left bend of arm problem",
+    "left medival elbow problems",
+    "left elbow problem",
+    "right elbow trouble",
+    "left lower arm disorders",
+    "right lower arm disorders",
+    "left wrist problems",
+    "right wrist problem",
+    "left hand problem",
+    "right hand problem",
+    "left finger trouble",
+    "right finger trouble"
+  ],
+  "confidence": 0.49,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "discoligment injury C6-C7",
+      "after": "left C7",
+      "confidence": 0.88
+    },
+    {
+      "before": "discoligment injury C6-C7",
+      "after": "right C7",
+      "confidence": 0.88
+    },
+    {
+      "before": "left C7",
+      "after": "left neck problems",
+      "confidence": 0.72
+    },
+    {
+      "before": "right C7",
+      "after": "right neck",
+      "confidence": 0.72
+    },
+    {
+      "before": "neck pain",
+      "after": "right shoulder problem",
+      "confidence": 0.63
+    },
+    {
+      "before": "left shoulder problem",
+      "after": "left elbow problem",
+      "confidence": 0.66
+    },
+    {
+      "before": "left elbow problem",
+      "after": "left wrist problems",
+      "confidence": 0.66
+    },
+    {
+      "before": "left wrist problems",
+      "after": "left hand problem",
+      "confidence": 0.68
+    },
+    {
+      "before": "left hand problem",
+      "after": "left finger trouble",
+      "confidence": 0.67
+    },
+    {
+      "before": "right shoulder problem",
+      "after": "right elbow trouble",
+      "confidence": 0.66
+    },
+    {
+      "before": "right elbow trouble",
+      "after": "right wrist problem",
+      "confidence": 0.66
+    },
+    {
+      "before": "right wrist problem",
+      "after": "right hand problem",
+      "confidence": 0.68
+    },
+    {
+      "before": "right hand problem",
+      "after": "right finger trouble",
+      "confidence": 0.67
+    }
+  ],
+  "rationale": "A cervical disc injury is plausibly upstream of side-specific C7/neck symptoms, which can propagate to shoulder, elbow, wrist, hand, and finger complaints. I ordered proximal neck/root variables before distal upper-limb disorders, with left/right versions grouped similarly. This is only a semantic causal prior, not a claim of actual temporal or clinical causality.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

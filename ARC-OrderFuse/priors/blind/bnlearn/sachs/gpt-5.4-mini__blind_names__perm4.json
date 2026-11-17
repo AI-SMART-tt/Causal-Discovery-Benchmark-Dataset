@@ -1,0 +1,78 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:16:13.927481+00:00",
+  "prompt_hash": "321a48dc42078efb",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Akt\"\n  },\n  {\n    \"id\": \"PKA\"\n  },\n  {\n    \"id\": \"PIP3\"\n  },\n  {\n    \"id\": \"Jnk\"\n  },\n  {\n    \"id\": \"PKC\"\n  },\n  {\n    \"id\": \"Raf\"\n  },\n  {\n    \"id\": \"Mek\"\n  },\n  {\n    \"id\": \"PIP2\"\n  },\n  {\n    \"id\": \"P38\"\n  },\n  {\n    \"id\": \"Erk\"\n  },\n  {\n    \"id\": \"Plcg\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"PIP2\", \"Plcg\", \"PIP3\", \"PKC\", \"PKA\", \"Akt\", \"Raf\", \"Mek\", \"Erk\", \"Jnk\", \"P38\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"PIP2\", \"after\": \"Plcg\", \"confidence\": 0.86},\n    {\"before\": \"Plcg\", \"after\": \"PIP3\", \"confidence\": 0.84},\n    {\"before\": \"PIP3\", \"after\": \"Akt\", \"confidence\": 0.81},\n    {\"before\": \"PIP3\", \"after\": \"PKC\", \"confidence\": 0.8},\n    {\"before\": \"Raf\", \"after\": \"Mek\", \"confidence\": 0.9},\n    {\"before\": \"Mek\", \"after\": \"Erk\", \"confidence\": 0.92}\n  ],\n  \"rationale\": \"These labels suggest a signaling cascade. PIP2 is an upstream phospholipid substrate for PLC, producing PIP3/related second messengers that activate PKC and Akt. Raf→Mek→Erk is a classic downstream MAPK chain. Jnk and P38 are typically stress-activated MAPKs placed late as downstream outputs. PKA is kept early as a parallel upstream kinase signal with weaker ordering certainty.\"\n}",
+  "id_map": {
+    "Akt": "Akt",
+    "PKA": "PKA",
+    "PIP3": "PIP3",
+    "Jnk": "Jnk",
+    "PKC": "PKC",
+    "Raf": "Raf",
+    "Mek": "Mek",
+    "PIP2": "PIP2",
+    "P38": "P38",
+    "Erk": "Erk",
+    "Plcg": "Plcg"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "Plcg",
+    "PIP3",
+    "PKC",
+    "PKA",
+    "Akt",
+    "Raf",
+    "Mek",
+    "Erk",
+    "Jnk",
+    "P38"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "Plcg",
+      "confidence": 0.86
+    },
+    {
+      "before": "Plcg",
+      "after": "PIP3",
+      "confidence": 0.84
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.81
+    },
+    {
+      "before": "PIP3",
+      "after": "PKC",
+      "confidence": 0.8
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.9
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.92
+    }
+  ],
+  "rationale": "These labels suggest a signaling cascade. PIP2 is an upstream phospholipid substrate for PLC, producing PIP3/related second messengers that activate PKC and Akt. Raf→Mek→Erk is a classic downstream MAPK chain. Jnk and P38 are typically stress-activated MAPKs placed late as downstream outputs. PKA is kept early as a parallel upstream kinase signal with weaker ordering certainty.",
+  "direct_edge_accuracy": 0.823529,
+  "pair_accuracy": 0.772727
+}

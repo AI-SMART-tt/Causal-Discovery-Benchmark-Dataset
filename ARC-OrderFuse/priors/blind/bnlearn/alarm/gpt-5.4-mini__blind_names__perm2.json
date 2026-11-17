@@ -1,0 +1,225 @@
+{
+  "collection": "bnlearn",
+  "dataset": "alarm",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:20:19.558861+00:00",
+  "prompt_hash": "79c77076d0f8042b",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"INTUBATION\"\n  },\n  {\n    \"id\": \"SAO2\"\n  },\n  {\n    \"id\": \"CATECHOL\"\n  },\n  {\n    \"id\": \"ARTCO2\"\n  },\n  {\n    \"id\": \"BP\"\n  },\n  {\n    \"id\": \"VENTLUNG\"\n  },\n  {\n    \"id\": \"HISTORY\"\n  },\n  {\n    \"id\": \"HYPOVOLEMIA\"\n  },\n  {\n    \"id\": \"VENTTUBE\"\n  },\n  {\n    \"id\": \"MINVOLSET\"\n  },\n  {\n    \"id\": \"PCWP\"\n  },\n  {\n    \"id\": \"ERRCAUTER\"\n  },\n  {\n    \"id\": \"ANAPHYLAXIS\"\n  },\n  {\n    \"id\": \"HRSAT\"\n  },\n  {\n    \"id\": \"HREKG\"\n  },\n  {\n    \"id\": \"SHUNT\"\n  },\n  {\n    \"id\": \"ERRLOWOUTPUT\"\n  },\n  {\n    \"id\": \"VENTMACH\"\n  },\n  {\n    \"id\": \"VENTALV\"\n  },\n  {\n    \"id\": \"LVEDVOLUME\"\n  },\n  {\n    \"id\": \"STROKEVOLUME\"\n  },\n  {\n    \"id\": \"CO\"\n  },\n  {\n    \"id\": \"CVP\"\n  },\n  {\n    \"id\": \"LVFAILURE\"\n  },\n  {\n    \"id\": \"HRBP\"\n  },\n  {\n    \"id\": \"FIO2\"\n  },\n  {\n    \"id\": \"PULMEMBOLUS\"\n  },\n  {\n    \"id\": \"HR\"\n  },\n  {\n    \"id\": \"PVSAT\"\n  },\n  {\n    \"id\": \"DISCONNECT\"\n  },\n  {\n    \"id\": \"PAP\"\n  },\n  {\n    \"id\": \"KINKEDTUBE\"\n  },\n  {\n    \"id\": \"MINVOL\"\n  },\n  {\n    \"id\": \"EXPCO2\"\n  },\n  {\n    \"id\": \"PRESS\"\n  },\n  {\n    \"id\": \"TPR\"\n  },\n  {\n    \"id\": \"INSUFFANESTH\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"HISTORY\",\n    \"MINVOLSET\",\n    \"LVFAILURE\",\n    \"HYPOVOLEMIA\",\n    \"ANAPHYLAXIS\",\n    \"PULMEMBOLUS\",\n    \"INSUFFANESTH\",\n    \"KINKEDTUBE\",\n    \"ERRCAUTER\",\n    \"DISCONNECT\",\n    \"INTUBATION\",\n    \"VENTTUBE\",\n    \"VENTMACH\",\n    \"FIO2\",\n    \"PRESS\",\n    \"VENTLUNG\",\n    \"VENTALV\",\n    \"MINVOL\",\n    \"EXPCO2\",\n    \"ARTCO2\",\n    \"SAO2\",\n    \"PVSAT\",\n    \"SHUNT\",\n    \"HR\",\n    \"HRBP\",\n    \"HRSAT\",\n    \"HREKG\",\n    \"STROKEVOLUME\",\n    \"CO\",\n    \"LVEDVOLUME\",\n    \"PCWP\",\n    \"CVP\",\n    \"PAP\",\n    \"TPR\",\n    \"BP\",\n    \"ERRLOWOUTPUT\",\n    \"CATECHOL\"\n  ],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"HISTORY\", \"after\": \"LVFAILURE\", \"confidence\": 0.88},\n    {\"before\": \"HISTORY\", \"after\": \"HYPOVOLEMIA\", \"confidence\": 0.86},\n    {\"before\": \"HISTORY\", \"after\": \"ANAPHYLAXIS\", \"confidence\": 0.86},\n    {\"before\": \"HISTORY\", \"after\": \"PULMEMBOLUS\", \"confidence\": 0.86},\n    {\"before\": \"MINVOLSET\", \"after\": \"VENTMACH\", \"confidence\": 0.82},\n    {\"before\": \"INTUBATION\", \"after\": \"VENTTUBE\", \"confidence\": 0.84},\n    {\"before\": \"VENTTUBE\", \"after\": \"VENTMACH\", \"confidence\": 0.83},\n    {\"before\": \"KINKEDTUBE\", \"after\": \"PRESS\", \"confidence\": 0.85},\n    {\"before\": \"DISCONNECT\", \"after\": \"PRESS\", \"confidence\": 0.85},\n    {\"before\": \"VENTMACH\", \"after\": \"VENTLUNG\", \"confidence\": 0.82},\n    {\"before\": \"VENTLUNG\", \"after\": \"VENTALV\", \"confidence\": 0.81},\n    {\"before\": \"VENTALV\", \"after\": \"EXPCO2\", \"confidence\": 0.8},\n    {\"before\": \"VENTALV\", \"after\": \"ARTCO2\", \"confidence\": 0.79},\n    {\"before\": \"VENTALV\", \"after\": \"SAO2\", \"confidence\": 0.78},\n    {\"before\": \"CO\", \"after\": \"BP\", \"confidence\": 0.87},\n    {\"before\": \"TPR\", \"after\": \"BP\", \"confidence\": 0.86},\n    {\"before\": \"STROKEVOLUME\", \"after\": \"CO\", \"confidence\": 0.84},\n    {\"before\": \"HR\", \"after\": \"CO\", \"confidence\": 0.78},\n    {\"before\": \"LVEDVOLUME\", \"after\": \"STROKEVOLUME\", \"confidence\": 0.82},\n    {\"before\": \"CO\", \"after\": \"PCWP\", \"confidence\": 0.76},\n    {\"before\": \"PCWP\", \"after\": \"CVP\", \"confidence\": 0.74},\n    {\"before\": \"PAP\", \"after\": \"SHUNT\", \"confidence\": 0.73},\n    {\"before\": \"SAO2\", \"after\": \"PVSAT\", \"confidence\": 0.8},\n    {\"before\": \"FIO2\", \"after\": \"SAO2\", \"confidence\": 0.77},\n    {\"before\": \"ERRLOWOUTPUT\", \"after\": \"CATECHOL\", \"confidence\": 0.75}\n  ],\n  \"rationale\": \"I ordered baseline history and setting variables first, then pulmonary/cardiac insults and ventilator-related mechanical issues, followed by ventilation and gas-exchange effects, then hemodynamics and derived clinical measurements. This reflects plausible upstream-to-downstream structure in a cardiopulmonary ICU model, but it is only a semantic prior, not a claim of true causality.\"\n}",
+  "id_map": {
+    "INTUBATION": "INTUBATION",
+    "SAO2": "SAO2",
+    "CATECHOL": "CATECHOL",
+    "ARTCO2": "ARTCO2",
+    "BP": "BP",
+    "VENTLUNG": "VENTLUNG",
+    "HISTORY": "HISTORY",
+    "HYPOVOLEMIA": "HYPOVOLEMIA",
+    "VENTTUBE": "VENTTUBE",
+    "MINVOLSET": "MINVOLSET",
+    "PCWP": "PCWP",
+    "ERRCAUTER": "ERRCAUTER",
+    "ANAPHYLAXIS": "ANAPHYLAXIS",
+    "HRSAT": "HRSAT",
+    "HREKG": "HREKG",
+    "SHUNT": "SHUNT",
+    "ERRLOWOUTPUT": "ERRLOWOUTPUT",
+    "VENTMACH": "VENTMACH",
+    "VENTALV": "VENTALV",
+    "LVEDVOLUME": "LVEDVOLUME",
+    "STROKEVOLUME": "STROKEVOLUME",
+    "CO": "CO",
+    "CVP": "CVP",
+    "LVFAILURE": "LVFAILURE",
+    "HRBP": "HRBP",
+    "FIO2": "FIO2",
+    "PULMEMBOLUS": "PULMEMBOLUS",
+    "HR": "HR",
+    "PVSAT": "PVSAT",
+    "DISCONNECT": "DISCONNECT",
+    "PAP": "PAP",
+    "KINKEDTUBE": "KINKEDTUBE",
+    "MINVOL": "MINVOL",
+    "EXPCO2": "EXPCO2",
+    "PRESS": "PRESS",
+    "TPR": "TPR",
+    "INSUFFANESTH": "INSUFFANESTH"
+  },
+  "ordered_nodes": [
+    "HISTORY",
+    "MINVOLSET",
+    "LVFAILURE",
+    "HYPOVOLEMIA",
+    "ANAPHYLAXIS",
+    "PULMEMBOLUS",
+    "INSUFFANESTH",
+    "KINKEDTUBE",
+    "ERRCAUTER",
+    "DISCONNECT",
+    "INTUBATION",
+    "VENTTUBE",
+    "VENTMACH",
+    "FIO2",
+    "PRESS",
+    "VENTLUNG",
+    "VENTALV",
+    "MINVOL",
+    "EXPCO2",
+    "ARTCO2",
+    "SAO2",
+    "PVSAT",
+    "SHUNT",
+    "HR",
+    "HRBP",
+    "HRSAT",
+    "HREKG",
+    "STROKEVOLUME",
+    "CO",
+    "LVEDVOLUME",
+    "PCWP",
+    "CVP",
+    "PAP",
+    "TPR",
+    "BP",
+    "ERRLOWOUTPUT",
+    "CATECHOL"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "HISTORY",
+      "after": "LVFAILURE",
+      "confidence": 0.88
+    },
+    {
+      "before": "HISTORY",
+      "after": "HYPOVOLEMIA",
+      "confidence": 0.86
+    },
+    {
+      "before": "HISTORY",
+      "after": "ANAPHYLAXIS",
+      "confidence": 0.86
+    },
+    {
+      "before": "HISTORY",
+      "after": "PULMEMBOLUS",
+      "confidence": 0.86
+    },
+    {
+      "before": "MINVOLSET",
+      "after": "VENTMACH",
+      "confidence": 0.82
+    },
+    {
+      "before": "INTUBATION",
+      "after": "VENTTUBE",
+      "confidence": 0.84
+    },
+    {
+      "before": "VENTTUBE",
+      "after": "VENTMACH",
+      "confidence": 0.83
+    },
+    {
+      "before": "KINKEDTUBE",
+      "after": "PRESS",
+      "confidence": 0.85
+    },
+    {
+      "before": "DISCONNECT",
+      "after": "PRESS",
+      "confidence": 0.85
+    },
+    {
+      "before": "VENTMACH",
+      "after": "VENTLUNG",
+      "confidence": 0.82
+    },
+    {
+      "before": "VENTLUNG",
+      "after": "VENTALV",
+      "confidence": 0.81
+    },
+    {
+      "before": "VENTALV",
+      "after": "EXPCO2",
+      "confidence": 0.8
+    },
+    {
+      "before": "VENTALV",
+      "after": "ARTCO2",
+      "confidence": 0.79
+    },
+    {
+      "before": "VENTALV",
+      "after": "SAO2",
+      "confidence": 0.78
+    },
+    {
+      "before": "CO",
+      "after": "BP",
+      "confidence": 0.87
+    },
+    {
+      "before": "TPR",
+      "after": "BP",
+      "confidence": 0.86
+    },
+    {
+      "before": "STROKEVOLUME",
+      "after": "CO",
+      "confidence": 0.84
+    },
+    {
+      "before": "HR",
+      "after": "CO",
+      "confidence": 0.78
+    },
+    {
+      "before": "LVEDVOLUME",
+      "after": "STROKEVOLUME",
+      "confidence": 0.82
+    },
+    {
+      "before": "CO",
+      "after": "PCWP",
+      "confidence": 0.76
+    },
+    {
+      "before": "PCWP",
+      "after": "CVP",
+      "confidence": 0.74
+    },
+    {
+      "before": "PAP",
+      "after": "SHUNT",
+      "confidence": 0.73
+    },
+    {
+      "before": "SAO2",
+      "after": "PVSAT",
+      "confidence": 0.8
+    },
+    {
+      "before": "FIO2",
+      "after": "SAO2",
+      "confidence": 0.77
+    },
+    {
+      "before": "ERRLOWOUTPUT",
+      "after": "CATECHOL",
+      "confidence": 0.75
+    }
+  ],
+  "rationale": "I ordered baseline history and setting variables first, then pulmonary/cardiac insults and ventilator-related mechanical issues, followed by ventilation and gas-exchange effects, then hemodynamics and derived clinical measurements. This reflects plausible upstream-to-downstream structure in a cardiopulmonary ICU model, but it is only a semantic prior, not a claim of true causality.",
+  "direct_edge_accuracy": 0.847826,
+  "pair_accuracy": 0.923767
+}

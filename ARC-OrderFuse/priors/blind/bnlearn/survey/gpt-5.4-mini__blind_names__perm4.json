@@ -1,0 +1,63 @@
+{
+  "collection": "bnlearn",
+  "dataset": "survey",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:15:10.947251+00:00",
+  "prompt_hash": "b7042e2fc8d18c6d",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"A\"\n  },\n  {\n    \"id\": \"S\"\n  },\n  {\n    \"id\": \"E\"\n  },\n  {\n    \"id\": \"R\"\n  },\n  {\n    \"id\": \"O\"\n  },\n  {\n    \"id\": \"T\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"A\", \"S\", \"E\", \"R\", \"O\", \"T\"],\n  \"confidence\": 0.18,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"A\",\n      \"after\": \"S\",\n      \"confidence\": 0.22\n    },\n    {\n      \"before\": \"S\",\n      \"after\": \"E\",\n      \"confidence\": 0.2\n    },\n    {\n      \"before\": \"E\",\n      \"after\": \"R\",\n      \"confidence\": 0.2\n    },\n    {\n      \"before\": \"R\",\n      \"after\": \"O\",\n      \"confidence\": 0.18\n    },\n    {\n      \"before\": \"O\",\n      \"after\": \"T\",\n      \"confidence\": 0.18\n    }\n  ],\n  \"rationale\": \"The labels are opaque, so this is a weak semantic prior only. I place the variables in an arbitrary upstream-to-downstream sequence, with no strong evidence about their meanings. The low confidence reflects substantial uncertainty and the possibility that several variables could be contemporaneous or differently ordered.\"\n}",
+  "id_map": {
+    "A": "A",
+    "S": "S",
+    "E": "E",
+    "R": "R",
+    "O": "O",
+    "T": "T"
+  },
+  "ordered_nodes": [
+    "A",
+    "S",
+    "E",
+    "R",
+    "O",
+    "T"
+  ],
+  "confidence": 0.18,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "A",
+      "after": "S",
+      "confidence": 0.22
+    },
+    {
+      "before": "S",
+      "after": "E",
+      "confidence": 0.2
+    },
+    {
+      "before": "E",
+      "after": "R",
+      "confidence": 0.2
+    },
+    {
+      "before": "R",
+      "after": "O",
+      "confidence": 0.18
+    },
+    {
+      "before": "O",
+      "after": "T",
+      "confidence": 0.18
+    }
+  ],
+  "rationale": "The labels are opaque, so this is a weak semantic prior only. I place the variables in an arbitrary upstream-to-downstream sequence, with no strong evidence about their meanings. The low confidence reflects substantial uncertainty and the possibility that several variables could be contemporaneous or differently ordered.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

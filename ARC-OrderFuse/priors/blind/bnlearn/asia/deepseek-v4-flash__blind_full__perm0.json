@@ -1,0 +1,87 @@
+{
+  "collection": "bnlearn",
+  "dataset": "asia",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:34:38.586176+00:00",
+  "prompt_hash": "b6b6154c1ae3d3e6",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"tub\",\n    \"description\": \"tuberculosis\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"smoke\",\n    \"description\": \"smoking habit\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"lung\",\n    \"description\": \"lung cancer\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"xray\",\n    \"description\": \"positive chest X-ray result\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"dysp\",\n    \"description\": \"dyspnoea (shortness of breath)\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"asia\",\n    \"description\": \"recent visit to Asia\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"bronc\",\n    \"description\": \"bronchitis\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"either\",\n    \"description\": \"indicator that the patient has tuberculosis or lung cancer (or both)\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"type\": \"json_object\", \"ordered_nodes\": [\"asia\", \"smoke\", \"tub\", \"lung\", \"either\", \"bronc\", \"dysp\", \"xray\"], \"confidence\": 0.82, \"high_confidence_pairs\": [{\"before\": \"asia\", \"after\": \"tub\", \"confidence\": 0.95}, {\"before\": \"smoke\", \"after\": \"lung\", \"confidence\": 0.95}, {\"before\": \"smoke\", \"after\": \"bronc\", \"confidence\": 0.9}, {\"before\": \"tub\", \"after\": \"either\", \"confidence\": 0.95}, {\"before\": \"lung\", \"after\": \"either\", \"confidence\": 0.95}, {\"before\": \"either\", \"after\": \"dysp\", \"confidence\": 0.9}, {\"before\": \"either\", \"after\": \"xray\", \"confidence\": 0.9}, {\"before\": \"bronc\", \"after\": \"dysp\", \"confidence\": 0.9}, {\"before\": \"lung\", \"after\": \"xray\", \"confidence\": 0.85}], \"rationale\": \"Asia travel and smoking are exogenous root causes. They lead to tuberculosis and lung cancer/bronchitis respectively. Tuberculosis and lung cancer combine into the 'either' indicator, which along with bronchitis produces dyspnoea; chest X-ray is a downstream diagnostic measurement of lung/tuberculosis pathology.\"}",
+  "id_map": {
+    "tub": "tub",
+    "smoke": "smoke",
+    "lung": "lung",
+    "xray": "xray",
+    "dysp": "dysp",
+    "asia": "asia",
+    "bronc": "bronc",
+    "either": "either"
+  },
+  "ordered_nodes": [
+    "asia",
+    "smoke",
+    "tub",
+    "lung",
+    "either",
+    "bronc",
+    "dysp",
+    "xray"
+  ],
+  "confidence": 0.82,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "asia",
+      "after": "tub",
+      "confidence": 0.95
+    },
+    {
+      "before": "smoke",
+      "after": "lung",
+      "confidence": 0.95
+    },
+    {
+      "before": "smoke",
+      "after": "bronc",
+      "confidence": 0.9
+    },
+    {
+      "before": "tub",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "lung",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "either",
+      "after": "dysp",
+      "confidence": 0.9
+    },
+    {
+      "before": "either",
+      "after": "xray",
+      "confidence": 0.9
+    },
+    {
+      "before": "bronc",
+      "after": "dysp",
+      "confidence": 0.9
+    },
+    {
+      "before": "lung",
+      "after": "xray",
+      "confidence": 0.85
+    }
+  ],
+  "rationale": "Asia travel and smoking are exogenous root causes. They lead to tuberculosis and lung cancer/bronchitis respectively. Tuberculosis and lung cancer combine into the 'either' indicator, which along with bronchitis produces dyspnoea; chest X-ray is a downstream diagnostic measurement of lung/tuberculosis pathology.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

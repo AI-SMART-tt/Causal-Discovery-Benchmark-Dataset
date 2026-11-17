@@ -1,0 +1,61 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "cancer_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:23:10.766497+00:00",
+  "prompt_hash": "8f15e7fd023a13ac",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"exposure to pollutants\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"smoking habit\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"cancer\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"dyspnoea\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"getting positive xray result\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V01\", \"V02\", \"V03\", \"V04\", \"V05\"],\n  \"confidence\": 0.86,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V01\", \"after\": \"V03\", \"confidence\": 0.84},\n    {\"before\": \"V02\", \"after\": \"V03\", \"confidence\": 0.9},\n    {\"before\": \"V03\", \"after\": \"V04\", \"confidence\": 0.88},\n    {\"before\": \"V03\", \"after\": \"V05\", \"confidence\": 0.83},\n    {\"before\": \"V04\", \"after\": \"V05\", \"confidence\": 0.7}\n  ],\n  \"rationale\": \"Pollutant exposure and smoking are upstream risk factors, cancer is the disease outcome, and dyspnoea and a positive xray are downstream manifestations/measurements of disease. The xray result is placed last as a diagnostic finding rather than a cause.\"\n}",
+  "id_map": {
+    "V01": "pollution",
+    "V02": "smoker",
+    "V03": "cancer",
+    "V04": "dyspnoea",
+    "V05": "xray"
+  },
+  "ordered_nodes": [
+    "pollution",
+    "smoker",
+    "cancer",
+    "dyspnoea",
+    "xray"
+  ],
+  "confidence": 0.86,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "pollution",
+      "after": "cancer",
+      "confidence": 0.84
+    },
+    {
+      "before": "smoker",
+      "after": "cancer",
+      "confidence": 0.9
+    },
+    {
+      "before": "cancer",
+      "after": "dyspnoea",
+      "confidence": 0.88
+    },
+    {
+      "before": "cancer",
+      "after": "xray",
+      "confidence": 0.83
+    },
+    {
+      "before": "dyspnoea",
+      "after": "xray",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "Pollutant exposure and smoking are upstream risk factors, cancer is the disease outcome, and dyspnoea and a positive xray are downstream manifestations/measurements of disease. The xray result is placed last as a diagnostic finding rather than a cause.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

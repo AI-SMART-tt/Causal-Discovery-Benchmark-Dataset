@@ -1,0 +1,88 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:16:26.491284+00:00",
+  "prompt_hash": "b20284dedb2073c6",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"phosphorylated Akt (protein kinase B)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"protein kinase A activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"phosphatidylinositol 3,4,5-trisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"phosphorylated c-Jun N-terminal kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"protein kinase C activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"phosphorylated Raf kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"phosphorylated Mek1/2 (MAP kinase kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"phosphatidylinositol 4,5-bisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"phosphorylated p38 MAP kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"phosphorylated Erk1/2 (p44/42 MAP kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"phosphorylated phospholipase C-gamma\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V08\", \"V11\", \"V05\", \"V02\", \"V03\", \"V06\", \"V07\", \"V10\", \"V04\", \"V09\", \"V01\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V08\", \"after\": \"V11\", \"confidence\": 0.9},\n    {\"before\": \"V11\", \"after\": \"V03\", \"confidence\": 0.82},\n    {\"before\": \"V03\", \"after\": \"V01\", \"confidence\": 0.9},\n    {\"before\": \"V03\", \"after\": \"V06\", \"confidence\": 0.78},\n    {\"before\": \"V06\", \"after\": \"V07\", \"confidence\": 0.9},\n    {\"before\": \"V07\", \"after\": \"V10\", \"confidence\": 0.9},\n    {\"before\": \"V07\", \"after\": \"V04\", \"confidence\": 0.72},\n    {\"before\": \"V04\", \"after\": \"V09\", \"confidence\": 0.86}\n  ],\n  \"rationale\": \"This prior follows a plausible signaling cascade: membrane lipid substrate to PLC-gamma activation, then second messenger generation, PIP3-linked Akt signaling, and MAPK pathway progression from Raf to Mek to Erk/p38/JNK. PKA and PKC are placed early as upstream kinase activities that can modulate these pathways, though their exact ordering is less certain.\"\n}",
+  "id_map": {
+    "V01": "Akt",
+    "V02": "PKA",
+    "V03": "PIP3",
+    "V04": "Jnk",
+    "V05": "PKC",
+    "V06": "Raf",
+    "V07": "Mek",
+    "V08": "PIP2",
+    "V09": "P38",
+    "V10": "Erk",
+    "V11": "Plcg"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "Plcg",
+    "PKC",
+    "PKA",
+    "PIP3",
+    "Raf",
+    "Mek",
+    "Erk",
+    "Jnk",
+    "P38",
+    "Akt"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "Plcg",
+      "confidence": 0.9
+    },
+    {
+      "before": "Plcg",
+      "after": "PIP3",
+      "confidence": 0.82
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.9
+    },
+    {
+      "before": "PIP3",
+      "after": "Raf",
+      "confidence": 0.78
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.9
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.9
+    },
+    {
+      "before": "Mek",
+      "after": "Jnk",
+      "confidence": 0.72
+    },
+    {
+      "before": "Jnk",
+      "after": "P38",
+      "confidence": 0.86
+    }
+  ],
+  "rationale": "This prior follows a plausible signaling cascade: membrane lipid substrate to PLC-gamma activation, then second messenger generation, PIP3-linked Akt signaling, and MAPK pathway progression from Raf to Mek to Erk/p38/JNK. PKA and PKC are placed early as upstream kinase activities that can modulate these pathways, though their exact ordering is less certain.",
+  "direct_edge_accuracy": 0.882353,
+  "pair_accuracy": 0.909091
+}

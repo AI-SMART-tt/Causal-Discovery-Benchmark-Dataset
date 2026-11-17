@@ -1,0 +1,148 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_observable_c6c7",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:36:57.711907+00:00",
+  "prompt_hash": "cb7b4702a19c05e6",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"R Armband\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Hand problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"neck pain\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Shoulder problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L lower arm disorders\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Shoulder trouble\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Arm\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Medial elbow problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Wrist problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R lower arm disorders\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Neck problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Medial elbow problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Shoulder trouble\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L bend of arm problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Finger trouble\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Finger trouble\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Hand problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Shoulder problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"DLS C6-C7\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L C7\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R C7\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R neck\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Elbow trouble\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R bend of arm discomfort\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"L Elbow problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"R Wrist problems\",\n    \"description\": \"\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"type\":\"json_object\",\"ordered_nodes\":[\"DLS C6-C7\",\"L C7\",\"R C7\",\"L Neck problems\",\"neck pain\",\"R neck\",\"L Shoulder problems\",\"L Shoulder trouble\",\"R Shoulder problems\",\"R Shoulder trouble\",\"L Arm\",\"L bend of arm problems\",\"L Elbow problems\",\"L Medial elbow problems\",\"L lower arm disorders\",\"L Wrist problems\",\"L Hand problems\",\"L Finger trouble\",\"R Elbow trouble\",\"R Medial elbow problems\",\"R lower arm disorders\",\"R bend of arm discomfort\",\"R Wrist problems\",\"R Hand problems\",\"R Finger trouble\",\"R Armband\"],\"confidence\":0.35,\"high_confidence_pairs\":[{\"before\":\"DLS C6-C7\",\"after\":\"L C7\",\"confidence\":0.6},{\"before\":\"DLS C6-C7\",\"after\":\"R C7\",\"confidence\":0.6},{\"before\":\"L C7\",\"after\":\"L Neck problems\",\"confidence\":0.55},{\"before\":\"R C7\",\"after\":\"R neck\",\"confidence\":0.55},{\"before\":\"L Neck problems\",\"after\":\"L Shoulder problems\",\"confidence\":0.5},{\"before\":\"R neck\",\"after\":\"R Shoulder problems\",\"confidence\":0.5},{\"before\":\"L Shoulder problems\",\"after\":\"L Elbow problems\",\"confidence\":0.5},{\"before\":\"L Elbow problems\",\"after\":\"L Wrist problems\",\"confidence\":0.5},{\"before\":\"L Wrist problems\",\"after\":\"L Hand problems\",\"confidence\":0.5},{\"before\":\"L Hand problems\",\"after\":\"L Finger trouble\",\"confidence\":0.5},{\"before\":\"R Shoulder problems\",\"after\":\"R Elbow trouble\",\"confidence\":0.5},{\"before\":\"R Elbow trouble\",\"after\":\"R Wrist problems\",\"confidence\":0.5},{\"before\":\"R Wrist problems\",\"after\":\"R Hand problems\",\"confidence\":0.5},{\"before\":\"R Hand problems\",\"after\":\"R Finger trouble\",\"confidence\":0.5}],\"rationale\":\"Spinal level (C6-C7) and nerve roots (C7) are upstream of neck symptoms, which precede shoulder, elbow, wrist, hand, and finger complaints along a proximal-to-distal anatomic chain. Left and right chains are ordered separately; armband is treated as a distal/measurement-like node.\"}",
+  "id_map": {
+    "R Armband": "R Armband",
+    "L Hand problems": "L Hand problems",
+    "neck pain": "neck pain",
+    "R Shoulder problems": "R Shoulder problems",
+    "L lower arm disorders": "L lower arm disorders",
+    "L Shoulder trouble": "L Shoulder trouble",
+    "L Arm": "L Arm",
+    "L Medial elbow problems": "L Medial elbow problems",
+    "L Wrist problems": "L Wrist problems",
+    "R lower arm disorders": "R lower arm disorders",
+    "L Neck problems": "L Neck problems",
+    "R Medial elbow problems": "R Medial elbow problems",
+    "R Shoulder trouble": "R Shoulder trouble",
+    "L bend of arm problems": "L bend of arm problems",
+    "R Finger trouble": "R Finger trouble",
+    "L Finger trouble": "L Finger trouble",
+    "R Hand problems": "R Hand problems",
+    "L Shoulder problems": "L Shoulder problems",
+    "DLS C6-C7": "DLS C6-C7",
+    "L C7": "L C7",
+    "R C7": "R C7",
+    "R neck": "R neck",
+    "R Elbow trouble": "R Elbow trouble",
+    "R bend of arm discomfort": "R bend of arm discomfort",
+    "L Elbow problems": "L Elbow problems",
+    "R Wrist problems": "R Wrist problems"
+  },
+  "ordered_nodes": [
+    "DLS C6-C7",
+    "L C7",
+    "R C7",
+    "L Neck problems",
+    "neck pain",
+    "R neck",
+    "L Shoulder problems",
+    "L Shoulder trouble",
+    "R Shoulder problems",
+    "R Shoulder trouble",
+    "L Arm",
+    "L bend of arm problems",
+    "L Elbow problems",
+    "L Medial elbow problems",
+    "L lower arm disorders",
+    "L Wrist problems",
+    "L Hand problems",
+    "L Finger trouble",
+    "R Elbow trouble",
+    "R Medial elbow problems",
+    "R lower arm disorders",
+    "R bend of arm discomfort",
+    "R Wrist problems",
+    "R Hand problems",
+    "R Finger trouble",
+    "R Armband"
+  ],
+  "confidence": 0.35,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "DLS C6-C7",
+      "after": "L C7",
+      "confidence": 0.6
+    },
+    {
+      "before": "DLS C6-C7",
+      "after": "R C7",
+      "confidence": 0.6
+    },
+    {
+      "before": "L C7",
+      "after": "L Neck problems",
+      "confidence": 0.55
+    },
+    {
+      "before": "R C7",
+      "after": "R neck",
+      "confidence": 0.55
+    },
+    {
+      "before": "L Neck problems",
+      "after": "L Shoulder problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "R neck",
+      "after": "R Shoulder problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "L Shoulder problems",
+      "after": "L Elbow problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "L Elbow problems",
+      "after": "L Wrist problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "L Wrist problems",
+      "after": "L Hand problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "L Hand problems",
+      "after": "L Finger trouble",
+      "confidence": 0.5
+    },
+    {
+      "before": "R Shoulder problems",
+      "after": "R Elbow trouble",
+      "confidence": 0.5
+    },
+    {
+      "before": "R Elbow trouble",
+      "after": "R Wrist problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "R Wrist problems",
+      "after": "R Hand problems",
+      "confidence": 0.5
+    },
+    {
+      "before": "R Hand problems",
+      "after": "R Finger trouble",
+      "confidence": 0.5
+    }
+  ],
+  "rationale": "Spinal level (C6-C7) and nerve roots (C7) are upstream of neck symptoms, which precede shoulder, elbow, wrist, hand, and finger complaints along a proximal-to-distal anatomic chain. Left and right chains are ordered separately; armband is treated as a distal/measurement-like node.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

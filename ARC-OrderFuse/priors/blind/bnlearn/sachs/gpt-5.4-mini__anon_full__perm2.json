@@ -1,0 +1,78 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:16:21.759945+00:00",
+  "prompt_hash": "fadf84b2dec140c8",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"phosphatidylinositol 3,4,5-trisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"protein kinase C activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"phosphorylated c-Jun N-terminal kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"phosphorylated p38 MAP kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"phosphorylated Raf kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"phosphatidylinositol 4,5-bisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"phosphorylated Akt (protein kinase B)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"phosphorylated Erk1/2 (p44/42 MAP kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"phosphorylated phospholipase C-gamma\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"protein kinase A activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"phosphorylated Mek1/2 (MAP kinase kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V06\", \"V01\", \"V09\", \"V05\", \"V11\", \"V08\", \"V03\", \"V04\", \"V10\", \"V02\", \"V07\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V06\", \"after\": \"V09\", \"confidence\": 0.9},\n    {\"before\": \"V09\", \"after\": \"V05\", \"confidence\": 0.78},\n    {\"before\": \"V05\", \"after\": \"V11\", \"confidence\": 0.9},\n    {\"before\": \"V11\", \"after\": \"V08\", \"confidence\": 0.9},\n    {\"before\": \"V01\", \"after\": \"V07\", \"confidence\": 0.86},\n    {\"before\": \"V10\", \"after\": \"V07\", \"confidence\": 0.7}\n  ],\n  \"rationale\": \"The order follows a plausible signaling cascade: membrane phosphoinositides first, then PLC-gamma and downstream kinase activation. PI3K lipid product precedes Akt phosphorylation. Raf, Mek1/2, and Erk1/2 are ordered as a MAPK chain. JNK and p38 are downstream stress MAPKs. PKA and PKC are placed earlier as upstream regulatory kinases, with some uncertainty about cross-talk.\"\n}",
+  "id_map": {
+    "V01": "PIP3",
+    "V02": "PKC",
+    "V03": "Jnk",
+    "V04": "P38",
+    "V05": "Raf",
+    "V06": "PIP2",
+    "V07": "Akt",
+    "V08": "Erk",
+    "V09": "Plcg",
+    "V10": "PKA",
+    "V11": "Mek"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "PIP3",
+    "Plcg",
+    "Raf",
+    "Mek",
+    "Erk",
+    "Jnk",
+    "P38",
+    "PKA",
+    "PKC",
+    "Akt"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "Plcg",
+      "confidence": 0.9
+    },
+    {
+      "before": "Plcg",
+      "after": "Raf",
+      "confidence": 0.78
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.9
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.9
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.86
+    },
+    {
+      "before": "PKA",
+      "after": "Akt",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "The order follows a plausible signaling cascade: membrane phosphoinositides first, then PLC-gamma and downstream kinase activation. PI3K lipid product precedes Akt phosphorylation. Raf, Mek1/2, and Erk1/2 are ordered as a MAPK chain. JNK and p38 are downstream stress MAPKs. PKA and PKC are placed earlier as upstream regulatory kinases, with some uncertainty about cross-talk.",
+  "direct_edge_accuracy": 0.235294,
+  "pair_accuracy": 0.363636
+}

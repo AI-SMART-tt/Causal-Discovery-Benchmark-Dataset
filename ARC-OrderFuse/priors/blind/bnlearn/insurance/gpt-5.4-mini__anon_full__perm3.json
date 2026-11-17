@@ -1,0 +1,155 @@
+{
+  "collection": "bnlearn",
+  "dataset": "insurance",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:19:09.116420+00:00",
+  "prompt_hash": "04c9536bec3f35b5",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"Driving quality\",\n    \"states\": \"Poor|Normal|Excellent\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"Car driver being risk-averse\",\n    \"states\": \"Psychopath|Adventurous|Normal|Cautious\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"Whether any other car involved in the accident or not\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"Ratio of the cost for the two cars involved in the accident\",\n    \"states\": \"Thousand|TenThou|HundredThou|Million\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"Costs of inspection for insurance\",\n    \"states\": \"Thousand|TenThou|HundredThou|Million\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"Ruggedness of the car\",\n    \"states\": \"EggShell|Football|Tank\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"Car giving good mileage\",\n    \"states\": \"FiveThou|TwentyThou|FiftyThou|Domino\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"Driving skills\",\n    \"states\": \"SubStandard|Normal|Expert\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"Cost of medical treatment for the driver\",\n    \"states\": \"Thousand|TenThou|HundredThou|Million\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"Year in which car was bought\",\n    \"states\": \"Current|Older\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"Damage occurred to the car\",\n    \"states\": \"None|Mild|Moderate|Severe\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V12\",\n    \"description\": \"Residential area of the car location\",\n    \"states\": \"Secure|City|Suburb|Rural\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V13\",\n    \"description\": \"Car having an airbag\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V14\",\n    \"description\": \"Car having an anti-theft system\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V15\",\n    \"description\": \"Car driver age\",\n    \"states\": \"Adolescent|Adult|Senior\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V16\",\n    \"description\": \"Car driver being a good student in driving school\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V17\",\n    \"description\": \"Driver receiving training from seniors\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V18\",\n    \"description\": \"Whether the car has been stolen\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V19\",\n    \"description\": \"Socio-economic status of the car driver\",\n    \"states\": \"Prole|Middle|UpperMiddle|Wealthy\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V20\",\n    \"description\": \"Car having an anti-lock braking system\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V21\",\n    \"description\": \"Costs for the insured car\",\n    \"states\": \"Thousand|TenThou|HundredThou|Million\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V22\",\n    \"description\": \"Car model\",\n    \"states\": \"SportsCar|Economy|FamilySedan|Luxury|SuperLuxury\",\n    \"state_count\": \"5\"\n  },\n  {\n    \"id\": \"V23\",\n    \"description\": \"Value of the car\",\n    \"states\": \"FiveThou|TenThou|TwentyThou|FiftyThou|Million\",\n    \"state_count\": \"5\"\n  },\n  {\n    \"id\": \"V24\",\n    \"description\": \"Severity of the accident\",\n    \"states\": \"None|Mild|Moderate|Severe\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V25\",\n    \"description\": \"Insurance costs for the other car involved in an accident\",\n    \"states\": \"Thousand|TenThou|HundredThou|Million\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V26\",\n    \"description\": \"Car having cushioning\",\n    \"states\": \"Poor|Fair|Good|Excellent\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V27\",\n    \"description\": \"Driving records of the driver\",\n    \"states\": \"Zero|One|Many\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V15\", \"V19\", \"V12\", \"V10\", \"V06\", \"V22\", \"V23\", \"V14\", \"V20\", \"V13\", \"V26\", \"V07\", \"V02\", \"V17\", \"V16\", \"V08\", \"V01\", \"V27\", \"V11\", \"V03\", \"V24\", \"V04\", \"V21\", \"V09\", \"V05\", \"V25\", \"V18\"],\n  \"confidence\": 0.73,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V15\", \"after\": \"V02\", \"confidence\": 0.86},\n    {\"before\": \"V15\", \"after\": \"V08\", \"confidence\": 0.84},\n    {\"before\": \"V19\", \"after\": \"V22\", \"confidence\": 0.87},\n    {\"before\": \"V19\", \"after\": \"V23\", \"confidence\": 0.86},\n    {\"before\": \"V22\", \"after\": \"V23\", \"confidence\": 0.85},\n    {\"before\": \"V06\", \"after\": \"V11\", \"confidence\": 0.88},\n    {\"before\": \"V06\", \"after\": \"V24\", \"confidence\": 0.83},\n    {\"before\": \"V14\", \"after\": \"V18\", \"confidence\": 0.92},\n    {\"before\": \"V20\", \"after\": \"V24\", \"confidence\": 0.84},\n    {\"before\": \"V13\", \"after\": \"V09\", \"confidence\": 0.9},\n    {\"before\": \"V24\", \"after\": \"V04\", \"confidence\": 0.9},\n    {\"before\": \"V24\", \"after\": \"V21\", \"confidence\": 0.88},\n    {\"before\": \"V24\", \"after\": \"V05\", \"confidence\": 0.87},\n    {\"before\": \"V24\", \"after\": \"V25\", \"confidence\": 0.86},\n    {\"before\": \"V11\", \"after\": \"V04\", \"confidence\": 0.89}\n  ],\n  \"rationale\": \"Place demographic and socioeconomic factors first, then vehicle attributes and protection features, then driver traits/training, followed by accident occurrence, damage severity, and finally insurance-related and cost outcomes. Stolen status is downstream of theft-prevention. The order is a plausible semantic prior, not ground truth.\"\n}",
+  "id_map": {
+    "V01": "DrivQuality",
+    "V02": "RiskAversion",
+    "V03": "OtherCar",
+    "V04": "PropCost",
+    "V05": "ILiCost",
+    "V06": "RuggedAuto",
+    "V07": "Mileage",
+    "V08": "DrivingSkill",
+    "V09": "MedCost",
+    "V10": "VehicleYear",
+    "V11": "ThisCarDam",
+    "V12": "HomeBase",
+    "V13": "Airbag",
+    "V14": "AntiTheft",
+    "V15": "Age",
+    "V16": "GoodStudent",
+    "V17": "SeniorTrain",
+    "V18": "Theft",
+    "V19": "SocioEcon",
+    "V20": "Antilock",
+    "V21": "ThisCarCost",
+    "V22": "MakeModel",
+    "V23": "CarValue",
+    "V24": "Accident",
+    "V25": "OtherCarCost",
+    "V26": "Cushioning",
+    "V27": "DrivHist"
+  },
+  "ordered_nodes": [
+    "Age",
+    "SocioEcon",
+    "HomeBase",
+    "VehicleYear",
+    "RuggedAuto",
+    "MakeModel",
+    "CarValue",
+    "AntiTheft",
+    "Antilock",
+    "Airbag",
+    "Cushioning",
+    "Mileage",
+    "RiskAversion",
+    "SeniorTrain",
+    "GoodStudent",
+    "DrivingSkill",
+    "DrivQuality",
+    "DrivHist",
+    "ThisCarDam",
+    "OtherCar",
+    "Accident",
+    "PropCost",
+    "ThisCarCost",
+    "MedCost",
+    "ILiCost",
+    "OtherCarCost",
+    "Theft"
+  ],
+  "confidence": 0.73,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "RiskAversion",
+      "confidence": 0.86
+    },
+    {
+      "before": "Age",
+      "after": "DrivingSkill",
+      "confidence": 0.84
+    },
+    {
+      "before": "SocioEcon",
+      "after": "MakeModel",
+      "confidence": 0.87
+    },
+    {
+      "before": "SocioEcon",
+      "after": "CarValue",
+      "confidence": 0.86
+    },
+    {
+      "before": "MakeModel",
+      "after": "CarValue",
+      "confidence": 0.85
+    },
+    {
+      "before": "RuggedAuto",
+      "after": "ThisCarDam",
+      "confidence": 0.88
+    },
+    {
+      "before": "RuggedAuto",
+      "after": "Accident",
+      "confidence": 0.83
+    },
+    {
+      "before": "AntiTheft",
+      "after": "Theft",
+      "confidence": 0.92
+    },
+    {
+      "before": "Antilock",
+      "after": "Accident",
+      "confidence": 0.84
+    },
+    {
+      "before": "Airbag",
+      "after": "MedCost",
+      "confidence": 0.9
+    },
+    {
+      "before": "Accident",
+      "after": "PropCost",
+      "confidence": 0.9
+    },
+    {
+      "before": "Accident",
+      "after": "ThisCarCost",
+      "confidence": 0.88
+    },
+    {
+      "before": "Accident",
+      "after": "ILiCost",
+      "confidence": 0.87
+    },
+    {
+      "before": "Accident",
+      "after": "OtherCarCost",
+      "confidence": 0.86
+    },
+    {
+      "before": "ThisCarDam",
+      "after": "PropCost",
+      "confidence": 0.89
+    }
+  ],
+  "rationale": "Place demographic and socioeconomic factors first, then vehicle attributes and protection features, then driver traits/training, followed by accident occurrence, damage severity, and finally insurance-related and cost outcomes. Stolen status is downstream of theft-prevention. The order is a plausible semantic prior, not ground truth.",
+  "direct_edge_accuracy": 0.807692,
+  "pair_accuracy": 0.904762
+}

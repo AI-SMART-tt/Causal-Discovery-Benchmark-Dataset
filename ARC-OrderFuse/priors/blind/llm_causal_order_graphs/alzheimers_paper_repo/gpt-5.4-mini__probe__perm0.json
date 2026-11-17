@@ -1,0 +1,33 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "alzheimers_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "probe",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:30:52.694540+00:00",
+  "prompt_hash": "a12dc5b26f082420",
+  "system_prompt": "You are a careful assistant. Answer honestly and return strict JSON only.",
+  "user_prompt": "The following variable names come from a causal graph. They are listed in random order.\n[\"brain MRI\", \"moca\", \"sex\", \"slice number\", \"brain volume\", \"ventricular volume\", \"age\", \"tau\", \"education\", \"av45\", \"APOE4\"]\n\nQuestion: do these variables belong to a published benchmark causal graph or Bayesian network that you recognize?\nReturn one JSON object with this schema:\n{\n  \"recognized\": true,\n  \"benchmark_name\": \"name or empty string\",\n  \"confidence\": 0.0,\n  \"recalled_edges\": [[\"cause id\", \"effect id\"]]\n}\n\nIf you recognize it, list the directed edges of the published graph that you can recall, using the exact names. If you do not recognize it, set recognized to false and return an empty edge list. Do not guess edges from semantics alone.",
+  "raw_response": "{\"recognized\":false,\"benchmark_name\":\"\",\"confidence\":0.0,\"recalled_edges\":[]}",
+  "id_map": {
+    "brain MRI": "brain MRI",
+    "moca": "moca",
+    "sex": "sex",
+    "slice number": "slice number",
+    "brain volume": "brain volume",
+    "ventricular volume": "ventricular volume",
+    "age": "age",
+    "tau": "tau",
+    "education": "education",
+    "av45": "av45",
+    "APOE4": "APOE4"
+  },
+  "recognized": false,
+  "benchmark_name": "",
+  "confidence": 0.0,
+  "recalled_edges": [],
+  "recall_precision": "",
+  "recall_coverage": 0.0
+}

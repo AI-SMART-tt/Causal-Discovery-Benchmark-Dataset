@@ -1,0 +1,73 @@
+{
+  "collection": "bnlearn",
+  "dataset": "survey",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:14:46.846972+00:00",
+  "prompt_hash": "76ba7b2f86ee9805",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"T\",\n    \"description\": \"the means of transport favoured by the individual\",\n    \"states\": \"car|train|other\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"R\",\n    \"description\": \"the size of the city the individual lives in, recorded as either small or big\",\n    \"states\": \"small|big\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"S\",\n    \"description\": \"male or female\",\n    \"states\": \"M|F\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"O\",\n    \"description\": \"employee or self-employed\",\n    \"states\": \"emp|self\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"E\",\n    \"description\": \"up to high school or university degree\",\n    \"states\": \"high|uni\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"A\",\n    \"description\": \"Age of people using transport\",\n    \"states\": \"young|adult|old\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"S\", \"A\", \"E\", \"O\", \"R\", \"T\"],\n  \"confidence\": 0.72,\n  \"high_confidence_pairs\": [\n    {\"before\": \"S\", \"after\": \"A\", \"confidence\": 0.75},\n    {\"before\": \"A\", \"after\": \"E\", \"confidence\": 0.7},\n    {\"before\": \"A\", \"after\": \"O\", \"confidence\": 0.68},\n    {\"before\": \"E\", \"after\": \"O\", \"confidence\": 0.67},\n    {\"before\": \"R\", \"after\": \"T\", \"confidence\": 0.78},\n    {\"before\": \"S\", \"after\": \"T\", \"confidence\": 0.55},\n    {\"before\": \"O\", \"after\": \"T\", \"confidence\": 0.6}\n  ],\n  \"rationale\": \"Sex and age are upstream demographic attributes. Education and employment typically follow age, with education often preceding or influencing employment. City size is a contextual factor that can affect transport preference. Transport mode is the most downstream choice, shaped by demographics, work, and residence.\"\n}",
+  "id_map": {
+    "T": "T",
+    "R": "R",
+    "S": "S",
+    "O": "O",
+    "E": "E",
+    "A": "A"
+  },
+  "ordered_nodes": [
+    "S",
+    "A",
+    "E",
+    "O",
+    "R",
+    "T"
+  ],
+  "confidence": 0.72,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "S",
+      "after": "A",
+      "confidence": 0.75
+    },
+    {
+      "before": "A",
+      "after": "E",
+      "confidence": 0.7
+    },
+    {
+      "before": "A",
+      "after": "O",
+      "confidence": 0.68
+    },
+    {
+      "before": "E",
+      "after": "O",
+      "confidence": 0.67
+    },
+    {
+      "before": "R",
+      "after": "T",
+      "confidence": 0.78
+    },
+    {
+      "before": "S",
+      "after": "T",
+      "confidence": 0.55
+    },
+    {
+      "before": "O",
+      "after": "T",
+      "confidence": 0.6
+    }
+  ],
+  "rationale": "Sex and age are upstream demographic attributes. Education and employment typically follow age, with education often preceding or influencing employment. City size is a contextual factor that can affect transport preference. Transport mode is the most downstream choice, shaped by demographics, work, and residence.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

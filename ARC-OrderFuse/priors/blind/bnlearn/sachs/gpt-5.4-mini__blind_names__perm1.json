@@ -1,0 +1,78 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:16:04.780370+00:00",
+  "prompt_hash": "94388530a52ae476",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"P38\"\n  },\n  {\n    \"id\": \"PIP3\"\n  },\n  {\n    \"id\": \"Akt\"\n  },\n  {\n    \"id\": \"Mek\"\n  },\n  {\n    \"id\": \"Raf\"\n  },\n  {\n    \"id\": \"Plcg\"\n  },\n  {\n    \"id\": \"PKC\"\n  },\n  {\n    \"id\": \"Erk\"\n  },\n  {\n    \"id\": \"Jnk\"\n  },\n  {\n    \"id\": \"PKA\"\n  },\n  {\n    \"id\": \"PIP2\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"PIP2\", \"PIP3\", \"Plcg\", \"PKC\", \"P38\", \"Pka\", \"Raf\", \"Mek\", \"Erk\", \"Jnk\", \"Akt\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"PIP2\", \"after\": \"PIP3\", \"confidence\": 0.98},\n    {\"before\": \"PIP3\", \"after\": \"Akt\", \"confidence\": 0.92},\n    {\"before\": \"PIP3\", \"after\": \"PKC\", \"confidence\": 0.9},\n    {\"before\": \"Raf\", \"after\": \"Mek\", \"confidence\": 0.96},\n    {\"before\": \"Mek\", \"after\": \"Erk\", \"confidence\": 0.97},\n    {\"before\": \"Raf\", \"after\": \"Erk\", \"confidence\": 0.88}\n  ],\n  \"rationale\": \"These look like a signaling network. PIP2 to PIP3 is an upstream lipid conversion, followed by PI3K/Akt and PLC/PKC-related signaling. Raf-Mek-Erk is a classic downstream MAPK cascade. Jnk and P38 are typically stress-responsive MAPKs downstream of upstream signaling. PKA is placed earlier as a broad upstream kinase regulator.\"\n}",
+  "id_map": {
+    "P38": "P38",
+    "PIP3": "PIP3",
+    "Akt": "Akt",
+    "Mek": "Mek",
+    "Raf": "Raf",
+    "Plcg": "Plcg",
+    "PKC": "PKC",
+    "Erk": "Erk",
+    "Jnk": "Jnk",
+    "PKA": "PKA",
+    "PIP2": "PIP2"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "PIP3",
+    "Plcg",
+    "PKC",
+    "P38",
+    "PKA",
+    "Raf",
+    "Mek",
+    "Erk",
+    "Jnk",
+    "Akt"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "PIP3",
+      "confidence": 0.98
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.92
+    },
+    {
+      "before": "PIP3",
+      "after": "PKC",
+      "confidence": 0.9
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.96
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.97
+    },
+    {
+      "before": "Raf",
+      "after": "Erk",
+      "confidence": 0.88
+    }
+  ],
+  "rationale": "These look like a signaling network. PIP2 to PIP3 is an upstream lipid conversion, followed by PI3K/Akt and PLC/PKC-related signaling. Raf-Mek-Erk is a classic downstream MAPK cascade. Jnk and P38 are typically stress-responsive MAPKs downstream of upstream signaling. PKA is placed earlier as a broad upstream kinase regulator.",
+  "direct_edge_accuracy": 0.764706,
+  "pair_accuracy": 0.818182
+}

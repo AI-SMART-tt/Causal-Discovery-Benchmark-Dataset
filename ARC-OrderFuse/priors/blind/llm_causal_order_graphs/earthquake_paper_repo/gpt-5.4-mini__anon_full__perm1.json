@@ -1,0 +1,56 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "earthquake_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:26:20.869885+00:00",
+  "prompt_hash": "6a926935ee90653a",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"home alarm going off in a house\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"burglar entering\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"second neighbor to call to inform the alarm sound\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"earthquake hitting\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"first neighbor to call to inform the alarm sound\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V04\", \"V02\", \"V01\", \"V05\", \"V03\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V04\", \"after\": \"V01\", \"confidence\": 0.91},\n    {\"before\": \"V02\", \"after\": \"V01\", \"confidence\": 0.91},\n    {\"before\": \"V01\", \"after\": \"V05\", \"confidence\": 0.82},\n    {\"before\": \"V01\", \"after\": \"V03\", \"confidence\": 0.82}\n  ],\n  \"rationale\": \"Earthquake and burglary are upstream causes that can trigger the home alarm. The alarm is downstream of both events, and notifying the first and second neighbors is a later response to the alarm sound. The exact order between earthquake and burglary, and between the two neighbors, is not strongly identifiable from semantics alone.\"\n}",
+  "id_map": {
+    "V01": "Alarm",
+    "V02": "Burglary",
+    "V03": "Marycalls",
+    "V04": "Earthquake",
+    "V05": "JohnCalls"
+  },
+  "ordered_nodes": [
+    "Earthquake",
+    "Burglary",
+    "Alarm",
+    "JohnCalls",
+    "Marycalls"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Earthquake",
+      "after": "Alarm",
+      "confidence": 0.91
+    },
+    {
+      "before": "Burglary",
+      "after": "Alarm",
+      "confidence": 0.91
+    },
+    {
+      "before": "Alarm",
+      "after": "JohnCalls",
+      "confidence": 0.82
+    },
+    {
+      "before": "Alarm",
+      "after": "Marycalls",
+      "confidence": 0.82
+    }
+  ],
+  "rationale": "Earthquake and burglary are upstream causes that can trigger the home alarm. The alarm is downstream of both events, and notifying the first and second neighbors is a later response to the alarm sound. The exact order between earthquake and burglary, and between the two neighbors, is not strongly identifiable from semantics alone.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

@@ -1,0 +1,119 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:31:34.674621+00:00",
+  "prompt_hash": "0935bb69c3266fa3",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"left neck problems\"\n  },\n  {\n    \"id\": \"left elbow problem\"\n  },\n  {\n    \"id\": \"left shoulder trouble\"\n  },\n  {\n    \"id\": \"neck pain\"\n  },\n  {\n    \"id\": \"left medival elbow problems\"\n  },\n  {\n    \"id\": \"right wrist problem\"\n  },\n  {\n    \"id\": \"right shoulder trouble\"\n  },\n  {\n    \"id\": \"left lower arm disorders\"\n  },\n  {\n    \"id\": \"left C7\"\n  },\n  {\n    \"id\": \"right lower arm disorders\"\n  },\n  {\n    \"id\": \"right arm band\"\n  },\n  {\n    \"id\": \"right hand problem\"\n  },\n  {\n    \"id\": \"right finger trouble\"\n  },\n  {\n    \"id\": \"left finger trouble\"\n  },\n  {\n    \"id\": \"right C7\"\n  },\n  {\n    \"id\": \"left arm\"\n  },\n  {\n    \"id\": \"discoligment injury C6-C7\"\n  },\n  {\n    \"id\": \"right shoulder problem\"\n  },\n  {\n    \"id\": \"left hand problem\"\n  },\n  {\n    \"id\": \"left bend of arm problem\"\n  },\n  {\n    \"id\": \"left shoulder problem\"\n  },\n  {\n    \"id\": \"right neck\"\n  },\n  {\n    \"id\": \"left wrist problems\"\n  },\n  {\n    \"id\": \"right elbow trouble\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"discoligment injury C6-C7\",\n    \"left C7\",\n    \"right C7\",\n    \"left neck problems\",\n    \"neck pain\",\n    \"right neck\",\n    \"left shoulder trouble\",\n    \"left shoulder problem\",\n    \"right shoulder trouble\",\n    \"right shoulder problem\",\n    \"left arm\",\n    \"left elbow problem\",\n    \"left medival elbow problems\",\n    \"right elbow trouble\",\n    \"left lower arm disorders\",\n    \"right lower arm disorders\",\n    \"left bend of arm problem\",\n    \"left wrist problems\",\n    \"right wrist problem\",\n    \"left hand problem\",\n    \"right hand problem\",\n    \"left finger trouble\",\n    \"right finger trouble\",\n    \"right arm band\"\n  ],\n  \"confidence\": 0.63,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"discoligment injury C6-C7\",\n      \"after\": \"left C7\",\n      \"confidence\": 0.91\n    },\n    {\n      \"before\": \"discoligment injury C6-C7\",\n      \"after\": \"right C7\",\n      \"confidence\": 0.91\n    },\n    {\n      \"before\": \"neck pain\",\n      \"after\": \"left shoulder trouble\",\n      \"confidence\": 0.74\n    },\n    {\n      \"before\": \"neck pain\",\n      \"after\": \"right shoulder trouble\",\n      \"confidence\": 0.74\n    },\n    {\n      \"before\": \"left shoulder trouble\",\n      \"after\": \"left elbow problem\",\n      \"confidence\": 0.78\n    },\n    {\n      \"before\": \"left elbow problem\",\n      \"after\": \"left lower arm disorders\",\n      \"confidence\": 0.77\n    },\n    {\n      \"before\": \"left lower arm disorders\",\n      \"after\": \"left wrist problems\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"left wrist problems\",\n      \"after\": \"left hand problem\",\n      \"confidence\": 0.82\n    },\n    {\n      \"before\": \"left hand problem\",\n      \"after\": \"left finger trouble\",\n      \"confidence\": 0.79\n    }\n  ],\n  \"rationale\": \"Cervical disc/nerve injury is an upstream anatomical cause, with C7 findings and neck symptoms preceding shoulder, arm, elbow, forearm, wrist, hand, and finger problems. Left/right side-specific terms are grouped similarly, and more distal limb complaints are placed later as likely downstream manifestations or reported outcomes.\"\n}",
+  "id_map": {
+    "left neck problems": "left neck problems",
+    "left elbow problem": "left elbow problem",
+    "left shoulder trouble": "left shoulder trouble",
+    "neck pain": "neck pain",
+    "left medival elbow problems": "left medival elbow problems",
+    "right wrist problem": "right wrist problem",
+    "right shoulder trouble": "right shoulder trouble",
+    "left lower arm disorders": "left lower arm disorders",
+    "left C7": "left C7",
+    "right lower arm disorders": "right lower arm disorders",
+    "right arm band": "right arm band",
+    "right hand problem": "right hand problem",
+    "right finger trouble": "right finger trouble",
+    "left finger trouble": "left finger trouble",
+    "right C7": "right C7",
+    "left arm": "left arm",
+    "discoligment injury C6-C7": "discoligment injury C6-C7",
+    "right shoulder problem": "right shoulder problem",
+    "left hand problem": "left hand problem",
+    "left bend of arm problem": "left bend of arm problem",
+    "left shoulder problem": "left shoulder problem",
+    "right neck": "right neck",
+    "left wrist problems": "left wrist problems",
+    "right elbow trouble": "right elbow trouble"
+  },
+  "ordered_nodes": [
+    "discoligment injury C6-C7",
+    "left C7",
+    "right C7",
+    "left neck problems",
+    "neck pain",
+    "right neck",
+    "left shoulder trouble",
+    "left shoulder problem",
+    "right shoulder trouble",
+    "right shoulder problem",
+    "left arm",
+    "left elbow problem",
+    "left medival elbow problems",
+    "right elbow trouble",
+    "left lower arm disorders",
+    "right lower arm disorders",
+    "left bend of arm problem",
+    "left wrist problems",
+    "right wrist problem",
+    "left hand problem",
+    "right hand problem",
+    "left finger trouble",
+    "right finger trouble",
+    "right arm band"
+  ],
+  "confidence": 0.63,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "discoligment injury C6-C7",
+      "after": "left C7",
+      "confidence": 0.91
+    },
+    {
+      "before": "discoligment injury C6-C7",
+      "after": "right C7",
+      "confidence": 0.91
+    },
+    {
+      "before": "neck pain",
+      "after": "left shoulder trouble",
+      "confidence": 0.74
+    },
+    {
+      "before": "neck pain",
+      "after": "right shoulder trouble",
+      "confidence": 0.74
+    },
+    {
+      "before": "left shoulder trouble",
+      "after": "left elbow problem",
+      "confidence": 0.78
+    },
+    {
+      "before": "left elbow problem",
+      "after": "left lower arm disorders",
+      "confidence": 0.77
+    },
+    {
+      "before": "left lower arm disorders",
+      "after": "left wrist problems",
+      "confidence": 0.8
+    },
+    {
+      "before": "left wrist problems",
+      "after": "left hand problem",
+      "confidence": 0.82
+    },
+    {
+      "before": "left hand problem",
+      "after": "left finger trouble",
+      "confidence": 0.79
+    }
+  ],
+  "rationale": "Cervical disc/nerve injury is an upstream anatomical cause, with C7 findings and neck symptoms preceding shoulder, arm, elbow, forearm, wrist, hand, and finger problems. Left/right side-specific terms are grouped similarly, and more distal limb complaints are placed later as likely downstream manifestations or reported outcomes.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

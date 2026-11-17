@@ -1,0 +1,61 @@
+{
+  "collection": "bnlearn",
+  "dataset": "earthquake",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:14:20.799844+00:00",
+  "prompt_hash": "cfb5cd8824e91097",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"second neighbor to call to inform the alarm sound\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"first neighbor to call to inform the alarm sound\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"home alarm going off in a house\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"burglar entering\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"earthquake hitting\",\n    \"states\": \"True|False\",\n    \"state_count\": \"2\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V04\", \"V05\", \"V03\", \"V02\", \"V01\"],\n  \"confidence\": 0.88,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V04\", \"after\": \"V03\", \"confidence\": 0.97},\n    {\"before\": \"V05\", \"after\": \"V03\", \"confidence\": 0.97},\n    {\"before\": \"V03\", \"after\": \"V02\", \"confidence\": 0.9},\n    {\"before\": \"V03\", \"after\": \"V01\", \"confidence\": 0.9},\n    {\"before\": \"V02\", \"after\": \"V01\", \"confidence\": 0.8}\n  ],\n  \"rationale\": \"A burglar or earthquake can trigger the home alarm, making it an upstream event before notification decisions. Calling the first neighbor is typically earlier than calling the second neighbor, since the second call depends on the initial notification step. This yields a plausible temporal/causal ordering from causes to alarm to downstream actions.\"\n}",
+  "id_map": {
+    "V01": "MaryCalls",
+    "V02": "JohnCalls",
+    "V03": "Alarm",
+    "V04": "Burglary",
+    "V05": "Earthquake"
+  },
+  "ordered_nodes": [
+    "Burglary",
+    "Earthquake",
+    "Alarm",
+    "JohnCalls",
+    "MaryCalls"
+  ],
+  "confidence": 0.88,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Burglary",
+      "after": "Alarm",
+      "confidence": 0.97
+    },
+    {
+      "before": "Earthquake",
+      "after": "Alarm",
+      "confidence": 0.97
+    },
+    {
+      "before": "Alarm",
+      "after": "JohnCalls",
+      "confidence": 0.9
+    },
+    {
+      "before": "Alarm",
+      "after": "MaryCalls",
+      "confidence": 0.9
+    },
+    {
+      "before": "JohnCalls",
+      "after": "MaryCalls",
+      "confidence": 0.8
+    }
+  ],
+  "rationale": "A burglar or earthquake can trigger the home alarm, making it an upstream event before notification decisions. Calling the first neighbor is typically earlier than calling the second neighbor, since the second call depends on the initial notification step. This yields a plausible temporal/causal ordering from causes to alarm to downstream actions.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

@@ -1,0 +1,56 @@
+{
+  "collection": "bnlearn",
+  "dataset": "earthquake",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:14:18.280020+00:00",
+  "prompt_hash": "55cc3713cc6fb3c5",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Burglary\"\n  },\n  {\n    \"id\": \"Alarm\"\n  },\n  {\n    \"id\": \"MaryCalls\"\n  },\n  {\n    \"id\": \"JohnCalls\"\n  },\n  {\n    \"id\": \"Earthquake\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Burglary\", \"Earthquake\", \"Alarm\", \"JohnCalls\", \"MaryCalls\"],\n  \"confidence\": 0.88,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Burglary\", \"after\": \"Alarm\", \"confidence\": 0.98},\n    {\"before\": \"Earthquake\", \"after\": \"Alarm\", \"confidence\": 0.98},\n    {\"before\": \"Alarm\", \"after\": \"JohnCalls\", \"confidence\": 0.95},\n    {\"before\": \"Alarm\", \"after\": \"MaryCalls\", \"confidence\": 0.95}\n  ],\n  \"rationale\": \"Burglary and earthquake are plausible upstream causes that can trigger an alarm. The alarm is an intermediate event leading to calls from John and Mary as downstream responses. The relative order between burglary and earthquake is not strongly determined, so they are placed first as alternative causes.\"\n}",
+  "id_map": {
+    "Burglary": "Burglary",
+    "Alarm": "Alarm",
+    "MaryCalls": "MaryCalls",
+    "JohnCalls": "JohnCalls",
+    "Earthquake": "Earthquake"
+  },
+  "ordered_nodes": [
+    "Burglary",
+    "Earthquake",
+    "Alarm",
+    "JohnCalls",
+    "MaryCalls"
+  ],
+  "confidence": 0.88,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Burglary",
+      "after": "Alarm",
+      "confidence": 0.98
+    },
+    {
+      "before": "Earthquake",
+      "after": "Alarm",
+      "confidence": 0.98
+    },
+    {
+      "before": "Alarm",
+      "after": "JohnCalls",
+      "confidence": 0.95
+    },
+    {
+      "before": "Alarm",
+      "after": "MaryCalls",
+      "confidence": 0.95
+    }
+  ],
+  "rationale": "Burglary and earthquake are plausible upstream causes that can trigger an alarm. The alarm is an intermediate event leading to calls from John and Mary as downstream responses. The relative order between burglary and earthquake is not strongly determined, so they are placed first as alternative causes.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

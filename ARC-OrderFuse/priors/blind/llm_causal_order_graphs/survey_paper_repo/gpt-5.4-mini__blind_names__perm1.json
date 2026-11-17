@@ -1,0 +1,63 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "survey_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:26:52.178675+00:00",
+  "prompt_hash": "bacac23ce0956b30",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Travel\"\n  },\n  {\n    \"id\": \"Age\"\n  },\n  {\n    \"id\": \"Residence\"\n  },\n  {\n    \"id\": \"Occupation\"\n  },\n  {\n    \"id\": \"Education\"\n  },\n  {\n    \"id\": \"Sex\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Sex\", \"Age\", \"Education\", \"Occupation\", \"Residence\", \"Travel\"],\n  \"confidence\": 0.71,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Sex\", \"after\": \"Age\", \"confidence\": 0.97},\n    {\"before\": \"Age\", \"after\": \"Education\", \"confidence\": 0.83},\n    {\"before\": \"Education\", \"after\": \"Occupation\", \"confidence\": 0.79},\n    {\"before\": \"Occupation\", \"after\": \"Residence\", \"confidence\": 0.68},\n    {\"before\": \"Residence\", \"after\": \"Travel\", \"confidence\": 0.64}\n  ],\n  \"rationale\": \"Sex and age are fundamental demographic attributes, while education typically precedes occupation. Occupation can influence residence through work location or mobility, and residence may affect travel patterns. This is a plausible semantic ordering, not a claim of true causality.\"\n}",
+  "id_map": {
+    "Travel": "Travel",
+    "Age": "Age",
+    "Residence": "Residence",
+    "Occupation": "Occupation",
+    "Education": "Education",
+    "Sex": "Sex"
+  },
+  "ordered_nodes": [
+    "Sex",
+    "Age",
+    "Education",
+    "Occupation",
+    "Residence",
+    "Travel"
+  ],
+  "confidence": 0.71,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Sex",
+      "after": "Age",
+      "confidence": 0.97
+    },
+    {
+      "before": "Age",
+      "after": "Education",
+      "confidence": 0.83
+    },
+    {
+      "before": "Education",
+      "after": "Occupation",
+      "confidence": 0.79
+    },
+    {
+      "before": "Occupation",
+      "after": "Residence",
+      "confidence": 0.68
+    },
+    {
+      "before": "Residence",
+      "after": "Travel",
+      "confidence": 0.64
+    }
+  ],
+  "rationale": "Sex and age are fundamental demographic attributes, while education typically precedes occupation. Occupation can influence residence through work location or mobility, and residence may affect travel patterns. This is a plausible semantic ordering, not a claim of true causality.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

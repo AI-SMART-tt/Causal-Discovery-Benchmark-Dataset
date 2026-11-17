@@ -1,0 +1,78 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:35:09.763696+00:00",
+  "prompt_hash": "3d545f5f66802f54",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"PIP3\",\n    \"description\": \"phosphatidylinositol 3,4,5-trisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PKC\",\n    \"description\": \"protein kinase C activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Jnk\",\n    \"description\": \"phosphorylated c-Jun N-terminal kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"P38\",\n    \"description\": \"phosphorylated p38 MAP kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Raf\",\n    \"description\": \"phosphorylated Raf kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PIP2\",\n    \"description\": \"phosphatidylinositol 4,5-bisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Akt\",\n    \"description\": \"phosphorylated Akt (protein kinase B)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Erk\",\n    \"description\": \"phosphorylated Erk1/2 (p44/42 MAP kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Plcg\",\n    \"description\": \"phosphorylated phospholipase C-gamma\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PKA\",\n    \"description\": \"protein kinase A activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Mek\",\n    \"description\": \"phosphorylated Mek1/2 (MAP kinase kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"ordered_nodes\":[\"PIP2\",\"PIP3\",\"Plcg\",\"PKC\",\"Raf\",\"Mek\",\"Erk\",\"P38\",\"Jnk\",\"Akt\",\"PKA\"],\"confidence\":0.55,\"high_confidence_pairs\":[{\"before\":\"PIP2\",\"after\":\"PIP3\",\"confidence\":0.85},{\"before\":\"PIP3\",\"after\":\"Akt\",\"confidence\":0.8},{\"before\":\"Plcg\",\"after\":\"PKC\",\"confidence\":0.8},{\"before\":\"Raf\",\"after\":\"Mek\",\"confidence\":0.9},{\"before\":\"Mek\",\"after\":\"Erk\",\"confidence\":0.9},{\"before\":\"PKC\",\"after\":\"Raf\",\"confidence\":0.65}],\"rationale\":\"Lipid signaling (PIP2/PIP3) and PLCgamma sit upstream of kinase cascades. Raf-Mek-Erk is a canonical linear MAPK cascade; p38/Jnk are parallel MAPK outputs. Akt is downstream of PIP3. PKA is placed late as a modulatory kinase with ambiguous placement. Order is a plausible prior, not ground truth.\"}",
+  "id_map": {
+    "PIP3": "PIP3",
+    "PKC": "PKC",
+    "Jnk": "Jnk",
+    "P38": "P38",
+    "Raf": "Raf",
+    "PIP2": "PIP2",
+    "Akt": "Akt",
+    "Erk": "Erk",
+    "Plcg": "Plcg",
+    "PKA": "PKA",
+    "Mek": "Mek"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "PIP3",
+    "Plcg",
+    "PKC",
+    "Raf",
+    "Mek",
+    "Erk",
+    "P38",
+    "Jnk",
+    "Akt",
+    "PKA"
+  ],
+  "confidence": 0.55,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "PIP3",
+      "confidence": 0.85
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.8
+    },
+    {
+      "before": "Plcg",
+      "after": "PKC",
+      "confidence": 0.8
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.9
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.9
+    },
+    {
+      "before": "PKC",
+      "after": "Raf",
+      "confidence": 0.65
+    }
+  ],
+  "rationale": "Lipid signaling (PIP2/PIP3) and PLCgamma sit upstream of kinase cascades. Raf-Mek-Erk is a canonical linear MAPK cascade; p38/Jnk are parallel MAPK outputs. Akt is downstream of PIP3. PKA is placed late as a modulatory kinase with ambiguous placement. Order is a plausible prior, not ground truth.",
+  "direct_edge_accuracy": 0.470588,
+  "pair_accuracy": 0.590909
+}

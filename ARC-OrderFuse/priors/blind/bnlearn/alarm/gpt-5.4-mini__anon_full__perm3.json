@@ -1,0 +1,220 @@
+{
+  "collection": "bnlearn",
+  "dataset": "alarm",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:20:56.075180+00:00",
+  "prompt_hash": "4abe2857e108b60e",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"low circulating blood volume\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"medical history suggestive of heart failure\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"left ventricular end-diastolic volume\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"electrocautery interference error affecting monitor readings\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"measured carbon dioxide in expired gas\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"alveolar ventilation\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"arterial oxygen saturation\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"disconnection of the breathing circuit\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"fraction of inspired oxygen\",\n    \"states\": \"LOW|NORMAL\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"pulmonary shunt (blood bypassing ventilated lung)\",\n    \"states\": \"NORMAL|HIGH\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"pulmonary capillary wedge pressure\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V12\",\n    \"description\": \"pulmonary embolus\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V13\",\n    \"description\": \"left ventricular failure\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V14\",\n    \"description\": \"breathing circuit pressure\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V15\",\n    \"description\": \"ventilation reaching the lungs\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V16\",\n    \"description\": \"measured minute ventilation\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V17\",\n    \"description\": \"arterial carbon dioxide level\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V18\",\n    \"description\": \"heart rate\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V19\",\n    \"description\": \"total peripheral vascular resistance\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V20\",\n    \"description\": \"anaphylactic reaction\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V21\",\n    \"description\": \"ventilation measured at the breathing tube\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V22\",\n    \"description\": \"circulating catecholamine level\",\n    \"states\": \"NORMAL|HIGH\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V23\",\n    \"description\": \"central venous pressure\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V24\",\n    \"description\": \"low-output error affecting the heart-rate reading of the blood pressure monitor\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V25\",\n    \"description\": \"heart rate displayed by the electrocardiogram\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V26\",\n    \"description\": \"heart rate displayed by the blood pressure monitor\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V27\",\n    \"description\": \"pulmonary venous oxygen saturation\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V28\",\n    \"description\": \"position of the endotracheal tube\",\n    \"states\": \"NORMAL|ESOPHAGEAL|ONESIDED\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V29\",\n    \"description\": \"heart rate displayed by the pulse oximeter\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V30\",\n    \"description\": \"insufficient depth of anesthesia or analgesia\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V31\",\n    \"description\": \"kinked breathing tube\",\n    \"states\": \"TRUE|FALSE\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V32\",\n    \"description\": \"cardiac output\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V33\",\n    \"description\": \"arterial blood pressure\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V34\",\n    \"description\": \"volume of blood ejected per heartbeat\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V35\",\n    \"description\": \"ventilation delivered at the ventilator machine\",\n    \"states\": \"ZERO|LOW|NORMAL|HIGH\",\n    \"state_count\": \"4\"\n  },\n  {\n    \"id\": \"V36\",\n    \"description\": \"minute ventilation set on the ventilator\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V37\",\n    \"description\": \"pulmonary artery pressure\",\n    \"states\": \"LOW|NORMAL|HIGH\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V20\",\"V08\",\"V31\",\"V28\",\"V36\",\"V09\",\"V37\",\"V12\",\"V02\",\"V30\",\"V04\",\"V24\",\"V14\",\"V35\",\"V03\",\"V13\",\"V11\",\"V23\",\"V18\",\"V22\",\"V19\",\"V34\",\"V32\",\"V33\",\"V01\",\"V10\",\"V27\",\"V15\",\"V06\",\"V21\",\"V16\",\"V05\",\"V17\",\"V07\",\"V25\",\"V26\",\"V29\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V20\", \"after\": \"V22\", \"confidence\": 0.78},\n    {\"before\": \"V20\", \"after\": \"V37\", \"confidence\": 0.72},\n    {\"before\": \"V08\", \"after\": \"V15\", \"confidence\": 0.95},\n    {\"before\": \"V31\", \"after\": \"V14\", \"confidence\": 0.92},\n    {\"before\": \"V28\", \"after\": \"V15\", \"confidence\": 0.9},\n    {\"before\": \"V36\", \"after\": \"V35\", \"confidence\": 0.96},\n    {\"before\": \"V09\", \"after\": \"V07\", \"confidence\": 0.85},\n    {\"before\": \"V12\", \"after\": \"V10\", \"confidence\": 0.8},\n    {\"before\": \"V13\", \"after\": \"V11\", \"confidence\": 0.9},\n    {\"before\": \"V13\", \"after\": \"V03\", \"confidence\": 0.9},\n    {\"before\": \"V13\", \"after\": \"V34\", \"confidence\": 0.86},\n    {\"before\": \"V34\", \"after\": \"V32\", \"confidence\": 0.88},\n    {\"before\": \"V32\", \"after\": \"V33\", \"confidence\": 0.84},\n    {\"before\": \"V33\", \"after\": \"V23\", \"confidence\": 0.8},\n    {\"before\": \"V01\", \"after\": \"V23\", \"confidence\": 0.82},\n    {\"before\": \"V06\", \"after\": \"V05\", \"confidence\": 0.93},\n    {\"before\": \"V06\", \"after\": \"V17\", \"confidence\": 0.9},\n    {\"before\": \"V15\", \"after\": \"V21\", \"confidence\": 0.88},\n    {\"before\": \"V21\", \"after\": \"V16\", \"confidence\": 0.95},\n    {\"before\": \"V16\", \"after\": \"V05\", \"confidence\": 0.86},\n    {\"before\": \"V25\", \"after\": \"V26\", \"confidence\": 0.72},\n    {\"before\": \"V25\", \"after\": \"V29\", \"confidence\": 0.72},\n    {\"before\": \"V04\", \"after\": \"V25\", \"confidence\": 0.8},\n    {\"before\": \"V24\", \"after\": \"V26\", \"confidence\": 0.9}\n  ],\n  \"rationale\": \"The order places primary physiological/clinical causes first (anaphylaxis, circuit/tube problems, ventilator settings, cardiac conditions), then intermediate hemodynamics and gas exchange, and finally measured outputs and monitor readings. Device/artifact variables precede affected measurements. The sequence is a plausible causal prior, not a claim of ground truth.\"\n}",
+  "id_map": {
+    "V01": "HYPOVOLEMIA",
+    "V02": "HISTORY",
+    "V03": "LVEDVOLUME",
+    "V04": "ERRCAUTER",
+    "V05": "EXPCO2",
+    "V06": "VENTALV",
+    "V07": "SAO2",
+    "V08": "DISCONNECT",
+    "V09": "FIO2",
+    "V10": "SHUNT",
+    "V11": "PCWP",
+    "V12": "PULMEMBOLUS",
+    "V13": "LVFAILURE",
+    "V14": "PRESS",
+    "V15": "VENTLUNG",
+    "V16": "MINVOL",
+    "V17": "ARTCO2",
+    "V18": "HR",
+    "V19": "TPR",
+    "V20": "ANAPHYLAXIS",
+    "V21": "VENTTUBE",
+    "V22": "CATECHOL",
+    "V23": "CVP",
+    "V24": "ERRLOWOUTPUT",
+    "V25": "HREKG",
+    "V26": "HRBP",
+    "V27": "PVSAT",
+    "V28": "INTUBATION",
+    "V29": "HRSAT",
+    "V30": "INSUFFANESTH",
+    "V31": "KINKEDTUBE",
+    "V32": "CO",
+    "V33": "BP",
+    "V34": "STROKEVOLUME",
+    "V35": "VENTMACH",
+    "V36": "MINVOLSET",
+    "V37": "PAP"
+  },
+  "ordered_nodes": [
+    "ANAPHYLAXIS",
+    "DISCONNECT",
+    "KINKEDTUBE",
+    "INTUBATION",
+    "MINVOLSET",
+    "FIO2",
+    "PAP",
+    "PULMEMBOLUS",
+    "HISTORY",
+    "INSUFFANESTH",
+    "ERRCAUTER",
+    "ERRLOWOUTPUT",
+    "PRESS",
+    "VENTMACH",
+    "LVEDVOLUME",
+    "LVFAILURE",
+    "PCWP",
+    "CVP",
+    "HR",
+    "CATECHOL",
+    "TPR",
+    "STROKEVOLUME",
+    "CO",
+    "BP",
+    "HYPOVOLEMIA",
+    "SHUNT",
+    "PVSAT",
+    "VENTLUNG",
+    "VENTALV",
+    "VENTTUBE",
+    "MINVOL",
+    "EXPCO2",
+    "ARTCO2",
+    "SAO2",
+    "HREKG",
+    "HRBP",
+    "HRSAT"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "ANAPHYLAXIS",
+      "after": "CATECHOL",
+      "confidence": 0.78
+    },
+    {
+      "before": "ANAPHYLAXIS",
+      "after": "PAP",
+      "confidence": 0.72
+    },
+    {
+      "before": "DISCONNECT",
+      "after": "VENTLUNG",
+      "confidence": 0.95
+    },
+    {
+      "before": "KINKEDTUBE",
+      "after": "PRESS",
+      "confidence": 0.92
+    },
+    {
+      "before": "INTUBATION",
+      "after": "VENTLUNG",
+      "confidence": 0.9
+    },
+    {
+      "before": "MINVOLSET",
+      "after": "VENTMACH",
+      "confidence": 0.96
+    },
+    {
+      "before": "FIO2",
+      "after": "SAO2",
+      "confidence": 0.85
+    },
+    {
+      "before": "PULMEMBOLUS",
+      "after": "SHUNT",
+      "confidence": 0.8
+    },
+    {
+      "before": "LVFAILURE",
+      "after": "PCWP",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVFAILURE",
+      "after": "LVEDVOLUME",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVFAILURE",
+      "after": "STROKEVOLUME",
+      "confidence": 0.86
+    },
+    {
+      "before": "STROKEVOLUME",
+      "after": "CO",
+      "confidence": 0.88
+    },
+    {
+      "before": "CO",
+      "after": "BP",
+      "confidence": 0.84
+    },
+    {
+      "before": "BP",
+      "after": "CVP",
+      "confidence": 0.8
+    },
+    {
+      "before": "HYPOVOLEMIA",
+      "after": "CVP",
+      "confidence": 0.82
+    },
+    {
+      "before": "VENTALV",
+      "after": "EXPCO2",
+      "confidence": 0.93
+    },
+    {
+      "before": "VENTALV",
+      "after": "ARTCO2",
+      "confidence": 0.9
+    },
+    {
+      "before": "VENTLUNG",
+      "after": "VENTTUBE",
+      "confidence": 0.88
+    },
+    {
+      "before": "VENTTUBE",
+      "after": "MINVOL",
+      "confidence": 0.95
+    },
+    {
+      "before": "MINVOL",
+      "after": "EXPCO2",
+      "confidence": 0.86
+    },
+    {
+      "before": "HREKG",
+      "after": "HRBP",
+      "confidence": 0.72
+    },
+    {
+      "before": "HREKG",
+      "after": "HRSAT",
+      "confidence": 0.72
+    },
+    {
+      "before": "ERRCAUTER",
+      "after": "HREKG",
+      "confidence": 0.8
+    },
+    {
+      "before": "ERRLOWOUTPUT",
+      "after": "HRBP",
+      "confidence": 0.9
+    }
+  ],
+  "rationale": "The order places primary physiological/clinical causes first (anaphylaxis, circuit/tube problems, ventilator settings, cardiac conditions), then intermediate hemodynamics and gas exchange, and finally measured outputs and monitor readings. Device/artifact variables precede affected measurements. The sequence is a plausible causal prior, not a claim of ground truth.",
+  "direct_edge_accuracy": 0.717391,
+  "pair_accuracy": 0.784753
+}

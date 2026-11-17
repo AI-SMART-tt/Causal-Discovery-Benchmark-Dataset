@@ -1,0 +1,83 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gemini-2.5-flash-lite",
+  "provider": "gemini",
+  "source": "gemini_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:38:08.889610+00:00",
+  "prompt_hash": "2c76dcb3d1a5ccbb",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"P38\",\n    \"description\": \"phosphorylated p38 MAP kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PIP3\",\n    \"description\": \"phosphatidylinositol 3,4,5-trisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Akt\",\n    \"description\": \"phosphorylated Akt (protein kinase B)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Mek\",\n    \"description\": \"phosphorylated Mek1/2 (MAP kinase kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Raf\",\n    \"description\": \"phosphorylated Raf kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Plcg\",\n    \"description\": \"phosphorylated phospholipase C-gamma\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PKC\",\n    \"description\": \"protein kinase C activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Erk\",\n    \"description\": \"phosphorylated Erk1/2 (p44/42 MAP kinase)\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"Jnk\",\n    \"description\": \"phosphorylated c-Jun N-terminal kinase\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PKA\",\n    \"description\": \"protein kinase A activity\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"PIP2\",\n    \"description\": \"phosphatidylinositol 4,5-bisphosphate\",\n    \"states\": \"LOW|AVG|HIGH\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"PIP2\",\n    \"Plcg\",\n    \"PKC\",\n    \"PIP3\",\n    \"Akt\",\n    \"PKA\",\n    \"Raf\",\n    \"Mek\",\n    \"Erk\",\n    \"Jnk\",\n    \"P38\"\n  ],\n  \"confidence\": 0.6,\n  \"high_confidence_pairs\": [\n    {\"before\": \"PIP2\", \"after\": \"Plcg\", \"confidence\": 0.8},\n    {\"before\": \"Plcg\", \"after\": \"PKC\", \"confidence\": 0.7},\n    {\"before\": \"PIP2\", \"after\": \"PIP3\", \"confidence\": 0.7},\n    {\"before\": \"PIP3\", \"after\": \"Akt\", \"confidence\": 0.8},\n    {\"before\": \"Raf\", \"after\": \"Mek\", \"confidence\": 0.8},\n    {\"before\": \"Mek\", \"after\": \"Erk\", \"confidence\": 0.8},\n    {\"before\": \"Jnk\", \"after\": \"P38\", \"confidence\": 0.8}\n  ],\n  \"rationale\": \"PIP2 is a precursor to PIP3 and is acted upon by Plcg. Plcg activates PKC. PIP3 activates Akt. Raf-Mek-Erk and Jnk-P38 are distinct MAPK pathways. PKA is a separate kinase. Order reflects common signaling cascades.\"\n}",
+  "id_map": {
+    "P38": "P38",
+    "PIP3": "PIP3",
+    "Akt": "Akt",
+    "Mek": "Mek",
+    "Raf": "Raf",
+    "Plcg": "Plcg",
+    "PKC": "PKC",
+    "Erk": "Erk",
+    "Jnk": "Jnk",
+    "PKA": "PKA",
+    "PIP2": "PIP2"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "Plcg",
+    "PKC",
+    "PIP3",
+    "Akt",
+    "PKA",
+    "Raf",
+    "Mek",
+    "Erk",
+    "Jnk",
+    "P38"
+  ],
+  "confidence": 0.6,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "Plcg",
+      "confidence": 0.8
+    },
+    {
+      "before": "Plcg",
+      "after": "PKC",
+      "confidence": 0.7
+    },
+    {
+      "before": "PIP2",
+      "after": "PIP3",
+      "confidence": 0.7
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.8
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.8
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.8
+    },
+    {
+      "before": "Jnk",
+      "after": "P38",
+      "confidence": 0.8
+    }
+  ],
+  "rationale": "PIP2 is a precursor to PIP3 and is acted upon by Plcg. Plcg activates PKC. PIP3 activates Akt. Raf-Mek-Erk and Jnk-P38 are distinct MAPK pathways. PKA is a separate kinase. Order reflects common signaling cascades.",
+  "direct_edge_accuracy": 0.764706,
+  "pair_accuracy": 0.727273
+}

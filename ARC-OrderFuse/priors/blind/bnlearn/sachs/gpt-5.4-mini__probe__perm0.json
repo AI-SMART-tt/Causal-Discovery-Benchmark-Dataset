@@ -1,0 +1,74 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "probe",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:16:31.477362+00:00",
+  "prompt_hash": "d5f53687697f1881",
+  "system_prompt": "You are a careful assistant. Answer honestly and return strict JSON only.",
+  "user_prompt": "The following variable names come from a causal graph. They are listed in random order.\n[\"PKC\", \"Erk\", \"PIP2\", \"Raf\", \"PIP3\", \"Plcg\", \"Mek\", \"P38\", \"Jnk\", \"PKA\", \"Akt\"]\n\nQuestion: do these variables belong to a published benchmark causal graph or Bayesian network that you recognize?\nReturn one JSON object with this schema:\n{\n  \"recognized\": true,\n  \"benchmark_name\": \"name or empty string\",\n  \"confidence\": 0.0,\n  \"recalled_edges\": [[\"cause id\", \"effect id\"]]\n}\n\nIf you recognize it, list the directed edges of the published graph that you can recall, using the exact names. If you do not recognize it, set recognized to false and return an empty edge list. Do not guess edges from semantics alone.",
+  "raw_response": "{\n  \"recognized\": true,\n  \"benchmark_name\": \"Cell signaling pathway Bayesian network (Sachs et al.)\",\n  \"confidence\": 0.97,\n  \"recalled_edges\": [[\"Plcg\", \"PIP2\"], [\"Plcg\", \"PIP3\"], [\"Plcg\", \"PKC\"], [\"PIP2\", \"PIP3\"], [\"PIP3\", \"Akt\"], [\"Raf\", \"Mek\"], [\"Mek\", \"Erk\"], [\"Mek\", \"P38\"], [\"Jnk\", \"PKC\"], [\"PKA\", \"Raf\"]]\n}",
+  "id_map": {
+    "PKC": "PKC",
+    "Erk": "Erk",
+    "PIP2": "PIP2",
+    "Raf": "Raf",
+    "PIP3": "PIP3",
+    "Plcg": "Plcg",
+    "Mek": "Mek",
+    "P38": "P38",
+    "Jnk": "Jnk",
+    "PKA": "PKA",
+    "Akt": "Akt"
+  },
+  "recognized": true,
+  "benchmark_name": "Cell signaling pathway Bayesian network (Sachs et al.)",
+  "confidence": 0.97,
+  "recalled_edges": [
+    [
+      "Plcg",
+      "PIP2"
+    ],
+    [
+      "Plcg",
+      "PIP3"
+    ],
+    [
+      "Plcg",
+      "PKC"
+    ],
+    [
+      "PIP2",
+      "PIP3"
+    ],
+    [
+      "PIP3",
+      "Akt"
+    ],
+    [
+      "Raf",
+      "Mek"
+    ],
+    [
+      "Mek",
+      "Erk"
+    ],
+    [
+      "Mek",
+      "P38"
+    ],
+    [
+      "Jnk",
+      "PKC"
+    ],
+    [
+      "PKA",
+      "Raf"
+    ]
+  ],
+  "recall_precision": 0.5,
+  "recall_coverage": 0.29411764705882354
+}

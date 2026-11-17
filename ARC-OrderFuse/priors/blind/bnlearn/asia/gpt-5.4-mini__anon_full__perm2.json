@@ -1,0 +1,82 @@
+{
+  "collection": "bnlearn",
+  "dataset": "asia",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:12:23.999674+00:00",
+  "prompt_hash": "805a096386aa3377",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"bronchitis\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"dyspnoea (shortness of breath)\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"tuberculosis\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"lung cancer\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"indicator that the patient has tuberculosis or lung cancer (or both)\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"recent visit to Asia\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"positive chest X-ray result\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"smoking habit\",\n    \"states\": \"yes|no\",\n    \"state_count\": \"2\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V06\", \"V08\", \"V03\", \"V04\", \"V01\", \"V05\", \"V07\", \"V02\"],\n  \"confidence\": 0.86,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V06\", \"after\": \"V03\", \"confidence\": 0.98},\n    {\"before\": \"V06\", \"after\": \"V04\", \"confidence\": 0.98},\n    {\"before\": \"V08\", \"after\": \"V01\", \"confidence\": 0.9},\n    {\"before\": \"V03\", \"after\": \"V05\", \"confidence\": 0.95},\n    {\"before\": \"V04\", \"after\": \"V05\", \"confidence\": 0.95},\n    {\"before\": \"V05\", \"after\": \"V07\", \"confidence\": 0.9},\n    {\"before\": \"V01\", \"after\": \"V02\", \"confidence\": 0.9},\n    {\"before\": \"V07\", \"after\": \"V02\", \"confidence\": 0.86}\n  ],\n  \"rationale\": \"Travel to Asia and smoking are upstream risk factors. Tuberculosis and lung cancer are diseases, with the indicator node summarizing them after their causes. Bronchitis is also upstream of dyspnoea. Positive chest X-ray is a diagnostic measurement downstream of disease, and dyspnoea is a symptom downstream of pulmonary conditions and findings.\"\n}",
+  "id_map": {
+    "V01": "bronc",
+    "V02": "dysp",
+    "V03": "tub",
+    "V04": "lung",
+    "V05": "either",
+    "V06": "asia",
+    "V07": "xray",
+    "V08": "smoke"
+  },
+  "ordered_nodes": [
+    "asia",
+    "smoke",
+    "tub",
+    "lung",
+    "bronc",
+    "either",
+    "xray",
+    "dysp"
+  ],
+  "confidence": 0.86,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "asia",
+      "after": "tub",
+      "confidence": 0.98
+    },
+    {
+      "before": "asia",
+      "after": "lung",
+      "confidence": 0.98
+    },
+    {
+      "before": "smoke",
+      "after": "bronc",
+      "confidence": 0.9
+    },
+    {
+      "before": "tub",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "lung",
+      "after": "either",
+      "confidence": 0.95
+    },
+    {
+      "before": "either",
+      "after": "xray",
+      "confidence": 0.9
+    },
+    {
+      "before": "bronc",
+      "after": "dysp",
+      "confidence": 0.9
+    },
+    {
+      "before": "xray",
+      "after": "dysp",
+      "confidence": 0.86
+    }
+  ],
+  "rationale": "Travel to Asia and smoking are upstream risk factors. Tuberculosis and lung cancer are diseases, with the indicator node summarizing them after their causes. Bronchitis is also upstream of dyspnoea. Positive chest X-ray is a diagnostic measurement downstream of disease, and dyspnoea is a symptom downstream of pulmonary conditions and findings.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

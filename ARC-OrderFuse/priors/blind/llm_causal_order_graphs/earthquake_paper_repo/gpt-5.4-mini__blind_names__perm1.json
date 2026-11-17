@@ -1,0 +1,56 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "earthquake_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:26:07.498085+00:00",
+  "prompt_hash": "9c73348a5d1ee271",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Alarm\"\n  },\n  {\n    \"id\": \"Burglary\"\n  },\n  {\n    \"id\": \"Marycalls\"\n  },\n  {\n    \"id\": \"Earthquake\"\n  },\n  {\n    \"id\": \"JohnCalls\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Burglary\", \"Earthquake\", \"Alarm\", \"JohnCalls\", \"Marycalls\"],\n  \"confidence\": 0.86,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Burglary\", \"after\": \"Alarm\", \"confidence\": 0.97},\n    {\"before\": \"Earthquake\", \"after\": \"Alarm\", \"confidence\": 0.97},\n    {\"before\": \"Alarm\", \"after\": \"JohnCalls\", \"confidence\": 0.95},\n    {\"before\": \"Alarm\", \"after\": \"Marycalls\", \"confidence\": 0.95}\n  ],\n  \"rationale\": \"Burglary and Earthquake are upstream events that can trigger the Alarm. JohnCalls and Marycalls are downstream responses to the Alarm. The exact relative order of Burglary vs Earthquake and JohnCalls vs Marycalls is uncertain, so this is a semantic prior rather than a ground-truth causal ordering.\"\n}",
+  "id_map": {
+    "Alarm": "Alarm",
+    "Burglary": "Burglary",
+    "Marycalls": "Marycalls",
+    "Earthquake": "Earthquake",
+    "JohnCalls": "JohnCalls"
+  },
+  "ordered_nodes": [
+    "Burglary",
+    "Earthquake",
+    "Alarm",
+    "JohnCalls",
+    "Marycalls"
+  ],
+  "confidence": 0.86,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Burglary",
+      "after": "Alarm",
+      "confidence": 0.97
+    },
+    {
+      "before": "Earthquake",
+      "after": "Alarm",
+      "confidence": 0.97
+    },
+    {
+      "before": "Alarm",
+      "after": "JohnCalls",
+      "confidence": 0.95
+    },
+    {
+      "before": "Alarm",
+      "after": "Marycalls",
+      "confidence": 0.95
+    }
+  ],
+  "rationale": "Burglary and Earthquake are upstream events that can trigger the Alarm. JohnCalls and Marycalls are downstream responses to the Alarm. The exact relative order of Burglary vs Earthquake and JohnCalls vs Marycalls is uncertain, so this is a semantic prior rather than a ground-truth causal ordering.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

@@ -1,0 +1,88 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "alzheimers_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:30:37.038969+00:00",
+  "prompt_hash": "e8a2a80cb70ca2e3",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"Total Brain Matter Volume of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"Age of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"Beta Amyloid protein level measured by Florbetapir F18\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"Total Ventricular Volume of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"Expression level of APOE4 gene\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"brain MRI\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"Phosphorylated-tau deposition\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"Educational attainment (years)\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"MRI Image slice number\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"Biological Sex of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"Montreal Cognitive Assessment Score\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V10\", \"V05\", \"V08\", \"V02\", \"V09\", \"V06\", \"V03\", \"V07\", \"V01\", \"V04\", \"V11\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V02\", \"after\": \"V01\", \"confidence\": 0.9},\n    {\"before\": \"V02\", \"after\": \"V04\", \"confidence\": 0.9},\n    {\"before\": \"V02\", \"after\": \"V11\", \"confidence\": 0.88},\n    {\"before\": \"V03\", \"after\": \"V07\", \"confidence\": 0.9},\n    {\"before\": \"V07\", \"after\": \"V01\", \"confidence\": 0.8},\n    {\"before\": \"V07\", \"after\": \"V04\", \"confidence\": 0.8},\n    {\"before\": \"V08\", \"after\": \"V11\", \"confidence\": 0.82},\n    {\"before\": \"V10\", \"after\": \"V11\", \"confidence\": 0.75}\n  ],\n  \"rationale\": \"Demographic and genetic factors are placed first, followed by education and age, then imaging acquisition/scan-related variables, then biomarker and neurodegeneration measures, and finally cognitive score as a downstream outcome. Brain atrophy/ventricular enlargement are later than amyloid/tau markers, while MRI and slice number are measurement-related rather than biological causes.\"\n}",
+  "id_map": {
+    "V01": "brain volume",
+    "V02": "age",
+    "V03": "av45",
+    "V04": "ventricular volume",
+    "V05": "APOE4",
+    "V06": "brain MRI",
+    "V07": "tau",
+    "V08": "education",
+    "V09": "slice number",
+    "V10": "sex",
+    "V11": "moca"
+  },
+  "ordered_nodes": [
+    "sex",
+    "APOE4",
+    "education",
+    "age",
+    "slice number",
+    "brain MRI",
+    "av45",
+    "tau",
+    "brain volume",
+    "ventricular volume",
+    "moca"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "age",
+      "after": "brain volume",
+      "confidence": 0.9
+    },
+    {
+      "before": "age",
+      "after": "ventricular volume",
+      "confidence": 0.9
+    },
+    {
+      "before": "age",
+      "after": "moca",
+      "confidence": 0.88
+    },
+    {
+      "before": "av45",
+      "after": "tau",
+      "confidence": 0.9
+    },
+    {
+      "before": "tau",
+      "after": "brain volume",
+      "confidence": 0.8
+    },
+    {
+      "before": "tau",
+      "after": "ventricular volume",
+      "confidence": 0.8
+    },
+    {
+      "before": "education",
+      "after": "moca",
+      "confidence": 0.82
+    },
+    {
+      "before": "sex",
+      "after": "moca",
+      "confidence": 0.75
+    }
+  ],
+  "rationale": "Demographic and genetic factors are placed first, followed by education and age, then imaging acquisition/scan-related variables, then biomarker and neurodegeneration measures, and finally cognitive score as a downstream outcome. Brain atrophy/ventricular enlargement are later than amyloid/tau markers, while MRI and slice number are measurement-related rather than biological causes.",
+  "direct_edge_accuracy": 0.894737,
+  "pair_accuracy": 0.870968
+}

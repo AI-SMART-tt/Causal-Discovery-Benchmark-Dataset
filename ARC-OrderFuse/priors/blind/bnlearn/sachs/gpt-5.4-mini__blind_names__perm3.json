@@ -1,0 +1,73 @@
+{
+  "collection": "bnlearn",
+  "dataset": "sachs",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:16:10.281239+00:00",
+  "prompt_hash": "9ccaabff178a48e6",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Plcg\"\n  },\n  {\n    \"id\": \"PIP2\"\n  },\n  {\n    \"id\": \"PKA\"\n  },\n  {\n    \"id\": \"Mek\"\n  },\n  {\n    \"id\": \"Raf\"\n  },\n  {\n    \"id\": \"Akt\"\n  },\n  {\n    \"id\": \"P38\"\n  },\n  {\n    \"id\": \"PKC\"\n  },\n  {\n    \"id\": \"PIP3\"\n  },\n  {\n    \"id\": \"Erk\"\n  },\n  {\n    \"id\": \"Jnk\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"PIP2\", \"Plcg\", \"PKC\", \"PKA\", \"PIP3\", \"Akt\", \"Raf\", \"Mek\", \"Erk\", \"P38\", \"Jnk\"],\n  \"confidence\": 0.79,\n  \"high_confidence_pairs\": [\n    {\"before\": \"PIP2\", \"after\": \"Plcg\", \"confidence\": 0.84},\n    {\"before\": \"PIP2\", \"after\": \"PIP3\", \"confidence\": 0.93},\n    {\"before\": \"PIP3\", \"after\": \"Akt\", \"confidence\": 0.92},\n    {\"before\": \"Raf\", \"after\": \"Mek\", \"confidence\": 0.95},\n    {\"before\": \"Mek\", \"after\": \"Erk\", \"confidence\": 0.95}\n  ],\n  \"rationale\": \"This prior reflects common signaling flow: membrane lipid substrates upstream of PLC/PI3K branches, then kinase effectors and MAPK cascade components. PIP2 is upstream of PLC-related signaling, PIP3 is upstream of Akt, and Raf→Mek→Erk is a canonical kinase chain. P38 and Jnk are typically stress-activated MAPKs placed downstream.\"\n}",
+  "id_map": {
+    "Plcg": "Plcg",
+    "PIP2": "PIP2",
+    "PKA": "PKA",
+    "Mek": "Mek",
+    "Raf": "Raf",
+    "Akt": "Akt",
+    "P38": "P38",
+    "PKC": "PKC",
+    "PIP3": "PIP3",
+    "Erk": "Erk",
+    "Jnk": "Jnk"
+  },
+  "ordered_nodes": [
+    "PIP2",
+    "Plcg",
+    "PKC",
+    "PKA",
+    "PIP3",
+    "Akt",
+    "Raf",
+    "Mek",
+    "Erk",
+    "P38",
+    "Jnk"
+  ],
+  "confidence": 0.79,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "PIP2",
+      "after": "Plcg",
+      "confidence": 0.84
+    },
+    {
+      "before": "PIP2",
+      "after": "PIP3",
+      "confidence": 0.93
+    },
+    {
+      "before": "PIP3",
+      "after": "Akt",
+      "confidence": 0.92
+    },
+    {
+      "before": "Raf",
+      "after": "Mek",
+      "confidence": 0.95
+    },
+    {
+      "before": "Mek",
+      "after": "Erk",
+      "confidence": 0.95
+    }
+  ],
+  "rationale": "This prior reflects common signaling flow: membrane lipid substrates upstream of PLC/PI3K branches, then kinase effectors and MAPK cascade components. PIP2 is upstream of PLC-related signaling, PIP3 is upstream of Akt, and Raf→Mek→Erk is a canonical kinase chain. P38 and Jnk are typically stress-activated MAPKs placed downstream.",
+  "direct_edge_accuracy": 0.823529,
+  "pair_accuracy": 0.772727
+}

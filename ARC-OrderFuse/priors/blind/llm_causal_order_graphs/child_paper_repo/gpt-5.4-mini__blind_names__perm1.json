@@ -1,0 +1,116 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "child_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:24:55.949265+00:00",
+  "prompt_hash": "40306beef6e46c39",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"HypDistrib\"\n  },\n  {\n    \"id\": \"CardiacMixing\"\n  },\n  {\n    \"id\": \"LungFlow\"\n  },\n  {\n    \"id\": \"GruntingReport\"\n  },\n  {\n    \"id\": \"XrayReport\"\n  },\n  {\n    \"id\": \"DuctFlow\"\n  },\n  {\n    \"id\": \"Grunting\"\n  },\n  {\n    \"id\": \"RUQO2\"\n  },\n  {\n    \"id\": \"Disease\"\n  },\n  {\n    \"id\": \"LVHreport\"\n  },\n  {\n    \"id\": \"LungParench\"\n  },\n  {\n    \"id\": \"LVH\"\n  },\n  {\n    \"id\": \"CO2Report\"\n  },\n  {\n    \"id\": \"LowerBodyO2\"\n  },\n  {\n    \"id\": \"CO2\"\n  },\n  {\n    \"id\": \"BirthAsphyxia\"\n  },\n  {\n    \"id\": \"Sick\"\n  },\n  {\n    \"id\": \"ChestXray\"\n  },\n  {\n    \"id\": \"HypoxiaInO2\"\n  },\n  {\n    \"id\": \"Age\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"Age\",\n    \"BirthAsphyxia\",\n    \"Disease\",\n    \"Sick\",\n    \"HypDistrib\",\n    \"CardiacMixing\",\n    \"DuctFlow\",\n    \"LungFlow\",\n    \"LungParench\",\n    \"LVH\",\n    \"HypoxiaInO2\",\n    \"LowerBodyO2\",\n    \"RUQO2\",\n    \"CO2\",\n    \"ChestXray\",\n    \"Grunting\",\n    \"GruntingReport\",\n    \"XrayReport\",\n    \"LVHreport\",\n    \"CO2Report\"\n  ],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"Age\",\n      \"after\": \"BirthAsphyxia\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"Disease\",\n      \"after\": \"Sick\",\n      \"confidence\": 0.86\n    },\n    {\n      \"before\": \"HypDistrib\",\n      \"after\": \"HypoxiaInO2\",\n      \"confidence\": 0.83\n    },\n    {\n      \"before\": \"CardiacMixing\",\n      \"after\": \"LowerBodyO2\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"LungFlow\",\n      \"after\": \"LungParench\",\n      \"confidence\": 0.75\n    },\n    {\n      \"before\": \"LungParench\",\n      \"after\": \"ChestXray\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"Grunting\",\n      \"after\": \"GruntingReport\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"ChestXray\",\n      \"after\": \"XrayReport\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"LVH\",\n      \"after\": \"LVHreport\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"CO2\",\n      \"after\": \"CO2Report\",\n      \"confidence\": 0.95\n    }\n  ],\n  \"rationale\": \"Placed demographic/perinatal factors first, then disease and physiologic mechanisms, then oxygenation and clinical findings, then imaging/lab measurements, and finally report variables as downstream documentation. This is a semantic prior, not ground truth, and some medical relationships may vary by context.\"\n}",
+  "id_map": {
+    "HypDistrib": "HypDistrib",
+    "CardiacMixing": "CardiacMixing",
+    "LungFlow": "LungFlow",
+    "GruntingReport": "GruntingReport",
+    "XrayReport": "XrayReport",
+    "DuctFlow": "DuctFlow",
+    "Grunting": "Grunting",
+    "RUQO2": "RUQO2",
+    "Disease": "Disease",
+    "LVHreport": "LVHreport",
+    "LungParench": "LungParench",
+    "LVH": "LVH",
+    "CO2Report": "CO2Report",
+    "LowerBodyO2": "LowerBodyO2",
+    "CO2": "CO2",
+    "BirthAsphyxia": "BirthAsphyxia",
+    "Sick": "Sick",
+    "ChestXray": "ChestXray",
+    "HypoxiaInO2": "HypoxiaInO2",
+    "Age": "Age"
+  },
+  "ordered_nodes": [
+    "Age",
+    "BirthAsphyxia",
+    "Disease",
+    "Sick",
+    "HypDistrib",
+    "CardiacMixing",
+    "DuctFlow",
+    "LungFlow",
+    "LungParench",
+    "LVH",
+    "HypoxiaInO2",
+    "LowerBodyO2",
+    "RUQO2",
+    "CO2",
+    "ChestXray",
+    "Grunting",
+    "GruntingReport",
+    "XrayReport",
+    "LVHreport",
+    "CO2Report"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "BirthAsphyxia",
+      "confidence": 0.88
+    },
+    {
+      "before": "Disease",
+      "after": "Sick",
+      "confidence": 0.86
+    },
+    {
+      "before": "HypDistrib",
+      "after": "HypoxiaInO2",
+      "confidence": 0.83
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "LowerBodyO2",
+      "confidence": 0.8
+    },
+    {
+      "before": "LungFlow",
+      "after": "LungParench",
+      "confidence": 0.75
+    },
+    {
+      "before": "LungParench",
+      "after": "ChestXray",
+      "confidence": 0.8
+    },
+    {
+      "before": "Grunting",
+      "after": "GruntingReport",
+      "confidence": 0.95
+    },
+    {
+      "before": "ChestXray",
+      "after": "XrayReport",
+      "confidence": 0.95
+    },
+    {
+      "before": "LVH",
+      "after": "LVHreport",
+      "confidence": 0.95
+    },
+    {
+      "before": "CO2",
+      "after": "CO2Report",
+      "confidence": 0.95
+    }
+  ],
+  "rationale": "Placed demographic/perinatal factors first, then disease and physiologic mechanisms, then oxygenation and clinical findings, then imaging/lab measurements, and finally report variables as downstream documentation. This is a semantic prior, not ground truth, and some medical relationships may vary by context.",
+  "direct_edge_accuracy": 0.84,
+  "pair_accuracy": 0.921875
+}

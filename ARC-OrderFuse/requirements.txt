@@ -1,0 +1,11 @@
+numpy==1.26.4
+scipy==1.13.1
+pandas>=2.0
+matplotlib>=3.8
+causal-learn==0.1.4.8
+networkx>=3.0
+scikit-learn>=1.3
+lingam>=1.8
+gcastle==1.0.4
+dagma>=1.1
+torch>=2.0

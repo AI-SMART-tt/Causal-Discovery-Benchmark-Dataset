@@ -1,0 +1,180 @@
+{
+  "collection": "bnlearn",
+  "dataset": "alarm",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:20:11.312507+00:00",
+  "prompt_hash": "dc7d20f7038f778b",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"PULMEMBOLUS\"\n  },\n  {\n    \"id\": \"HYPOVOLEMIA\"\n  },\n  {\n    \"id\": \"HRBP\"\n  },\n  {\n    \"id\": \"STROKEVOLUME\"\n  },\n  {\n    \"id\": \"SHUNT\"\n  },\n  {\n    \"id\": \"FIO2\"\n  },\n  {\n    \"id\": \"DISCONNECT\"\n  },\n  {\n    \"id\": \"VENTLUNG\"\n  },\n  {\n    \"id\": \"ARTCO2\"\n  },\n  {\n    \"id\": \"MINVOLSET\"\n  },\n  {\n    \"id\": \"ERRLOWOUTPUT\"\n  },\n  {\n    \"id\": \"CO\"\n  },\n  {\n    \"id\": \"PRESS\"\n  },\n  {\n    \"id\": \"HR\"\n  },\n  {\n    \"id\": \"CATECHOL\"\n  },\n  {\n    \"id\": \"PVSAT\"\n  },\n  {\n    \"id\": \"INSUFFANESTH\"\n  },\n  {\n    \"id\": \"EXPCO2\"\n  },\n  {\n    \"id\": \"LVEDVOLUME\"\n  },\n  {\n    \"id\": \"ANAPHYLAXIS\"\n  },\n  {\n    \"id\": \"VENTMACH\"\n  },\n  {\n    \"id\": \"KINKEDTUBE\"\n  },\n  {\n    \"id\": \"HREKG\"\n  },\n  {\n    \"id\": \"ERRCAUTER\"\n  },\n  {\n    \"id\": \"HISTORY\"\n  },\n  {\n    \"id\": \"VENTTUBE\"\n  },\n  {\n    \"id\": \"LVFAILURE\"\n  },\n  {\n    \"id\": \"VENTALV\"\n  },\n  {\n    \"id\": \"PCWP\"\n  },\n  {\n    \"id\": \"MINVOL\"\n  },\n  {\n    \"id\": \"TPR\"\n  },\n  {\n    \"id\": \"PAP\"\n  },\n  {\n    \"id\": \"SAO2\"\n  },\n  {\n    \"id\": \"HRSAT\"\n  },\n  {\n    \"id\": \"CVP\"\n  },\n  {\n    \"id\": \"BP\"\n  },\n  {\n    \"id\": \"INTUBATION\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"HISTORY\",\n    \"HYPOVOLEMIA\",\n    \"LVFAILURE\",\n    \"PULMEMBOLUS\",\n    \"ANAPHYLAXIS\",\n    \"INSUFFANESTH\",\n    \"INTUBATION\",\n    \"MINVOLSET\",\n    \"VENTMACH\",\n    \"DISCONNECT\",\n    \"KINKEDTUBE\",\n    \"VENTTUBE\",\n    \"ERRCAUTER\",\n    \"ERRLOWOUTPUT\",\n    \"CATECHOL\",\n    \"SHUNT\",\n    \"LVEDVOLUME\",\n    \"STROKEVOLUME\",\n    \"HRBP\",\n    \"CO\",\n    \"TPR\",\n    \"PAP\",\n    \"CVP\",\n    \"PCWP\",\n    \"PRESS\",\n    \"BP\",\n    \"HR\",\n    \"HREKG\",\n    \"PVSAT\",\n    \"HRSAT\",\n    \"SAO2\",\n    \"VENTLUNG\",\n    \"VENTALV\",\n    \"MINVOL\",\n    \"ARTCO2\",\n    \"EXPCO2\",\n    \"FIO2\"\n  ],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"HISTORY\",\n      \"after\": \"PULMEMBOLUS\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"HISTORY\",\n      \"after\": \"ANAPHYLAXIS\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"HISTORY\",\n      \"after\": \"LVFAILURE\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"HISTORY\",\n      \"after\": \"HYPOVOLEMIA\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"VENTMACH\",\n      \"after\": \"DISCONNECT\",\n      \"confidence\": 0.93\n    },\n    {\n      \"before\": \"VENTMACH\",\n      \"after\": \"KINKEDTUBE\",\n      \"confidence\": 0.93\n    },\n    {\n      \"before\": \"VENTMACH\",\n      \"after\": \"VENTTUBE\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"LVFAILURE\",\n      \"after\": \"LVEDVOLUME\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"LVEDVOLUME\",\n      \"after\": \"STROKEVOLUME\",\n      \"confidence\": 0.92\n    },\n    {\n      \"before\": \"STROKEVOLUME\",\n      \"after\": \"CO\",\n      \"confidence\": 0.92\n    },\n    {\n      \"before\": \"CO\",\n      \"after\": \"BP\",\n      \"confidence\": 0.95\n    },\n    {\n      \"before\": \"TPR\",\n      \"after\": \"BP\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"HR\",\n      \"after\": \"HREKG\",\n      \"confidence\": 0.92\n    },\n    {\n      \"before\": \"PAP\",\n      \"after\": \"PCWP\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"VENTALV\",\n      \"after\": \"SAO2\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"VENTALV\",\n      \"after\": \"ARTCO2\",\n      \"confidence\": 0.9\n    }\n  ],\n  \"rationale\": \"Order places baseline history and preexisting conditions first, then ventilator/management settings and faults, followed by physiologic intermediates (volume, cardiac output, resistance, pressures), then vital-sign measurements and gas-exchange outcomes. This is a plausible prior rather than ground truth, with some variables overlapping between causes, treatments, and measurements.\"\n}",
+  "id_map": {
+    "PULMEMBOLUS": "PULMEMBOLUS",
+    "HYPOVOLEMIA": "HYPOVOLEMIA",
+    "HRBP": "HRBP",
+    "STROKEVOLUME": "STROKEVOLUME",
+    "SHUNT": "SHUNT",
+    "FIO2": "FIO2",
+    "DISCONNECT": "DISCONNECT",
+    "VENTLUNG": "VENTLUNG",
+    "ARTCO2": "ARTCO2",
+    "MINVOLSET": "MINVOLSET",
+    "ERRLOWOUTPUT": "ERRLOWOUTPUT",
+    "CO": "CO",
+    "PRESS": "PRESS",
+    "HR": "HR",
+    "CATECHOL": "CATECHOL",
+    "PVSAT": "PVSAT",
+    "INSUFFANESTH": "INSUFFANESTH",
+    "EXPCO2": "EXPCO2",
+    "LVEDVOLUME": "LVEDVOLUME",
+    "ANAPHYLAXIS": "ANAPHYLAXIS",
+    "VENTMACH": "VENTMACH",
+    "KINKEDTUBE": "KINKEDTUBE",
+    "HREKG": "HREKG",
+    "ERRCAUTER": "ERRCAUTER",
+    "HISTORY": "HISTORY",
+    "VENTTUBE": "VENTTUBE",
+    "LVFAILURE": "LVFAILURE",
+    "VENTALV": "VENTALV",
+    "PCWP": "PCWP",
+    "MINVOL": "MINVOL",
+    "TPR": "TPR",
+    "PAP": "PAP",
+    "SAO2": "SAO2",
+    "HRSAT": "HRSAT",
+    "CVP": "CVP",
+    "BP": "BP",
+    "INTUBATION": "INTUBATION"
+  },
+  "ordered_nodes": [
+    "HISTORY",
+    "HYPOVOLEMIA",
+    "LVFAILURE",
+    "PULMEMBOLUS",
+    "ANAPHYLAXIS",
+    "INSUFFANESTH",
+    "INTUBATION",
+    "MINVOLSET",
+    "VENTMACH",
+    "DISCONNECT",
+    "KINKEDTUBE",
+    "VENTTUBE",
+    "ERRCAUTER",
+    "ERRLOWOUTPUT",
+    "CATECHOL",
+    "SHUNT",
+    "LVEDVOLUME",
+    "STROKEVOLUME",
+    "HRBP",
+    "CO",
+    "TPR",
+    "PAP",
+    "CVP",
+    "PCWP",
+    "PRESS",
+    "BP",
+    "HR",
+    "HREKG",
+    "PVSAT",
+    "HRSAT",
+    "SAO2",
+    "VENTLUNG",
+    "VENTALV",
+    "MINVOL",
+    "ARTCO2",
+    "EXPCO2",
+    "FIO2"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "HISTORY",
+      "after": "PULMEMBOLUS",
+      "confidence": 0.95
+    },
+    {
+      "before": "HISTORY",
+      "after": "ANAPHYLAXIS",
+      "confidence": 0.95
+    },
+    {
+      "before": "HISTORY",
+      "after": "LVFAILURE",
+      "confidence": 0.9
+    },
+    {
+      "before": "HISTORY",
+      "after": "HYPOVOLEMIA",
+      "confidence": 0.9
+    },
+    {
+      "before": "VENTMACH",
+      "after": "DISCONNECT",
+      "confidence": 0.93
+    },
+    {
+      "before": "VENTMACH",
+      "after": "KINKEDTUBE",
+      "confidence": 0.93
+    },
+    {
+      "before": "VENTMACH",
+      "after": "VENTTUBE",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVFAILURE",
+      "after": "LVEDVOLUME",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVEDVOLUME",
+      "after": "STROKEVOLUME",
+      "confidence": 0.92
+    },
+    {
+      "before": "STROKEVOLUME",
+      "after": "CO",
+      "confidence": 0.92
+    },
+    {
+      "before": "CO",
+      "after": "BP",
+      "confidence": 0.95
+    },
+    {
+      "before": "TPR",
+      "after": "BP",
+      "confidence": 0.9
+    },
+    {
+      "before": "HR",
+      "after": "HREKG",
+      "confidence": 0.92
+    },
+    {
+      "before": "PAP",
+      "after": "PCWP",
+      "confidence": 0.8
+    },
+    {
+      "before": "VENTALV",
+      "after": "SAO2",
+      "confidence": 0.9
+    },
+    {
+      "before": "VENTALV",
+      "after": "ARTCO2",
+      "confidence": 0.9
+    }
+  ],
+  "rationale": "Order places baseline history and preexisting conditions first, then ventilator/management settings and faults, followed by physiologic intermediates (volume, cardiac output, resistance, pressures), then vital-sign measurements and gas-exchange outcomes. This is a plausible prior rather than ground truth, with some variables overlapping between causes, treatments, and measurements.",
+  "direct_edge_accuracy": 0.826087,
+  "pair_accuracy": 0.753363
+}

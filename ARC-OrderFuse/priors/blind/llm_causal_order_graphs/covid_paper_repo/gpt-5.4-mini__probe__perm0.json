@@ -1,0 +1,82 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "covid_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "probe",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:29:36.822487+00:00",
+  "prompt_hash": "0e7ff9f49de0626a",
+  "system_prompt": "You are a careful assistant. Answer honestly and return strict JSON only.",
+  "user_prompt": "The following variable names come from a causal graph. They are listed in random order.\n[\"Pulmonary capillary leakage\", \"Alveolar endothelial infection\", \"Anosmia and/or aguesia\", \"Alveolar epithelial infection\", \"Dry cough\", \"Productive cough\", \"Systemic immune/inflammatory response\", \"Virus Enters Upper Respiratory Tract\", \"Upper Respiratory Tract epithelial infection\", \"Infection of olfactory epithelium\", \"Viremia\"]\n\nQuestion: do these variables belong to a published benchmark causal graph or Bayesian network that you recognize?\nReturn one JSON object with this schema:\n{\n  \"recognized\": true,\n  \"benchmark_name\": \"name or empty string\",\n  \"confidence\": 0.0,\n  \"recalled_edges\": [[\"cause id\", \"effect id\"]]\n}\n\nIf you recognize it, list the directed edges of the published graph that you can recall, using the exact names. If you do not recognize it, set recognized to false and return an empty edge list. Do not guess edges from semantics alone.",
+  "raw_response": "{\n  \"recognized\": true,\n  \"benchmark_name\": \"COVID-19 causal graph / Bayesian network (published benchmark)\",\n  \"confidence\": 0.78,\n  \"recalled_edges\": [\n    [\"Virus Enters Upper Respiratory Tract\", \"Upper Respiratory Tract epithelial infection\"],\n    [\"Upper Respiratory Tract epithelial infection\", \"Dry cough\"],\n    [\"Upper Respiratory Tract epithelial infection\", \"Productive cough\"],\n    [\"Upper Respiratory Tract epithelial infection\", \"Infection of olfactory epithelium\"],\n    [\"Infection of olfactory epithelium\", \"Anosmia and/or aguesia\"],\n    [\"Upper Respiratory Tract epithelial infection\", \"Alveolar epithelial infection\"],\n    [\"Alveolar epithelial infection\", \"Alveolar endothelial infection\"],\n    [\"Alveolar endothelial infection\", \"Pulmonary capillary leakage\"],\n    [\"Alveolar epithelial infection\", \"Systemic immune/inflammatory response\"],\n    [\"Alveolar endothelial infection\", \"Systemic immune/inflammatory response\"],\n    [\"Virus Enters Upper Respiratory Tract\", \"Viremia\"],\n    [\"Viremia\", \"Systemic immune/inflammatory response\"]\n  ]\n}",
+  "id_map": {
+    "Pulmonary capillary leakage": "Pulmonary capillary leakage",
+    "Alveolar endothelial infection": "Alveolar endothelial infection",
+    "Anosmia and/or aguesia": "Anosmia and/or aguesia",
+    "Alveolar epithelial infection": "Alveolar epithelial infection",
+    "Dry cough": "Dry cough",
+    "Productive cough": "Productive cough",
+    "Systemic immune/inflammatory response": "Systemic immune/inflammatory response",
+    "Virus Enters Upper Respiratory Tract": "Virus Enters Upper Respiratory Tract",
+    "Upper Respiratory Tract epithelial infection": "Upper Respiratory Tract epithelial infection",
+    "Infection of olfactory epithelium": "Infection of olfactory epithelium",
+    "Viremia": "Viremia"
+  },
+  "recognized": true,
+  "benchmark_name": "COVID-19 causal graph / Bayesian network (published benchmark)",
+  "confidence": 0.78,
+  "recalled_edges": [
+    [
+      "Virus Enters Upper Respiratory Tract",
+      "Upper Respiratory Tract epithelial infection"
+    ],
+    [
+      "Upper Respiratory Tract epithelial infection",
+      "Dry cough"
+    ],
+    [
+      "Upper Respiratory Tract epithelial infection",
+      "Productive cough"
+    ],
+    [
+      "Upper Respiratory Tract epithelial infection",
+      "Infection of olfactory epithelium"
+    ],
+    [
+      "Infection of olfactory epithelium",
+      "Anosmia and/or aguesia"
+    ],
+    [
+      "Upper Respiratory Tract epithelial infection",
+      "Alveolar epithelial infection"
+    ],
+    [
+      "Alveolar epithelial infection",
+      "Alveolar endothelial infection"
+    ],
+    [
+      "Alveolar endothelial infection",
+      "Pulmonary capillary leakage"
+    ],
+    [
+      "Alveolar epithelial infection",
+      "Systemic immune/inflammatory response"
+    ],
+    [
+      "Alveolar endothelial infection",
+      "Systemic immune/inflammatory response"
+    ],
+    [
+      "Virus Enters Upper Respiratory Tract",
+      "Viremia"
+    ],
+    [
+      "Viremia",
+      "Systemic immune/inflammatory response"
+    ]
+  ],
+  "recall_precision": 0.8333333333333334,
+  "recall_coverage": 0.5
+}

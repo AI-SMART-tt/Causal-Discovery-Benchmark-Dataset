@@ -1,0 +1,63 @@
+{
+  "collection": "bnlearn",
+  "dataset": "survey",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "named_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:15:32.405884+00:00",
+  "prompt_hash": "0550273c79e09989",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Dataset collection: bnlearn\nDataset name: survey\n\nVariables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"R\",\n    \"description\": \"the size of the city the individual lives in, recorded as either small or big\",\n    \"states\": \"small|big\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"E\",\n    \"description\": \"up to high school or university degree\",\n    \"states\": \"high|uni\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"T\",\n    \"description\": \"the means of transport favoured by the individual\",\n    \"states\": \"car|train|other\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"S\",\n    \"description\": \"male or female\",\n    \"states\": \"M|F\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"O\",\n    \"description\": \"employee or self-employed\",\n    \"states\": \"emp|self\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"A\",\n    \"description\": \"Age of people using transport\",\n    \"states\": \"young|adult|old\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"S\", \"A\", \"E\", \"O\", \"R\", \"T\"],\n  \"confidence\": 0.72,\n  \"high_confidence_pairs\": [\n    {\"before\": \"S\", \"after\": \"A\", \"confidence\": 0.78},\n    {\"before\": \"A\", \"after\": \"E\", \"confidence\": 0.7},\n    {\"before\": \"E\", \"after\": \"O\", \"confidence\": 0.68},\n    {\"before\": \"R\", \"after\": \"T\", \"confidence\": 0.74},\n    {\"before\": \"A\", \"after\": \"T\", \"confidence\": 0.66}\n  ],\n  \"rationale\": \"Sex is an upstream demographic attribute; age precedes education and occupation. City size is a contextual factor that can shape transport choice, while transport preference is a downstream behavioral outcome influenced by demographics and location. This is a semantic prior only, not a claim of ground truth.\"\n}",
+  "id_map": {
+    "R": "R",
+    "E": "E",
+    "T": "T",
+    "S": "S",
+    "O": "O",
+    "A": "A"
+  },
+  "ordered_nodes": [
+    "S",
+    "A",
+    "E",
+    "O",
+    "R",
+    "T"
+  ],
+  "confidence": 0.72,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "S",
+      "after": "A",
+      "confidence": 0.78
+    },
+    {
+      "before": "A",
+      "after": "E",
+      "confidence": 0.7
+    },
+    {
+      "before": "E",
+      "after": "O",
+      "confidence": 0.68
+    },
+    {
+      "before": "R",
+      "after": "T",
+      "confidence": 0.74
+    },
+    {
+      "before": "A",
+      "after": "T",
+      "confidence": 0.66
+    }
+  ],
+  "rationale": "Sex is an upstream demographic attribute; age precedes education and occupation. City size is a contextual factor that can shape transport choice, while transport preference is a downstream behavioral outcome influenced by demographics and location. This is a semantic prior only, not a claim of ground truth.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

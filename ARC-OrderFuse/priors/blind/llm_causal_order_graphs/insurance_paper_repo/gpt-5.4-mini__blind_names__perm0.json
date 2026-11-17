@@ -1,0 +1,135 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "insurance_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:27:44.332450+00:00",
+  "prompt_hash": "6fc40ee02506f8b5",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"PropCost\"\n  },\n  {\n    \"id\": \"OtherCar\"\n  },\n  {\n    \"id\": \"MedCost\"\n  },\n  {\n    \"id\": \"ThisCarCost\"\n  },\n  {\n    \"id\": \"AntiTheft\"\n  },\n  {\n    \"id\": \"DrivHist\"\n  },\n  {\n    \"id\": \"Accident\"\n  },\n  {\n    \"id\": \"SeniorTrain\"\n  },\n  {\n    \"id\": \"Antilock\"\n  },\n  {\n    \"id\": \"ThisCarDam\"\n  },\n  {\n    \"id\": \"Mileage\"\n  },\n  {\n    \"id\": \"Cushioning\"\n  },\n  {\n    \"id\": \"Airbag\"\n  },\n  {\n    \"id\": \"ILiCost\"\n  },\n  {\n    \"id\": \"SocioEcon\"\n  },\n  {\n    \"id\": \"Age\"\n  },\n  {\n    \"id\": \"OtherCarCost\"\n  },\n  {\n    \"id\": \"GoodStudent\"\n  },\n  {\n    \"id\": \"MakeModel\"\n  },\n  {\n    \"id\": \"RiskAversion\"\n  },\n  {\n    \"id\": \"DrivQuality\"\n  },\n  {\n    \"id\": \"VehicleYear\"\n  },\n  {\n    \"id\": \"CarValue\"\n  },\n  {\n    \"id\": \"DrivingSkill\"\n  },\n  {\n    \"id\": \"Theft\"\n  },\n  {\n    \"id\": \"RuggedAuto\"\n  },\n  {\n    \"id\": \"HomeBase\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Age\", \"SocioEcon\", \"HomeBase\", \"RiskAversion\", \"DrivingSkill\", \"DrivQuality\", \"GoodStudent\", \"SeniorTrain\", \"DrivHist\", \"VehicleYear\", \"MakeModel\", \"CarValue\", \"Mileage\", \"RuggedAuto\", \"AntiTheft\", \"Airbag\", \"Antilock\", \"Cushioning\", \"ThisCarCost\", \"OtherCar\", \"PropCost\", \"MedCost\", \"ILiCost\", \"OtherCarCost\", \"Theft\", \"Accident\", \"ThisCarDam\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Age\", \"after\": \"SeniorTrain\", \"confidence\": 0.96},\n    {\"before\": \"Age\", \"after\": \"GoodStudent\", \"confidence\": 0.95},\n    {\"before\": \"SocioEcon\", \"after\": \"HomeBase\", \"confidence\": 0.8},\n    {\"before\": \"DrivingSkill\", \"after\": \"DrivQuality\", \"confidence\": 0.9},\n    {\"before\": \"VehicleYear\", \"after\": \"CarValue\", \"confidence\": 0.88},\n    {\"before\": \"MakeModel\", \"after\": \"ThisCarCost\", \"confidence\": 0.93},\n    {\"before\": \"MakeModel\", \"after\": \"RuggedAuto\", \"confidence\": 0.92},\n    {\"before\": \"CarValue\", \"after\": \"ThisCarCost\", \"confidence\": 0.9},\n    {\"before\": \"AntiTheft\", \"after\": \"Theft\", \"confidence\": 0.95},\n    {\"before\": \"Airbag\", \"after\": \"ThisCarDam\", \"confidence\": 0.8},\n    {\"before\": \"Antilock\", \"after\": \"Accident\", \"confidence\": 0.72}\n  ],\n  \"rationale\": \"Upstream demographics and stable traits come first, followed by driving skill/history and vehicle selection/characteristics. Safety equipment and cost-related attributes are downstream of vehicle choice. Event outcomes such as theft and accidents come later, with damage as a downstream consequence. Insurance cost variables are placed after their likely risk drivers and outcomes as aggregate consequences of the underlying factors.\"\n}",
+  "id_map": {
+    "PropCost": "PropCost",
+    "OtherCar": "OtherCar",
+    "MedCost": "MedCost",
+    "ThisCarCost": "ThisCarCost",
+    "AntiTheft": "AntiTheft",
+    "DrivHist": "DrivHist",
+    "Accident": "Accident",
+    "SeniorTrain": "SeniorTrain",
+    "Antilock": "Antilock",
+    "ThisCarDam": "ThisCarDam",
+    "Mileage": "Mileage",
+    "Cushioning": "Cushioning",
+    "Airbag": "Airbag",
+    "ILiCost": "ILiCost",
+    "SocioEcon": "SocioEcon",
+    "Age": "Age",
+    "OtherCarCost": "OtherCarCost",
+    "GoodStudent": "GoodStudent",
+    "MakeModel": "MakeModel",
+    "RiskAversion": "RiskAversion",
+    "DrivQuality": "DrivQuality",
+    "VehicleYear": "VehicleYear",
+    "CarValue": "CarValue",
+    "DrivingSkill": "DrivingSkill",
+    "Theft": "Theft",
+    "RuggedAuto": "RuggedAuto",
+    "HomeBase": "HomeBase"
+  },
+  "ordered_nodes": [
+    "Age",
+    "SocioEcon",
+    "HomeBase",
+    "RiskAversion",
+    "DrivingSkill",
+    "DrivQuality",
+    "GoodStudent",
+    "SeniorTrain",
+    "DrivHist",
+    "VehicleYear",
+    "MakeModel",
+    "CarValue",
+    "Mileage",
+    "RuggedAuto",
+    "AntiTheft",
+    "Airbag",
+    "Antilock",
+    "Cushioning",
+    "ThisCarCost",
+    "OtherCar",
+    "PropCost",
+    "MedCost",
+    "ILiCost",
+    "OtherCarCost",
+    "Theft",
+    "Accident",
+    "ThisCarDam"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "SeniorTrain",
+      "confidence": 0.96
+    },
+    {
+      "before": "Age",
+      "after": "GoodStudent",
+      "confidence": 0.95
+    },
+    {
+      "before": "SocioEcon",
+      "after": "HomeBase",
+      "confidence": 0.8
+    },
+    {
+      "before": "DrivingSkill",
+      "after": "DrivQuality",
+      "confidence": 0.9
+    },
+    {
+      "before": "VehicleYear",
+      "after": "CarValue",
+      "confidence": 0.88
+    },
+    {
+      "before": "MakeModel",
+      "after": "ThisCarCost",
+      "confidence": 0.93
+    },
+    {
+      "before": "MakeModel",
+      "after": "RuggedAuto",
+      "confidence": 0.92
+    },
+    {
+      "before": "CarValue",
+      "after": "ThisCarCost",
+      "confidence": 0.9
+    },
+    {
+      "before": "AntiTheft",
+      "after": "Theft",
+      "confidence": 0.95
+    },
+    {
+      "before": "Airbag",
+      "after": "ThisCarDam",
+      "confidence": 0.8
+    },
+    {
+      "before": "Antilock",
+      "after": "Accident",
+      "confidence": 0.72
+    }
+  ],
+  "rationale": "Upstream demographics and stable traits come first, followed by driving skill/history and vehicle selection/characteristics. Safety equipment and cost-related attributes are downstream of vehicle choice. Event outcomes such as theft and accidents come later, with damage as a downstream consequence. Insurance cost variables are placed after their likely risk drivers and outcomes as aggregate consequences of the underlying factors.",
+  "direct_edge_accuracy": 0.826923,
+  "pair_accuracy": 0.916667
+}

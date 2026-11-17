@@ -1,0 +1,116 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "child_paper_repo",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:36:01.150972+00:00",
+  "prompt_hash": "c70e976e27eeea87",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"XrayReport\",\n    \"description\": \"lung excessively filled with blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Grunting\",\n    \"description\": \"grunting in infants\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"RUQO2\",\n    \"description\": \"level of oxygen in the right up quadricep muscule\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"LungFlow\",\n    \"description\": \"low blood flow in the lungs\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"CardiacMixing\",\n    \"description\": \"mixing of oxygenated and deoxygenated blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Disease\",\n    \"description\": \"infant methemoglobinemia\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"CO2\",\n    \"description\": \"level of carbon dioxide in the body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"LVH\",\n    \"description\": \"thickening of the left ventricle\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"CO2Report\",\n    \"description\": \"a document reporting high level of CO2 levels in blood\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"LowerBodyO2\",\n    \"description\": \"level of oxygen in the lower body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"GruntingReport\",\n    \"description\": \"report of infant grunting\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"HypoxiaInO2\",\n    \"description\": \"hypoxia when breathing oxygen\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"LVHreport\",\n    \"description\": \"report of having left ventricular hypertrophy\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"BirthAsphyxia\",\n    \"description\": \"lack of oxygen to the blood during the infant's birth\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Sick\",\n    \"description\": \"presence of an illness\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"ChestXray\",\n    \"description\": \"having a chest x-ray\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"DuctFlow\",\n    \"description\": \"blood flow across the ductus arteriosus\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"LungParench\",\n    \"description\": \"the state of the blood vessels in the lungs\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Age\",\n    \"description\": \"age of infant at disease presentation\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"HypDistrib\",\n    \"description\": \"low oxygen areas equally distributed around the body\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"type\": \"json_object\", \"ordered_nodes\": [\"BirthAsphyxia\", \"Disease\", \"Age\", \"CardiacMixing\", \"DuctFlow\", \"LungParench\", \"LungFlow\", \"LVH\", \"CO2\", \"LowerBodyO2\", \"RUQO2\", \"HypoxiaInO2\", \"HypDistrib\", \"Grunting\", \"Sick\", \"ChestXray\", \"XrayReport\", \"CO2Report\", \"GruntingReport\", \"LVHreport\"], \"confidence\": 0.55, \"high_confidence_pairs\": [{\"before\": \"BirthAsphyxia\", \"after\": \"Disease\", \"confidence\": 0.7}, {\"before\": \"Disease\", \"after\": \"CardiacMixing\", \"confidence\": 0.75}, {\"before\": \"Disease\", \"after\": \"LungParench\", \"confidence\": 0.7}, {\"before\": \"CardiacMixing\", \"after\": \"LowerBodyO2\", \"confidence\": 0.7}, {\"before\": \"LungParench\", \"after\": \"LungFlow\", \"confidence\": 0.65}, {\"before\": \"LowerBodyO2\", \"after\": \"HypoxiaInO2\", \"confidence\": 0.6}, {\"before\": \"Grunting\", \"after\": \"GruntingReport\", \"confidence\": 0.9}, {\"before\": \"CO2\", \"after\": \"CO2Report\", \"confidence\": 0.9}, {\"before\": \"LVH\", \"after\": \"LVHreport\", \"confidence\": 0.9}, {\"before\": \"ChestXray\", \"after\": \"XrayReport\", \"confidence\": 0.85}], \"rationale\": \"Congenital disease and birth asphyxia are upstream root causes; structural cardiac/lung abnormalities (mixing, duct flow, parenchyma, LVH) follow, then physiologic measures (CO2, O2 levels, hypoxia), then symptoms (grunting, sick), then procedures and reports as downstream observations.\"}",
+  "id_map": {
+    "XrayReport": "XrayReport",
+    "Grunting": "Grunting",
+    "RUQO2": "RUQO2",
+    "LungFlow": "LungFlow",
+    "CardiacMixing": "CardiacMixing",
+    "Disease": "Disease",
+    "CO2": "CO2",
+    "LVH": "LVH",
+    "CO2Report": "CO2Report",
+    "LowerBodyO2": "LowerBodyO2",
+    "GruntingReport": "GruntingReport",
+    "HypoxiaInO2": "HypoxiaInO2",
+    "LVHreport": "LVHreport",
+    "BirthAsphyxia": "BirthAsphyxia",
+    "Sick": "Sick",
+    "ChestXray": "ChestXray",
+    "DuctFlow": "DuctFlow",
+    "LungParench": "LungParench",
+    "Age": "Age",
+    "HypDistrib": "HypDistrib"
+  },
+  "ordered_nodes": [
+    "BirthAsphyxia",
+    "Disease",
+    "Age",
+    "CardiacMixing",
+    "DuctFlow",
+    "LungParench",
+    "LungFlow",
+    "LVH",
+    "CO2",
+    "LowerBodyO2",
+    "RUQO2",
+    "HypoxiaInO2",
+    "HypDistrib",
+    "Grunting",
+    "Sick",
+    "ChestXray",
+    "XrayReport",
+    "CO2Report",
+    "GruntingReport",
+    "LVHreport"
+  ],
+  "confidence": 0.55,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "BirthAsphyxia",
+      "after": "Disease",
+      "confidence": 0.7
+    },
+    {
+      "before": "Disease",
+      "after": "CardiacMixing",
+      "confidence": 0.75
+    },
+    {
+      "before": "Disease",
+      "after": "LungParench",
+      "confidence": 0.7
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "LowerBodyO2",
+      "confidence": 0.7
+    },
+    {
+      "before": "LungParench",
+      "after": "LungFlow",
+      "confidence": 0.65
+    },
+    {
+      "before": "LowerBodyO2",
+      "after": "HypoxiaInO2",
+      "confidence": 0.6
+    },
+    {
+      "before": "Grunting",
+      "after": "GruntingReport",
+      "confidence": 0.9
+    },
+    {
+      "before": "CO2",
+      "after": "CO2Report",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVH",
+      "after": "LVHreport",
+      "confidence": 0.9
+    },
+    {
+      "before": "ChestXray",
+      "after": "XrayReport",
+      "confidence": 0.85
+    }
+  ],
+  "rationale": "Congenital disease and birth asphyxia are upstream root causes; structural cardiac/lung abnormalities (mixing, duct flow, parenchyma, LVH) follow, then physiologic measures (CO2, O2 levels, hypoxia), then symptoms (grunting, sick), then procedures and reports as downstream observations.",
+  "direct_edge_accuracy": 0.8,
+  "pair_accuracy": 0.921875
+}

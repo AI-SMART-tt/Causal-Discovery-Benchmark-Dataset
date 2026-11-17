@@ -1,0 +1,198 @@
+{
+  "collection": "bnlearn",
+  "dataset": "insurance",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "probe",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:19:22.975956+00:00",
+  "prompt_hash": "8a486c8e6a9afc58",
+  "system_prompt": "You are a careful assistant. Answer honestly and return strict JSON only.",
+  "user_prompt": "The following variable names come from a causal graph. They are listed in random order.\n[\"SocioEcon\", \"RiskAversion\", \"CarValue\", \"MedCost\", \"DrivQuality\", \"AntiTheft\", \"ThisCarDam\", \"OtherCarCost\", \"Antilock\", \"ILiCost\", \"OtherCar\", \"MakeModel\", \"Cushioning\", \"Airbag\", \"Age\", \"HomeBase\", \"Accident\", \"DrivHist\", \"Mileage\", \"ThisCarCost\", \"GoodStudent\", \"RuggedAuto\", \"VehicleYear\", \"PropCost\", \"Theft\", \"SeniorTrain\", \"DrivingSkill\"]\n\nQuestion: do these variables belong to a published benchmark causal graph or Bayesian network that you recognize?\nReturn one JSON object with this schema:\n{\n  \"recognized\": true,\n  \"benchmark_name\": \"name or empty string\",\n  \"confidence\": 0.0,\n  \"recalled_edges\": [[\"cause id\", \"effect id\"]]\n}\n\nIf you recognize it, list the directed edges of the published graph that you can recall, using the exact names. If you do not recognize it, set recognized to false and return an empty edge list. Do not guess edges from semantics alone.",
+  "raw_response": "{\"recognized\":true,\"benchmark_name\":\"Insurance Bayesian network\",\"confidence\":0.98,\"recalled_edges\":[[\"Age\",\"SocioEcon\"],[\"SocioEcon\",\"GoodStudent\"],[\"Age\",\"SeniorTrain\"],[\"Age\",\"RiskAversion\"],[\"Age\",\"DrivingSkill\"],[\"SeniorTrain\",\"DrivingSkill\"],[\"RiskAversion\",\"DrivingSkill\"],[\"RiskAversion\",\"Antilock\"],[\"RiskAversion\",\"Cushioning\"],[\"MakeModel\",\"CarValue\"],[\"VehicleYear\",\"CarValue\"],[\"MakeModel\",\"RuggedAuto\"],[\"VehicleYear\",\"RuggedAuto\"],[\"MakeModel\",\"Airbag\"],[\"VehicleYear\",\"Airbag\"],[\"MakeModel\",\"Antilock\"],[\"VehicleYear\",\"Antilock\"],[\"MakeModel\",\"AntiTheft\"],[\"VehicleYear\",\"AntiTheft\"],[\"CarValue\",\"ThisCarCost\"],[\"CarValue\",\"OtherCarCost\"],[\"CarValue\",\"MedCost\"],[\"CarValue\",\"ILiCost\"],[\"CarValue\",\"PropCost\"],[\"Age\",\"DrivHist\"],[\"DrivingSkill\",\"DrivHist\"],[\"DrivHist\",\"Accident\"],[\"Mileage\",\"Accident\"],[\"DrivingSkill\",\"Accident\"],[\"RuggedAuto\",\"Accident\"],[\"Cushioning\",\"ThisCarDam\"],[\"Airbag\",\"ThisCarDam\"],[\"Accident\",\"ThisCarDam\"],[\"Accident\",\"OtherCar\"],[\"AntiTheft\",\"Theft\"],[\"HomeBase\",\"Theft\"],[\"Theft\",\"CarValue\"]]}",
+  "id_map": {
+    "SocioEcon": "SocioEcon",
+    "RiskAversion": "RiskAversion",
+    "CarValue": "CarValue",
+    "MedCost": "MedCost",
+    "DrivQuality": "DrivQuality",
+    "AntiTheft": "AntiTheft",
+    "ThisCarDam": "ThisCarDam",
+    "OtherCarCost": "OtherCarCost",
+    "Antilock": "Antilock",
+    "ILiCost": "ILiCost",
+    "OtherCar": "OtherCar",
+    "MakeModel": "MakeModel",
+    "Cushioning": "Cushioning",
+    "Airbag": "Airbag",
+    "Age": "Age",
+    "HomeBase": "HomeBase",
+    "Accident": "Accident",
+    "DrivHist": "DrivHist",
+    "Mileage": "Mileage",
+    "ThisCarCost": "ThisCarCost",
+    "GoodStudent": "GoodStudent",
+    "RuggedAuto": "RuggedAuto",
+    "VehicleYear": "VehicleYear",
+    "PropCost": "PropCost",
+    "Theft": "Theft",
+    "SeniorTrain": "SeniorTrain",
+    "DrivingSkill": "DrivingSkill"
+  },
+  "recognized": true,
+  "benchmark_name": "Insurance Bayesian network",
+  "confidence": 0.98,
+  "recalled_edges": [
+    [
+      "Age",
+      "SocioEcon"
+    ],
+    [
+      "SocioEcon",
+      "GoodStudent"
+    ],
+    [
+      "Age",
+      "SeniorTrain"
+    ],
+    [
+      "Age",
+      "RiskAversion"
+    ],
+    [
+      "Age",
+      "DrivingSkill"
+    ],
+    [
+      "SeniorTrain",
+      "DrivingSkill"
+    ],
+    [
+      "RiskAversion",
+      "DrivingSkill"
+    ],
+    [
+      "RiskAversion",
+      "Antilock"
+    ],
+    [
+      "RiskAversion",
+      "Cushioning"
+    ],
+    [
+      "MakeModel",
+      "CarValue"
+    ],
+    [
+      "VehicleYear",
+      "CarValue"
+    ],
+    [
+      "MakeModel",
+      "RuggedAuto"
+    ],
+    [
+      "VehicleYear",
+      "RuggedAuto"
+    ],
+    [
+      "MakeModel",
+      "Airbag"
+    ],
+    [
+      "VehicleYear",
+      "Airbag"
+    ],
+    [
+      "MakeModel",
+      "Antilock"
+    ],
+    [
+      "VehicleYear",
+      "Antilock"
+    ],
+    [
+      "MakeModel",
+      "AntiTheft"
+    ],
+    [
+      "VehicleYear",
+      "AntiTheft"
+    ],
+    [
+      "CarValue",
+      "ThisCarCost"
+    ],
+    [
+      "CarValue",
+      "OtherCarCost"
+    ],
+    [
+      "CarValue",
+      "MedCost"
+    ],
+    [
+      "CarValue",
+      "ILiCost"
+    ],
+    [
+      "CarValue",
+      "PropCost"
+    ],
+    [
+      "Age",
+      "DrivHist"
+    ],
+    [
+      "DrivingSkill",
+      "DrivHist"
+    ],
+    [
+      "DrivHist",
+      "Accident"
+    ],
+    [
+      "Mileage",
+      "Accident"
+    ],
+    [
+      "DrivingSkill",
+      "Accident"
+    ],
+    [
+      "RuggedAuto",
+      "Accident"
+    ],
+    [
+      "Cushioning",
+      "ThisCarDam"
+    ],
+    [
+      "Airbag",
+      "ThisCarDam"
+    ],
+    [
+      "Accident",
+      "ThisCarDam"
+    ],
+    [
+      "Accident",
+      "OtherCar"
+    ],
+    [
+      "AntiTheft",
+      "Theft"
+    ],
+    [
+      "HomeBase",
+      "Theft"
+    ],
+    [
+      "Theft",
+      "CarValue"
+    ]
+  ],
+  "recall_precision": 0.5405405405405406,
+  "recall_coverage": 0.38461538461538464
+}

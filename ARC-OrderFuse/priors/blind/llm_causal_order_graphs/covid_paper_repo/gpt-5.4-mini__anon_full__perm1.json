@@ -1,0 +1,98 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "covid_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-12T15:29:16.205715+00:00",
+  "prompt_hash": "a748fed53ab12b36",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"Alveolar epithelial infection\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"Viremia\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"Virus Enters Upper Respiratory Tract\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"Pulmonary capillary leakage\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"Infection of olfactory epithelium\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"Dry cough\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"Upper Respiratory Tract epithelial infection\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"Alveolar endothelial infection\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"Anosmia and/or aguesia\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"Productive cough\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"Systemic immune/inflammatory response\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V03\", \"V07\", \"V05\", \"V01\", \"V08\", \"V02\", \"V11\", \"V04\", \"V06\", \"V10\", \"V09\"],\n  \"confidence\": 0.84,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V03\", \"after\": \"V07\", \"confidence\": 0.98},\n    {\"before\": \"V03\", \"after\": \"V05\", \"confidence\": 0.86},\n    {\"before\": \"V07\", \"after\": \"V01\", \"confidence\": 0.9},\n    {\"before\": \"V01\", \"after\": \"V08\", \"confidence\": 0.87},\n    {\"before\": \"V02\", \"after\": \"V11\", \"confidence\": 0.93},\n    {\"before\": \"V11\", \"after\": \"V04\", \"confidence\": 0.9},\n    {\"before\": \"V04\", \"after\": \"V06\", \"confidence\": 0.84},\n    {\"before\": \"V04\", \"after\": \"V10\", \"confidence\": 0.84},\n    {\"before\": \"V05\", \"after\": \"V09\", \"confidence\": 0.97},\n    {\"before\": \"V01\", \"after\": \"V06\", \"confidence\": 0.78}\n  ],\n  \"rationale\": \"Likely infection sequence starts with viral entry into the upper respiratory tract, followed by epithelial infection, possible olfactory involvement, then lower respiratory spread to alveolar tissues and endothelial cells. Viremia precedes systemic immune/inflammatory response, which can contribute to pulmonary capillary leakage and respiratory symptoms. Anosmia follows olfactory epithelium infection; cough symptoms are downstream of lung involvement.\"\n}",
+  "id_map": {
+    "V01": "Alveolar epithelial infection",
+    "V02": "Viremia",
+    "V03": "Virus Enters Upper Respiratory Tract",
+    "V04": "Pulmonary capillary leakage",
+    "V05": "Infection of olfactory epithelium",
+    "V06": "Dry cough",
+    "V07": "Upper Respiratory Tract epithelial infection",
+    "V08": "Alveolar endothelial infection",
+    "V09": "Anosmia and/or aguesia",
+    "V10": "Productive cough",
+    "V11": "Systemic immune/inflammatory response"
+  },
+  "ordered_nodes": [
+    "Virus Enters Upper Respiratory Tract",
+    "Upper Respiratory Tract epithelial infection",
+    "Infection of olfactory epithelium",
+    "Alveolar epithelial infection",
+    "Alveolar endothelial infection",
+    "Viremia",
+    "Systemic immune/inflammatory response",
+    "Pulmonary capillary leakage",
+    "Dry cough",
+    "Productive cough",
+    "Anosmia and/or aguesia"
+  ],
+  "confidence": 0.84,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Virus Enters Upper Respiratory Tract",
+      "after": "Upper Respiratory Tract epithelial infection",
+      "confidence": 0.98
+    },
+    {
+      "before": "Virus Enters Upper Respiratory Tract",
+      "after": "Infection of olfactory epithelium",
+      "confidence": 0.86
+    },
+    {
+      "before": "Upper Respiratory Tract epithelial infection",
+      "after": "Alveolar epithelial infection",
+      "confidence": 0.9
+    },
+    {
+      "before": "Alveolar epithelial infection",
+      "after": "Alveolar endothelial infection",
+      "confidence": 0.87
+    },
+    {
+      "before": "Viremia",
+      "after": "Systemic immune/inflammatory response",
+      "confidence": 0.93
+    },
+    {
+      "before": "Systemic immune/inflammatory response",
+      "after": "Pulmonary capillary leakage",
+      "confidence": 0.9
+    },
+    {
+      "before": "Pulmonary capillary leakage",
+      "after": "Dry cough",
+      "confidence": 0.84
+    },
+    {
+      "before": "Pulmonary capillary leakage",
+      "after": "Productive cough",
+      "confidence": 0.84
+    },
+    {
+      "before": "Infection of olfactory epithelium",
+      "after": "Anosmia and/or aguesia",
+      "confidence": 0.97
+    },
+    {
+      "before": "Alveolar epithelial infection",
+      "after": "Dry cough",
+      "confidence": 0.78
+    }
+  ],
+  "rationale": "Likely infection sequence starts with viral entry into the upper respiratory tract, followed by epithelial infection, possible olfactory involvement, then lower respiratory spread to alveolar tissues and endothelial cells. Viremia precedes systemic immune/inflammatory response, which can contribute to pulmonary capillary leakage and respiratory symptoms. Anosmia follows olfactory epithelium infection; cough symptoms are downstream of lung involvement.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

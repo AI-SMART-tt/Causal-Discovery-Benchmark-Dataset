@@ -1,0 +1,88 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "alzheimers_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:30:03.141013+00:00",
+  "prompt_hash": "6e52755f22c74b70",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"brain MRI\"\n  },\n  {\n    \"id\": \"moca\"\n  },\n  {\n    \"id\": \"sex\"\n  },\n  {\n    \"id\": \"slice number\"\n  },\n  {\n    \"id\": \"brain volume\"\n  },\n  {\n    \"id\": \"ventricular volume\"\n  },\n  {\n    \"id\": \"age\"\n  },\n  {\n    \"id\": \"tau\"\n  },\n  {\n    \"id\": \"education\"\n  },\n  {\n    \"id\": \"av45\"\n  },\n  {\n    \"id\": \"APOE4\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"sex\", \"age\", \"education\", \"APOE4\", \"tau\", \"av45\", \"brain volume\", \"ventricular volume\", \"brain MRI\", \"slice number\", \"moca\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"age\", \"after\": \"moca\", \"confidence\": 0.9},\n    {\"before\": \"education\", \"after\": \"moca\", \"confidence\": 0.85},\n    {\"before\": \"APOE4\", \"after\": \"tau\", \"confidence\": 0.8},\n    {\"before\": \"APOE4\", \"after\": \"av45\", \"confidence\": 0.78},\n    {\"before\": \"brain volume\", \"after\": \"ventricular volume\", \"confidence\": 0.82},\n    {\"before\": \"brain MRI\", \"after\": \"brain volume\", \"confidence\": 0.88},\n    {\"before\": \"brain MRI\", \"after\": \"ventricular volume\", \"confidence\": 0.88},\n    {\"before\": \"age\", \"after\": \"brain volume\", \"confidence\": 0.83}\n  ],\n  \"rationale\": \"Sex, age, education, and APOE4 are upstream demographic/genetic factors. Biomarkers tau and av45 precede structural brain changes captured by MRI-derived volume measures. Brain MRI is the measurement step behind derived volumes. Slice number is a scan/protocol attribute and is placed before cognitive outcome variables. Moca is last as a downstream clinical/cognitive measure.\"\n}",
+  "id_map": {
+    "brain MRI": "brain MRI",
+    "moca": "moca",
+    "sex": "sex",
+    "slice number": "slice number",
+    "brain volume": "brain volume",
+    "ventricular volume": "ventricular volume",
+    "age": "age",
+    "tau": "tau",
+    "education": "education",
+    "av45": "av45",
+    "APOE4": "APOE4"
+  },
+  "ordered_nodes": [
+    "sex",
+    "age",
+    "education",
+    "APOE4",
+    "tau",
+    "av45",
+    "brain volume",
+    "ventricular volume",
+    "brain MRI",
+    "slice number",
+    "moca"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "age",
+      "after": "moca",
+      "confidence": 0.9
+    },
+    {
+      "before": "education",
+      "after": "moca",
+      "confidence": 0.85
+    },
+    {
+      "before": "APOE4",
+      "after": "tau",
+      "confidence": 0.8
+    },
+    {
+      "before": "APOE4",
+      "after": "av45",
+      "confidence": 0.78
+    },
+    {
+      "before": "brain volume",
+      "after": "ventricular volume",
+      "confidence": 0.82
+    },
+    {
+      "before": "brain MRI",
+      "after": "brain volume",
+      "confidence": 0.88
+    },
+    {
+      "before": "brain MRI",
+      "after": "ventricular volume",
+      "confidence": 0.88
+    },
+    {
+      "before": "age",
+      "after": "brain volume",
+      "confidence": 0.83
+    }
+  ],
+  "rationale": "Sex, age, education, and APOE4 are upstream demographic/genetic factors. Biomarkers tau and av45 precede structural brain changes captured by MRI-derived volume measures. Brain MRI is the measurement step behind derived volumes. Slice number is a scan/protocol attribute and is placed before cognitive outcome variables. Moca is last as a downstream clinical/cognitive measure.",
+  "direct_edge_accuracy": 0.894737,
+  "pair_accuracy": 0.935484
+}

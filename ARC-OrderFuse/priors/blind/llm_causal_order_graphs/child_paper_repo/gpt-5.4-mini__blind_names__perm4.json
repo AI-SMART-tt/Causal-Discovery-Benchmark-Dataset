@@ -1,0 +1,136 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "child_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:25:09.529070+00:00",
+  "prompt_hash": "0ae63acd6f04d1d7",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"LowerBodyO2\"\n  },\n  {\n    \"id\": \"LungParench\"\n  },\n  {\n    \"id\": \"Sick\"\n  },\n  {\n    \"id\": \"ChestXray\"\n  },\n  {\n    \"id\": \"CO2\"\n  },\n  {\n    \"id\": \"Disease\"\n  },\n  {\n    \"id\": \"RUQO2\"\n  },\n  {\n    \"id\": \"LungFlow\"\n  },\n  {\n    \"id\": \"HypDistrib\"\n  },\n  {\n    \"id\": \"XrayReport\"\n  },\n  {\n    \"id\": \"Grunting\"\n  },\n  {\n    \"id\": \"CardiacMixing\"\n  },\n  {\n    \"id\": \"LVH\"\n  },\n  {\n    \"id\": \"HypoxiaInO2\"\n  },\n  {\n    \"id\": \"GruntingReport\"\n  },\n  {\n    \"id\": \"DuctFlow\"\n  },\n  {\n    \"id\": \"LVHreport\"\n  },\n  {\n    \"id\": \"BirthAsphyxia\"\n  },\n  {\n    \"id\": \"CO2Report\"\n  },\n  {\n    \"id\": \"Age\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Age\", \"BirthAsphyxia\", \"Disease\", \"Sick\", \"LungParench\", \"LungFlow\", \"CardiacMixing\", \"DuctFlow\", \"LVH\", \"HypDistrib\", \"HypoxiaInO2\", \"LowerBodyO2\", \"RUQO2\", \"CO2\", \"Grunting\", \"ChestXray\", \"XrayReport\", \"CO2Report\", \"GruntingReport\", \"LVHreport\"],\n  \"confidence\": 0.62,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Age\", \"after\": \"BirthAsphyxia\", \"confidence\": 0.83},\n    {\"before\": \"BirthAsphyxia\", \"after\": \"Sick\", \"confidence\": 0.8},\n    {\"before\": \"Disease\", \"after\": \"Sick\", \"confidence\": 0.78},\n    {\"before\": \"Disease\", \"after\": \"LungParench\", \"confidence\": 0.74},\n    {\"before\": \"Disease\", \"after\": \"LungFlow\", \"confidence\": 0.72},\n    {\"before\": \"Disease\", \"after\": \"CardiacMixing\", \"confidence\": 0.72},\n    {\"before\": \"CardiacMixing\", \"after\": \"HypDistrib\", \"confidence\": 0.76},\n    {\"before\": \"HypDistrib\", \"after\": \"LowerBodyO2\", \"confidence\": 0.82},\n    {\"before\": \"HypDistrib\", \"after\": \"RUQO2\", \"confidence\": 0.8},\n    {\"before\": \"LungParench\", \"after\": \"ChestXray\", \"confidence\": 0.7},\n    {\"before\": \"ChestXray\", \"after\": \"XrayReport\", \"confidence\": 0.89},\n    {\"before\": \"CO2\", \"after\": \"CO2Report\", \"confidence\": 0.9},\n    {\"before\": \"Grunting\", \"after\": \"GruntingReport\", \"confidence\": 0.9},\n    {\"before\": \"LVH\", \"after\": \"LVHreport\", \"confidence\": 0.9}\n  ],\n  \"rationale\": \"Age and birth history are upstream. Disease, lung, and cardiac abnormalities precede physiological effects like hypoxia and altered blood gases. Mixing and shunting affect oxygen distribution and regional oxygen levels. Symptoms and imaging occur downstream of underlying disease, while report variables are downstream measurements/encodings of findings.\"\n}",
+  "id_map": {
+    "LowerBodyO2": "LowerBodyO2",
+    "LungParench": "LungParench",
+    "Sick": "Sick",
+    "ChestXray": "ChestXray",
+    "CO2": "CO2",
+    "Disease": "Disease",
+    "RUQO2": "RUQO2",
+    "LungFlow": "LungFlow",
+    "HypDistrib": "HypDistrib",
+    "XrayReport": "XrayReport",
+    "Grunting": "Grunting",
+    "CardiacMixing": "CardiacMixing",
+    "LVH": "LVH",
+    "HypoxiaInO2": "HypoxiaInO2",
+    "GruntingReport": "GruntingReport",
+    "DuctFlow": "DuctFlow",
+    "LVHreport": "LVHreport",
+    "BirthAsphyxia": "BirthAsphyxia",
+    "CO2Report": "CO2Report",
+    "Age": "Age"
+  },
+  "ordered_nodes": [
+    "Age",
+    "BirthAsphyxia",
+    "Disease",
+    "Sick",
+    "LungParench",
+    "LungFlow",
+    "CardiacMixing",
+    "DuctFlow",
+    "LVH",
+    "HypDistrib",
+    "HypoxiaInO2",
+    "LowerBodyO2",
+    "RUQO2",
+    "CO2",
+    "Grunting",
+    "ChestXray",
+    "XrayReport",
+    "CO2Report",
+    "GruntingReport",
+    "LVHreport"
+  ],
+  "confidence": 0.62,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "BirthAsphyxia",
+      "confidence": 0.83
+    },
+    {
+      "before": "BirthAsphyxia",
+      "after": "Sick",
+      "confidence": 0.8
+    },
+    {
+      "before": "Disease",
+      "after": "Sick",
+      "confidence": 0.78
+    },
+    {
+      "before": "Disease",
+      "after": "LungParench",
+      "confidence": 0.74
+    },
+    {
+      "before": "Disease",
+      "after": "LungFlow",
+      "confidence": 0.72
+    },
+    {
+      "before": "Disease",
+      "after": "CardiacMixing",
+      "confidence": 0.72
+    },
+    {
+      "before": "CardiacMixing",
+      "after": "HypDistrib",
+      "confidence": 0.76
+    },
+    {
+      "before": "HypDistrib",
+      "after": "LowerBodyO2",
+      "confidence": 0.82
+    },
+    {
+      "before": "HypDistrib",
+      "after": "RUQO2",
+      "confidence": 0.8
+    },
+    {
+      "before": "LungParench",
+      "after": "ChestXray",
+      "confidence": 0.7
+    },
+    {
+      "before": "ChestXray",
+      "after": "XrayReport",
+      "confidence": 0.89
+    },
+    {
+      "before": "CO2",
+      "after": "CO2Report",
+      "confidence": 0.9
+    },
+    {
+      "before": "Grunting",
+      "after": "GruntingReport",
+      "confidence": 0.9
+    },
+    {
+      "before": "LVH",
+      "after": "LVHreport",
+      "confidence": 0.9
+    }
+  ],
+  "rationale": "Age and birth history are upstream. Disease, lung, and cardiac abnormalities precede physiological effects like hypoxia and altered blood gases. Mixing and shunting affect oxygen distribution and regional oxygen levels. Symptoms and imaging occur downstream of underlying disease, while report variables are downstream measurements/encodings of findings.",
+  "direct_edge_accuracy": 0.92,
+  "pair_accuracy": 0.953125
+}

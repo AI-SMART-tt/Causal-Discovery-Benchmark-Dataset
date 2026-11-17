@@ -1,0 +1,148 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_observable_c6c7",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:34:06.945284+00:00",
+  "prompt_hash": "ec3876198b814003",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"L Medial elbow problems\"\n  },\n  {\n    \"id\": \"neck pain\"\n  },\n  {\n    \"id\": \"L Elbow problems\"\n  },\n  {\n    \"id\": \"R bend of arm discomfort\"\n  },\n  {\n    \"id\": \"R Hand problems\"\n  },\n  {\n    \"id\": \"R lower arm disorders\"\n  },\n  {\n    \"id\": \"R Medial elbow problems\"\n  },\n  {\n    \"id\": \"L Shoulder problems\"\n  },\n  {\n    \"id\": \"L Arm\"\n  },\n  {\n    \"id\": \"L Finger trouble\"\n  },\n  {\n    \"id\": \"R neck\"\n  },\n  {\n    \"id\": \"R C7\"\n  },\n  {\n    \"id\": \"R Wrist problems\"\n  },\n  {\n    \"id\": \"R Armband\"\n  },\n  {\n    \"id\": \"L lower arm disorders\"\n  },\n  {\n    \"id\": \"L Neck problems\"\n  },\n  {\n    \"id\": \"L Wrist problems\"\n  },\n  {\n    \"id\": \"L bend of arm problems\"\n  },\n  {\n    \"id\": \"R Finger trouble\"\n  },\n  {\n    \"id\": \"R Elbow trouble\"\n  },\n  {\n    \"id\": \"L Hand problems\"\n  },\n  {\n    \"id\": \"L C7\"\n  },\n  {\n    \"id\": \"DLS C6-C7\"\n  },\n  {\n    \"id\": \"R Shoulder trouble\"\n  },\n  {\n    \"id\": \"L Shoulder trouble\"\n  },\n  {\n    \"id\": \"R Shoulder problems\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"DLS C6-C7\",\n    \"R C7\",\n    \"L C7\",\n    \"neck pain\",\n    \"R neck\",\n    \"L Neck problems\",\n    \"R Shoulder trouble\",\n    \"L Shoulder trouble\",\n    \"R Shoulder problems\",\n    \"L Shoulder problems\",\n    \"R Armband\",\n    \"L Arm\",\n    \"R Elbow trouble\",\n    \"L Elbow problems\",\n    \"R Medial elbow problems\",\n    \"L Medial elbow problems\",\n    \"R bend of arm discomfort\",\n    \"L bend of arm problems\",\n    \"R lower arm disorders\",\n    \"L lower arm disorders\",\n    \"R Wrist problems\",\n    \"L Wrist problems\",\n    \"R Hand problems\",\n    \"L Hand problems\",\n    \"R Finger trouble\",\n    \"L Finger trouble\"\n  ],\n  \"confidence\": 0.61,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"DLS C6-C7\",\n      \"after\": \"R C7\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"DLS C6-C7\",\n      \"after\": \"L C7\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"neck pain\",\n      \"after\": \"R neck\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"neck pain\",\n      \"after\": \"L Neck problems\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"R Shoulder problems\",\n      \"after\": \"R Elbow trouble\",\n      \"confidence\": 0.7\n    },\n    {\n      \"before\": \"L Shoulder problems\",\n      \"after\": \"L Elbow problems\",\n      \"confidence\": 0.7\n    },\n    {\n      \"before\": \"R Elbow trouble\",\n      \"after\": \"R lower arm disorders\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"L Elbow problems\",\n      \"after\": \"L lower arm disorders\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"R lower arm disorders\",\n      \"after\": \"R Wrist problems\",\n      \"confidence\": 0.83\n    },\n    {\n      \"before\": \"L lower arm disorders\",\n      \"after\": \"L Wrist problems\",\n      \"confidence\": 0.83\n    },\n    {\n      \"before\": \"R Wrist problems\",\n      \"after\": \"R Hand problems\",\n      \"confidence\": 0.82\n    },\n    {\n      \"before\": \"L Wrist problems\",\n      \"after\": \"L Hand problems\",\n      \"confidence\": 0.82\n    },\n    {\n      \"before\": \"R Hand problems\",\n      \"after\": \"R Finger trouble\",\n      \"confidence\": 0.78\n    },\n    {\n      \"before\": \"L Hand problems\",\n      \"after\": \"L Finger trouble\",\n      \"confidence\": 0.78\n    }\n  ],\n  \"rationale\": \"Proximal spine/neck conditions are placed upstream of side-specific neck symptoms, then shoulder, elbow, forearm, wrist, hand, and finger problems in an anatomical distal progression. Left/right variants are treated as parallel branches. Labels like trouble/problems/disorders are ordered as downstream symptom manifestations rather than causes; this is a plausible prior, not ground truth.\"\n}",
+  "id_map": {
+    "L Medial elbow problems": "L Medial elbow problems",
+    "neck pain": "neck pain",
+    "L Elbow problems": "L Elbow problems",
+    "R bend of arm discomfort": "R bend of arm discomfort",
+    "R Hand problems": "R Hand problems",
+    "R lower arm disorders": "R lower arm disorders",
+    "R Medial elbow problems": "R Medial elbow problems",
+    "L Shoulder problems": "L Shoulder problems",
+    "L Arm": "L Arm",
+    "L Finger trouble": "L Finger trouble",
+    "R neck": "R neck",
+    "R C7": "R C7",
+    "R Wrist problems": "R Wrist problems",
+    "R Armband": "R Armband",
+    "L lower arm disorders": "L lower arm disorders",
+    "L Neck problems": "L Neck problems",
+    "L Wrist problems": "L Wrist problems",
+    "L bend of arm problems": "L bend of arm problems",
+    "R Finger trouble": "R Finger trouble",
+    "R Elbow trouble": "R Elbow trouble",
+    "L Hand problems": "L Hand problems",
+    "L C7": "L C7",
+    "DLS C6-C7": "DLS C6-C7",
+    "R Shoulder trouble": "R Shoulder trouble",
+    "L Shoulder trouble": "L Shoulder trouble",
+    "R Shoulder problems": "R Shoulder problems"
+  },
+  "ordered_nodes": [
+    "DLS C6-C7",
+    "R C7",
+    "L C7",
+    "neck pain",
+    "R neck",
+    "L Neck problems",
+    "R Shoulder trouble",
+    "L Shoulder trouble",
+    "R Shoulder problems",
+    "L Shoulder problems",
+    "R Armband",
+    "L Arm",
+    "R Elbow trouble",
+    "L Elbow problems",
+    "R Medial elbow problems",
+    "L Medial elbow problems",
+    "R bend of arm discomfort",
+    "L bend of arm problems",
+    "R lower arm disorders",
+    "L lower arm disorders",
+    "R Wrist problems",
+    "L Wrist problems",
+    "R Hand problems",
+    "L Hand problems",
+    "R Finger trouble",
+    "L Finger trouble"
+  ],
+  "confidence": 0.61,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "DLS C6-C7",
+      "after": "R C7",
+      "confidence": 0.88
+    },
+    {
+      "before": "DLS C6-C7",
+      "after": "L C7",
+      "confidence": 0.88
+    },
+    {
+      "before": "neck pain",
+      "after": "R neck",
+      "confidence": 0.72
+    },
+    {
+      "before": "neck pain",
+      "after": "L Neck problems",
+      "confidence": 0.72
+    },
+    {
+      "before": "R Shoulder problems",
+      "after": "R Elbow trouble",
+      "confidence": 0.7
+    },
+    {
+      "before": "L Shoulder problems",
+      "after": "L Elbow problems",
+      "confidence": 0.7
+    },
+    {
+      "before": "R Elbow trouble",
+      "after": "R lower arm disorders",
+      "confidence": 0.8
+    },
+    {
+      "before": "L Elbow problems",
+      "after": "L lower arm disorders",
+      "confidence": 0.8
+    },
+    {
+      "before": "R lower arm disorders",
+      "after": "R Wrist problems",
+      "confidence": 0.83
+    },
+    {
+      "before": "L lower arm disorders",
+      "after": "L Wrist problems",
+      "confidence": 0.83
+    },
+    {
+      "before": "R Wrist problems",
+      "after": "R Hand problems",
+      "confidence": 0.82
+    },
+    {
+      "before": "L Wrist problems",
+      "after": "L Hand problems",
+      "confidence": 0.82
+    },
+    {
+      "before": "R Hand problems",
+      "after": "R Finger trouble",
+      "confidence": 0.78
+    },
+    {
+      "before": "L Hand problems",
+      "after": "L Finger trouble",
+      "confidence": 0.78
+    }
+  ],
+  "rationale": "Proximal spine/neck conditions are placed upstream of side-specific neck symptoms, then shoulder, elbow, forearm, wrist, hand, and finger problems in an anatomical distal progression. Left/right variants are treated as parallel branches. Labels like trouble/problems/disorders are ordered as downstream symptom manifestations rather than causes; this is a plausible prior, not ground truth.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

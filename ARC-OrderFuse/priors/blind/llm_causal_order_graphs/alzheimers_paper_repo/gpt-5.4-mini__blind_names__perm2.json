@@ -1,0 +1,88 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "alzheimers_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:30:13.185482+00:00",
+  "prompt_hash": "b4f25e2d3432c6ec",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"brain volume\"\n  },\n  {\n    \"id\": \"age\"\n  },\n  {\n    \"id\": \"av45\"\n  },\n  {\n    \"id\": \"ventricular volume\"\n  },\n  {\n    \"id\": \"APOE4\"\n  },\n  {\n    \"id\": \"brain MRI\"\n  },\n  {\n    \"id\": \"tau\"\n  },\n  {\n    \"id\": \"education\"\n  },\n  {\n    \"id\": \"slice number\"\n  },\n  {\n    \"id\": \"sex\"\n  },\n  {\n    \"id\": \"moca\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"sex\",\n    \"APOE4\",\n    \"education\",\n    \"age\",\n    \"slice number\",\n    \"brain MRI\",\n    \"av45\",\n    \"tau\",\n    \"brain volume\",\n    \"ventricular volume\",\n    \"moca\"\n  ],\n  \"confidence\": 0.71,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"sex\",\n      \"after\": \"age\",\n      \"confidence\": 0.68\n    },\n    {\n      \"before\": \"APOE4\",\n      \"after\": \"av45\",\n      \"confidence\": 0.84\n    },\n    {\n      \"before\": \"APOE4\",\n      \"after\": \"tau\",\n      \"confidence\": 0.83\n    },\n    {\n      \"before\": \"age\",\n      \"after\": \"brain volume\",\n      \"confidence\": 0.82\n    },\n    {\n      \"before\": \"age\",\n      \"after\": \"ventricular volume\",\n      \"confidence\": 0.82\n    },\n    {\n      \"before\": \"brain volume\",\n      \"after\": \"moca\",\n      \"confidence\": 0.77\n    },\n    {\n      \"before\": \"ventricular volume\",\n      \"after\": \"moca\",\n      \"confidence\": 0.77\n    },\n    {\n      \"before\": \"brain MRI\",\n      \"after\": \"brain volume\",\n      \"confidence\": 0.7\n    }\n  ],\n  \"rationale\": \"Demographics and genetics are upstream; age, sex, and APOE4 precede biomarker and imaging findings. MRI is a measurement process, while brain atrophy and ventricular enlargement are downstream biological effects. Education is a relatively early-life background factor. MoCA is a downstream cognitive outcome influenced by neurodegeneration and brain structure. Slice number is an imaging-acquisition variable and placed before MRI-derived measures.\"\n}",
+  "id_map": {
+    "brain volume": "brain volume",
+    "age": "age",
+    "av45": "av45",
+    "ventricular volume": "ventricular volume",
+    "APOE4": "APOE4",
+    "brain MRI": "brain MRI",
+    "tau": "tau",
+    "education": "education",
+    "slice number": "slice number",
+    "sex": "sex",
+    "moca": "moca"
+  },
+  "ordered_nodes": [
+    "sex",
+    "APOE4",
+    "education",
+    "age",
+    "slice number",
+    "brain MRI",
+    "av45",
+    "tau",
+    "brain volume",
+    "ventricular volume",
+    "moca"
+  ],
+  "confidence": 0.71,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "sex",
+      "after": "age",
+      "confidence": 0.68
+    },
+    {
+      "before": "APOE4",
+      "after": "av45",
+      "confidence": 0.84
+    },
+    {
+      "before": "APOE4",
+      "after": "tau",
+      "confidence": 0.83
+    },
+    {
+      "before": "age",
+      "after": "brain volume",
+      "confidence": 0.82
+    },
+    {
+      "before": "age",
+      "after": "ventricular volume",
+      "confidence": 0.82
+    },
+    {
+      "before": "brain volume",
+      "after": "moca",
+      "confidence": 0.77
+    },
+    {
+      "before": "ventricular volume",
+      "after": "moca",
+      "confidence": 0.77
+    },
+    {
+      "before": "brain MRI",
+      "after": "brain volume",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "Demographics and genetics are upstream; age, sex, and APOE4 precede biomarker and imaging findings. MRI is a measurement process, while brain atrophy and ventricular enlargement are downstream biological effects. Education is a relatively early-life background factor. MoCA is a downstream cognitive outcome influenced by neurodegeneration and brain structure. Slice number is an imaging-acquisition variable and placed before MRI-derived measures.",
+  "direct_edge_accuracy": 0.894737,
+  "pair_accuracy": 0.870968
+}

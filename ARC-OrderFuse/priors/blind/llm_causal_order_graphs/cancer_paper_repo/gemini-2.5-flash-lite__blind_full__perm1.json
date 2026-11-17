@@ -1,0 +1,56 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "cancer_paper_repo",
+  "model": "gemini-2.5-flash-lite",
+  "provider": "gemini",
+  "source": "gemini_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 1,
+  "created_at": "2026-11-15T05:21:41.156631+00:00",
+  "prompt_hash": "90819f22c2d280a7",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"cancer\",\n    \"description\": \"cancer\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"dyspnoea\",\n    \"description\": \"dyspnoea\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"xray\",\n    \"description\": \"getting positive xray result\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"smoker\",\n    \"description\": \"smoking habit\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"pollution\",\n    \"description\": \"exposure to pollutants\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"smoker\", \"pollution\", \"cancer\", \"dyspnoea\", \"xray\"],\n  \"confidence\": 0.6,\n  \"high_confidence_pairs\": [\n    {\"before\": \"smoker\", \"after\": \"cancer\", \"confidence\": 0.8},\n    {\"before\": \"pollution\", \"after\": \"cancer\", \"confidence\": 0.7},\n    {\"before\": \"cancer\", \"after\": \"dyspnoea\", \"confidence\": 0.8},\n    {\"before\": \"dyspnoea\", \"after\": \"xray\", \"confidence\": 0.7}\n  ],\n  \"rationale\": \"Smoking and pollution are common causes of cancer. Cancer can lead to dyspnoea. Dyspnoea might prompt an X-ray, which could then be positive.\"\n}",
+  "id_map": {
+    "cancer": "cancer",
+    "dyspnoea": "dyspnoea",
+    "xray": "xray",
+    "smoker": "smoker",
+    "pollution": "pollution"
+  },
+  "ordered_nodes": [
+    "smoker",
+    "pollution",
+    "cancer",
+    "dyspnoea",
+    "xray"
+  ],
+  "confidence": 0.6,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "smoker",
+      "after": "cancer",
+      "confidence": 0.8
+    },
+    {
+      "before": "pollution",
+      "after": "cancer",
+      "confidence": 0.7
+    },
+    {
+      "before": "cancer",
+      "after": "dyspnoea",
+      "confidence": 0.8
+    },
+    {
+      "before": "dyspnoea",
+      "after": "xray",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "Smoking and pollution are common causes of cancer. Cancer can lead to dyspnoea. Dyspnoea might prompt an X-ray, which could then be positive.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

@@ -1,0 +1,119 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:32:13.238864+00:00",
+  "prompt_hash": "702a1f2fe3919e6b",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"left shoulder problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"discoligment injury C6-C7\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"right arm band\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"right C7\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"left medival elbow problems\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"left C7\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V07\",\n    \"description\": \"right wrist problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V08\",\n    \"description\": \"right hand problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V09\",\n    \"description\": \"left bend of arm problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V10\",\n    \"description\": \"left neck problems\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V11\",\n    \"description\": \"left elbow problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V12\",\n    \"description\": \"right shoulder trouble\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V13\",\n    \"description\": \"left shoulder trouble\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V14\",\n    \"description\": \"right neck\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V15\",\n    \"description\": \"right elbow trouble\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V16\",\n    \"description\": \"right lower arm disorders\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V17\",\n    \"description\": \"left arm\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V18\",\n    \"description\": \"right finger trouble\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V19\",\n    \"description\": \"left finger trouble\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V20\",\n    \"description\": \"left wrist problems\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V21\",\n    \"description\": \"right shoulder problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V22\",\n    \"description\": \"neck pain\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V23\",\n    \"description\": \"left hand problem\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"V24\",\n    \"description\": \"left lower arm disorders\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V02\", \"V22\", \"V10\", \"V14\", \"V06\", \"V04\", \"V01\", \"V13\", \"V21\", \"V12\", \"V03\", \"V17\", \"V05\", \"V11\", \"V15\", \"V09\", \"V24\", \"V16\", \"V20\", \"V07\", \"V23\", \"V08\", \"V18\", \"V19\"],\n  \"confidence\": 0.56,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V02\", \"after\": \"V22\", \"confidence\": 0.84},\n    {\"before\": \"V22\", \"after\": \"V10\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V14\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V06\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V04\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V01\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V13\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V21\", \"confidence\": 0.78},\n    {\"before\": \"V22\", \"after\": \"V12\", \"confidence\": 0.78}\n  ],\n  \"rationale\": \"Cervical/neck conditions are placed upstream of limb-specific symptoms, with general neck pain before side-specific neck complaints and then shoulder/arm/elbow/forearm/wrist/hand/finger manifestations. Side and distal-to-proximal ordering is a plausible prior, though the variable names are somewhat redundant and causal direction is not certain.\"\n}",
+  "id_map": {
+    "V01": "left shoulder problem",
+    "V02": "discoligment injury C6-C7",
+    "V03": "right arm band",
+    "V04": "right C7",
+    "V05": "left medival elbow problems",
+    "V06": "left C7",
+    "V07": "right wrist problem",
+    "V08": "right hand problem",
+    "V09": "left bend of arm problem",
+    "V10": "left neck problems",
+    "V11": "left elbow problem",
+    "V12": "right shoulder trouble",
+    "V13": "left shoulder trouble",
+    "V14": "right neck",
+    "V15": "right elbow trouble",
+    "V16": "right lower arm disorders",
+    "V17": "left arm",
+    "V18": "right finger trouble",
+    "V19": "left finger trouble",
+    "V20": "left wrist problems",
+    "V21": "right shoulder problem",
+    "V22": "neck pain",
+    "V23": "left hand problem",
+    "V24": "left lower arm disorders"
+  },
+  "ordered_nodes": [
+    "discoligment injury C6-C7",
+    "neck pain",
+    "left neck problems",
+    "right neck",
+    "left C7",
+    "right C7",
+    "left shoulder problem",
+    "left shoulder trouble",
+    "right shoulder problem",
+    "right shoulder trouble",
+    "right arm band",
+    "left arm",
+    "left medival elbow problems",
+    "left elbow problem",
+    "right elbow trouble",
+    "left bend of arm problem",
+    "left lower arm disorders",
+    "right lower arm disorders",
+    "left wrist problems",
+    "right wrist problem",
+    "left hand problem",
+    "right hand problem",
+    "right finger trouble",
+    "left finger trouble"
+  ],
+  "confidence": 0.56,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "discoligment injury C6-C7",
+      "after": "neck pain",
+      "confidence": 0.84
+    },
+    {
+      "before": "neck pain",
+      "after": "left neck problems",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "right neck",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "left C7",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "right C7",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "left shoulder problem",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "left shoulder trouble",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "right shoulder problem",
+      "confidence": 0.78
+    },
+    {
+      "before": "neck pain",
+      "after": "right shoulder trouble",
+      "confidence": 0.78
+    }
+  ],
+  "rationale": "Cervical/neck conditions are placed upstream of limb-specific symptoms, with general neck pain before side-specific neck complaints and then shoulder/arm/elbow/forearm/wrist/hand/finger manifestations. Side and distal-to-proximal ordering is a plausible prior, though the variable names are somewhat redundant and causal direction is not certain.",
+  "direct_edge_accuracy": 0.84,
+  "pair_accuracy": 0.913043
+}

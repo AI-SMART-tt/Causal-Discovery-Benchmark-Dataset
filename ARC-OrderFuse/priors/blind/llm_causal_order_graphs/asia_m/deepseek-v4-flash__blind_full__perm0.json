@@ -1,0 +1,85 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "asia_m",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:36:47.825187+00:00",
+  "prompt_hash": "1d930e6aaa5202e1",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"positive X-ray\",\n    \"description\": \"getting positve xray result\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"bronchitis\",\n    \"description\": \"bronchitis\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"dyspnoea\",\n    \"description\": \"dyspnoea\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"visit to Asia\",\n    \"description\": \"visiting Asian countries with high exposure to pollutants\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"lung cancer\",\n    \"description\": \"lung cancer\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"smoking\",\n    \"description\": \"smoking habit\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"tuberculosis\",\n    \"description\": \"tuberculosis\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"ordered_nodes\":[\"visit to Asia\",\"smoking\",\"tuberculosis\",\"lung cancer\",\"bronchitis\",\"dyspnoea\",\"positive X-ray\"],\"confidence\":0.82,\"high_confidence_pairs\":[{\"before\":\"visit to Asia\",\"after\":\"tuberculosis\",\"confidence\":0.9},{\"before\":\"smoking\",\"after\":\"lung cancer\",\"confidence\":0.95},{\"before\":\"smoking\",\"after\":\"bronchitis\",\"confidence\":0.9},{\"before\":\"tuberculosis\",\"after\":\"dyspnoea\",\"confidence\":0.85},{\"before\":\"lung cancer\",\"after\":\"dyspnoea\",\"confidence\":0.85},{\"before\":\"bronchitis\",\"after\":\"dyspnoea\",\"confidence\":0.85},{\"before\":\"tuberculosis\",\"after\":\"positive X-ray\",\"confidence\":0.9},{\"before\":\"lung cancer\",\"after\":\"positive X-ray\",\"confidence\":0.85},{\"before\":\"dyspnoea\",\"after\":\"positive X-ray\",\"confidence\":0.6}],\"rationale\":\"Exposures (Asia visit, smoking) precede diseases (tuberculosis, lung cancer, bronchitis), which cause symptoms (dyspnoea) and diagnostic results (positive X-ray). X-ray is a measurement, so placed last; dyspnoea is a symptom preceding testing.\"}",
+  "id_map": {
+    "positive X-ray": "positive X-ray",
+    "bronchitis": "bronchitis",
+    "dyspnoea": "dyspnoea",
+    "visit to Asia": "visit to Asia",
+    "lung cancer": "lung cancer",
+    "smoking": "smoking",
+    "tuberculosis": "tuberculosis"
+  },
+  "ordered_nodes": [
+    "visit to Asia",
+    "smoking",
+    "tuberculosis",
+    "lung cancer",
+    "bronchitis",
+    "dyspnoea",
+    "positive X-ray"
+  ],
+  "confidence": 0.82,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "visit to Asia",
+      "after": "tuberculosis",
+      "confidence": 0.9
+    },
+    {
+      "before": "smoking",
+      "after": "lung cancer",
+      "confidence": 0.95
+    },
+    {
+      "before": "smoking",
+      "after": "bronchitis",
+      "confidence": 0.9
+    },
+    {
+      "before": "tuberculosis",
+      "after": "dyspnoea",
+      "confidence": 0.85
+    },
+    {
+      "before": "lung cancer",
+      "after": "dyspnoea",
+      "confidence": 0.85
+    },
+    {
+      "before": "bronchitis",
+      "after": "dyspnoea",
+      "confidence": 0.85
+    },
+    {
+      "before": "tuberculosis",
+      "after": "positive X-ray",
+      "confidence": 0.9
+    },
+    {
+      "before": "lung cancer",
+      "after": "positive X-ray",
+      "confidence": 0.85
+    },
+    {
+      "before": "dyspnoea",
+      "after": "positive X-ray",
+      "confidence": 0.6
+    }
+  ],
+  "rationale": "Exposures (Asia visit, smoking) precede diseases (tuberculosis, lung cancer, bronchitis), which cause symptoms (dyspnoea) and diagnostic results (positive X-ray). X-ray is a measurement, so placed last; dyspnoea is a symptom preceding testing.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

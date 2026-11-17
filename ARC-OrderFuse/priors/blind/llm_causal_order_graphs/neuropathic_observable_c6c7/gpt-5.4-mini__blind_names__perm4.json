@@ -1,0 +1,128 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "neuropathic_observable_c6c7",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:34:10.245127+00:00",
+  "prompt_hash": "e3cdb7aff6c42687",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"R Elbow trouble\"\n  },\n  {\n    \"id\": \"R Shoulder trouble\"\n  },\n  {\n    \"id\": \"R bend of arm discomfort\"\n  },\n  {\n    \"id\": \"R Armband\"\n  },\n  {\n    \"id\": \"neck pain\"\n  },\n  {\n    \"id\": \"DLS C6-C7\"\n  },\n  {\n    \"id\": \"R lower arm disorders\"\n  },\n  {\n    \"id\": \"L Neck problems\"\n  },\n  {\n    \"id\": \"L Medial elbow problems\"\n  },\n  {\n    \"id\": \"L Finger trouble\"\n  },\n  {\n    \"id\": \"R Medial elbow problems\"\n  },\n  {\n    \"id\": \"L Wrist problems\"\n  },\n  {\n    \"id\": \"L Shoulder trouble\"\n  },\n  {\n    \"id\": \"R Wrist problems\"\n  },\n  {\n    \"id\": \"L lower arm disorders\"\n  },\n  {\n    \"id\": \"L Shoulder problems\"\n  },\n  {\n    \"id\": \"L Elbow problems\"\n  },\n  {\n    \"id\": \"L C7\"\n  },\n  {\n    \"id\": \"L Hand problems\"\n  },\n  {\n    \"id\": \"R C7\"\n  },\n  {\n    \"id\": \"R Finger trouble\"\n  },\n  {\n    \"id\": \"L bend of arm problems\"\n  },\n  {\n    \"id\": \"L Arm\"\n  },\n  {\n    \"id\": \"R neck\"\n  },\n  {\n    \"id\": \"R Hand problems\"\n  },\n  {\n    \"id\": \"R Shoulder problems\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"L Arm\",\n    \"R Armband\",\n    \"L C7\",\n    \"R C7\",\n    \"DLS C6-C7\",\n    \"R neck\",\n    \"neck pain\",\n    \"L Neck problems\",\n    \"R Shoulder problems\",\n    \"L Shoulder problems\",\n    \"R Shoulder trouble\",\n    \"L Shoulder trouble\",\n    \"R Elbow trouble\",\n    \"L Elbow problems\",\n    \"R Medial elbow problems\",\n    \"L Medial elbow problems\",\n    \"R bend of arm discomfort\",\n    \"L bend of arm problems\",\n    \"R lower arm disorders\",\n    \"L lower arm disorders\",\n    \"R Wrist problems\",\n    \"L Wrist problems\",\n    \"R Hand problems\",\n    \"L Hand problems\",\n    \"R Finger trouble\",\n    \"L Finger trouble\"\n  ],\n  \"confidence\": 0.58,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"L Arm\",\n      \"after\": \"L Shoulder problems\",\n      \"confidence\": 0.84\n    },\n    {\n      \"before\": \"R neck\",\n      \"after\": \"neck pain\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"DLS C6-C7\",\n      \"after\": \"neck pain\",\n      \"confidence\": 0.78\n    },\n    {\n      \"before\": \"R Shoulder problems\",\n      \"after\": \"R Elbow trouble\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"R Elbow trouble\",\n      \"after\": \"R Wrist problems\",\n      \"confidence\": 0.7\n    },\n    {\n      \"before\": \"R Wrist problems\",\n      \"after\": \"R Hand problems\",\n      \"confidence\": 0.73\n    },\n    {\n      \"before\": \"R Hand problems\",\n      \"after\": \"R Finger trouble\",\n      \"confidence\": 0.74\n    },\n    {\n      \"before\": \"L Shoulder problems\",\n      \"after\": \"L Elbow problems\",\n      \"confidence\": 0.72\n    },\n    {\n      \"before\": \"L Elbow problems\",\n      \"after\": \"L Wrist problems\",\n      \"confidence\": 0.7\n    },\n    {\n      \"before\": \"L Wrist problems\",\n      \"after\": \"L Hand problems\",\n      \"confidence\": 0.73\n    }\n  ],\n  \"rationale\": \"Cervical/neck and arm-level structural variables are placed upstream of sided musculoskeletal symptoms. Shoulder issues are prior to elbow, wrist, hand, and finger complaints, reflecting possible downstream spread along the limb. Left/right-specific labels are treated as parallel branches. Confidence is moderate because the exact clinical causal structure is uncertain from names alone.\"\n}",
+  "id_map": {
+    "R Elbow trouble": "R Elbow trouble",
+    "R Shoulder trouble": "R Shoulder trouble",
+    "R bend of arm discomfort": "R bend of arm discomfort",
+    "R Armband": "R Armband",
+    "neck pain": "neck pain",
+    "DLS C6-C7": "DLS C6-C7",
+    "R lower arm disorders": "R lower arm disorders",
+    "L Neck problems": "L Neck problems",
+    "L Medial elbow problems": "L Medial elbow problems",
+    "L Finger trouble": "L Finger trouble",
+    "R Medial elbow problems": "R Medial elbow problems",
+    "L Wrist problems": "L Wrist problems",
+    "L Shoulder trouble": "L Shoulder trouble",
+    "R Wrist problems": "R Wrist problems",
+    "L lower arm disorders": "L lower arm disorders",
+    "L Shoulder problems": "L Shoulder problems",
+    "L Elbow problems": "L Elbow problems",
+    "L C7": "L C7",
+    "L Hand problems": "L Hand problems",
+    "R C7": "R C7",
+    "R Finger trouble": "R Finger trouble",
+    "L bend of arm problems": "L bend of arm problems",
+    "L Arm": "L Arm",
+    "R neck": "R neck",
+    "R Hand problems": "R Hand problems",
+    "R Shoulder problems": "R Shoulder problems"
+  },
+  "ordered_nodes": [
+    "L Arm",
+    "R Armband",
+    "L C7",
+    "R C7",
+    "DLS C6-C7",
+    "R neck",
+    "neck pain",
+    "L Neck problems",
+    "R Shoulder problems",
+    "L Shoulder problems",
+    "R Shoulder trouble",
+    "L Shoulder trouble",
+    "R Elbow trouble",
+    "L Elbow problems",
+    "R Medial elbow problems",
+    "L Medial elbow problems",
+    "R bend of arm discomfort",
+    "L bend of arm problems",
+    "R lower arm disorders",
+    "L lower arm disorders",
+    "R Wrist problems",
+    "L Wrist problems",
+    "R Hand problems",
+    "L Hand problems",
+    "R Finger trouble",
+    "L Finger trouble"
+  ],
+  "confidence": 0.58,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "L Arm",
+      "after": "L Shoulder problems",
+      "confidence": 0.84
+    },
+    {
+      "before": "R neck",
+      "after": "neck pain",
+      "confidence": 0.8
+    },
+    {
+      "before": "DLS C6-C7",
+      "after": "neck pain",
+      "confidence": 0.78
+    },
+    {
+      "before": "R Shoulder problems",
+      "after": "R Elbow trouble",
+      "confidence": 0.72
+    },
+    {
+      "before": "R Elbow trouble",
+      "after": "R Wrist problems",
+      "confidence": 0.7
+    },
+    {
+      "before": "R Wrist problems",
+      "after": "R Hand problems",
+      "confidence": 0.73
+    },
+    {
+      "before": "R Hand problems",
+      "after": "R Finger trouble",
+      "confidence": 0.74
+    },
+    {
+      "before": "L Shoulder problems",
+      "after": "L Elbow problems",
+      "confidence": 0.72
+    },
+    {
+      "before": "L Elbow problems",
+      "after": "L Wrist problems",
+      "confidence": 0.7
+    },
+    {
+      "before": "L Wrist problems",
+      "after": "L Hand problems",
+      "confidence": 0.73
+    }
+  ],
+  "rationale": "Cervical/neck and arm-level structural variables are placed upstream of sided musculoskeletal symptoms. Shoulder issues are prior to elbow, wrist, hand, and finger complaints, reflecting possible downstream spread along the limb. Left/right-specific labels are treated as parallel branches. Confidence is moderate because the exact clinical causal structure is uncertain from names alone.",
+  "direct_edge_accuracy": 0.846154,
+  "pair_accuracy": 0.877551
+}

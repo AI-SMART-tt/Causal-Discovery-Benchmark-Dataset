@@ -1,0 +1,78 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "survey_paper_repo",
+  "model": "deepseek-v4-flash",
+  "provider": "deepseek",
+  "source": "deepseek_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:36:17.600877+00:00",
+  "prompt_hash": "c3875f2a8bb38dc4",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Age\",\n    \"description\": \"Age of people using transport\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Occupation\",\n    \"description\": \"employee or self-employed\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Travel\",\n    \"description\": \"the means of transport favoured by the individual\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Education\",\n    \"description\": \"up to high school or university degree\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Sex\",\n    \"description\": \"male or female\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"Residence\",\n    \"description\": \"the size of the city the individual lives in, recorded as either small or big\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\"ordered_nodes\":[\"Age\",\"Sex\",\"Education\",\"Occupation\",\"Residence\",\"Travel\"],\"confidence\":0.55,\"high_confidence_pairs\":[{\"before\":\"Age\",\"after\":\"Education\",\"confidence\":0.8},{\"before\":\"Age\",\"after\":\"Occupation\",\"confidence\":0.8},{\"before\":\"Sex\",\"after\":\"Occupation\",\"confidence\":0.7},{\"before\":\"Education\",\"after\":\"Occupation\",\"confidence\":0.75},{\"before\":\"Education\",\"after\":\"Travel\",\"confidence\":0.65},{\"before\":\"Occupation\",\"after\":\"Travel\",\"confidence\":0.7},{\"before\":\"Residence\",\"after\":\"Travel\",\"confidence\":0.7},{\"before\":\"Age\",\"after\":\"Travel\",\"confidence\":0.6}],\"rationale\":\"Age and Sex are immutable background traits preceding Education, which shapes Occupation. Residence is a contextual condition affecting transport options. Travel is the downstream behavioral choice influenced by all prior attributes. Weak/ambiguous links (e.g., Residence vs Occupation) lower overall confidence.\"}",
+  "id_map": {
+    "Age": "Age",
+    "Occupation": "Occupation",
+    "Travel": "Travel",
+    "Education": "Education",
+    "Sex": "Sex",
+    "Residence": "Residence"
+  },
+  "ordered_nodes": [
+    "Age",
+    "Sex",
+    "Education",
+    "Occupation",
+    "Residence",
+    "Travel"
+  ],
+  "confidence": 0.55,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "Education",
+      "confidence": 0.8
+    },
+    {
+      "before": "Age",
+      "after": "Occupation",
+      "confidence": 0.8
+    },
+    {
+      "before": "Sex",
+      "after": "Occupation",
+      "confidence": 0.7
+    },
+    {
+      "before": "Education",
+      "after": "Occupation",
+      "confidence": 0.75
+    },
+    {
+      "before": "Education",
+      "after": "Travel",
+      "confidence": 0.65
+    },
+    {
+      "before": "Occupation",
+      "after": "Travel",
+      "confidence": 0.7
+    },
+    {
+      "before": "Residence",
+      "after": "Travel",
+      "confidence": 0.7
+    },
+    {
+      "before": "Age",
+      "after": "Travel",
+      "confidence": 0.6
+    }
+  ],
+  "rationale": "Age and Sex are immutable background traits preceding Education, which shapes Occupation. Residence is a contextual condition affecting transport options. Travel is the downstream behavioral choice influenced by all prior attributes. Weak/ambiguous links (e.g., Residence vs Occupation) lower overall confidence.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

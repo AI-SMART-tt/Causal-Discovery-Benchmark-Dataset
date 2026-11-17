@@ -1,0 +1,127 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "child_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "probe",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:25:43.642409+00:00",
+  "prompt_hash": "34e0d88bc0bf3f7f",
+  "system_prompt": "You are a careful assistant. Answer honestly and return strict JSON only.",
+  "user_prompt": "The following variable names come from a causal graph. They are listed in random order.\n[\"XrayReport\", \"Grunting\", \"RUQO2\", \"LungFlow\", \"CardiacMixing\", \"Disease\", \"CO2\", \"LVH\", \"CO2Report\", \"LowerBodyO2\", \"GruntingReport\", \"HypoxiaInO2\", \"LVHreport\", \"BirthAsphyxia\", \"Sick\", \"ChestXray\", \"DuctFlow\", \"LungParench\", \"Age\", \"HypDistrib\"]\n\nQuestion: do these variables belong to a published benchmark causal graph or Bayesian network that you recognize?\nReturn one JSON object with this schema:\n{\n  \"recognized\": true,\n  \"benchmark_name\": \"name or empty string\",\n  \"confidence\": 0.0,\n  \"recalled_edges\": [[\"cause id\", \"effect id\"]]\n}\n\nIf you recognize it, list the directed edges of the published graph that you can recall, using the exact names. If you do not recognize it, set recognized to false and return an empty edge list. Do not guess edges from semantics alone.",
+  "raw_response": "{\"recognized\":true,\"benchmark_name\":\"Asia (ALARM-style congenital heart disease network variant)\",\"confidence\":0.83,\"recalled_edges\":[[\"BirthAsphyxia\",\"Disease\"],[\"Disease\",\"LungParench\"],[\"Disease\",\"LungFlow\"],[\"Disease\",\"CardiacMixing\"],[\"Disease\",\"DuctFlow\"],[\"Disease\",\"HypoxiaInO2\"],[\"Disease\",\"Grunting\"],[\"Disease\",\"CO2\"],[\"Disease\",\"LVH\"],[\"Disease\",\"LowerBodyO2\"],[\"Disease\",\"RUQO2\"],[\"Disease\",\"HypDistrib\"],[\"Disease\",\"Sick\"],[\"Disease\",\"ChestXray\"],[\"Disease\",\"XrayReport\"],[\"Disease\",\"CO2Report\"],[\"Disease\",\"GruntingReport\"],[\"Disease\",\"LVHreport\"],[\"Age\",\"LVH\"],[\"Age\",\"DuctFlow\"],[\"Age\",\"LungFlow\"]]}",
+  "id_map": {
+    "XrayReport": "XrayReport",
+    "Grunting": "Grunting",
+    "RUQO2": "RUQO2",
+    "LungFlow": "LungFlow",
+    "CardiacMixing": "CardiacMixing",
+    "Disease": "Disease",
+    "CO2": "CO2",
+    "LVH": "LVH",
+    "CO2Report": "CO2Report",
+    "LowerBodyO2": "LowerBodyO2",
+    "GruntingReport": "GruntingReport",
+    "HypoxiaInO2": "HypoxiaInO2",
+    "LVHreport": "LVHreport",
+    "BirthAsphyxia": "BirthAsphyxia",
+    "Sick": "Sick",
+    "ChestXray": "ChestXray",
+    "DuctFlow": "DuctFlow",
+    "LungParench": "LungParench",
+    "Age": "Age",
+    "HypDistrib": "HypDistrib"
+  },
+  "recognized": true,
+  "benchmark_name": "Asia (ALARM-style congenital heart disease network variant)",
+  "confidence": 0.83,
+  "recalled_edges": [
+    [
+      "BirthAsphyxia",
+      "Disease"
+    ],
+    [
+      "Disease",
+      "LungParench"
+    ],
+    [
+      "Disease",
+      "LungFlow"
+    ],
+    [
+      "Disease",
+      "CardiacMixing"
+    ],
+    [
+      "Disease",
+      "DuctFlow"
+    ],
+    [
+      "Disease",
+      "HypoxiaInO2"
+    ],
+    [
+      "Disease",
+      "Grunting"
+    ],
+    [
+      "Disease",
+      "CO2"
+    ],
+    [
+      "Disease",
+      "LVH"
+    ],
+    [
+      "Disease",
+      "LowerBodyO2"
+    ],
+    [
+      "Disease",
+      "RUQO2"
+    ],
+    [
+      "Disease",
+      "HypDistrib"
+    ],
+    [
+      "Disease",
+      "Sick"
+    ],
+    [
+      "Disease",
+      "ChestXray"
+    ],
+    [
+      "Disease",
+      "XrayReport"
+    ],
+    [
+      "Disease",
+      "CO2Report"
+    ],
+    [
+      "Disease",
+      "GruntingReport"
+    ],
+    [
+      "Disease",
+      "LVHreport"
+    ],
+    [
+      "Age",
+      "LVH"
+    ],
+    [
+      "Age",
+      "DuctFlow"
+    ],
+    [
+      "Age",
+      "LungFlow"
+    ]
+  ],
+  "recall_precision": 0.3333333333333333,
+  "recall_coverage": 0.28
+}

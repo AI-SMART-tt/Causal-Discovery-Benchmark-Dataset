@@ -1,0 +1,63 @@
+{
+  "collection": "bnlearn",
+  "dataset": "survey",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "anon_full",
+  "listing_perm": 4,
+  "created_at": "2026-11-12T15:15:28.691458+00:00",
+  "prompt_hash": "c238f0c2508765a4",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"V01\",\n    \"description\": \"Age of people using transport\",\n    \"states\": \"young|adult|old\",\n    \"state_count\": \"3\"\n  },\n  {\n    \"id\": \"V02\",\n    \"description\": \"male or female\",\n    \"states\": \"M|F\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V03\",\n    \"description\": \"up to high school or university degree\",\n    \"states\": \"high|uni\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V04\",\n    \"description\": \"the size of the city the individual lives in, recorded as either small or big\",\n    \"states\": \"small|big\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V05\",\n    \"description\": \"employee or self-employed\",\n    \"states\": \"emp|self\",\n    \"state_count\": \"2\"\n  },\n  {\n    \"id\": \"V06\",\n    \"description\": \"the means of transport favoured by the individual\",\n    \"states\": \"car|train|other\",\n    \"state_count\": \"3\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"V01\", \"V02\", \"V03\", \"V04\", \"V05\", \"V06\"],\n  \"confidence\": 0.74,\n  \"high_confidence_pairs\": [\n    {\"before\": \"V01\", \"after\": \"V03\", \"confidence\": 0.9},\n    {\"before\": \"V01\", \"after\": \"V05\", \"confidence\": 0.82},\n    {\"before\": \"V04\", \"after\": \"V06\", \"confidence\": 0.7},\n    {\"before\": \"V03\", \"after\": \"V06\", \"confidence\": 0.62},\n    {\"before\": \"V05\", \"after\": \"V06\", \"confidence\": 0.6}\n  ],\n  \"rationale\": \"Age is an upstream demographic factor and likely precedes education and employment status. City size is a contextual condition that may influence transport choice. Gender is also upstream relative to later socioeconomic and behavioral variables. Transport mode is the most downstream variable here, plausibly affected by age, education, employment, and city context rather than causing them.\"\n}",
+  "id_map": {
+    "V01": "A",
+    "V02": "S",
+    "V03": "E",
+    "V04": "R",
+    "V05": "O",
+    "V06": "T"
+  },
+  "ordered_nodes": [
+    "A",
+    "S",
+    "E",
+    "R",
+    "O",
+    "T"
+  ],
+  "confidence": 0.74,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "A",
+      "after": "E",
+      "confidence": 0.9
+    },
+    {
+      "before": "A",
+      "after": "O",
+      "confidence": 0.82
+    },
+    {
+      "before": "R",
+      "after": "T",
+      "confidence": 0.7
+    },
+    {
+      "before": "E",
+      "after": "T",
+      "confidence": 0.62
+    },
+    {
+      "before": "O",
+      "after": "T",
+      "confidence": 0.6
+    }
+  ],
+  "rationale": "Age is an upstream demographic factor and likely precedes education and employment status. City size is a contextual condition that may influence transport choice. Gender is also upstream relative to later socioeconomic and behavioral variables. Transport mode is the most downstream variable here, plausibly affected by age, education, employment, and city context rather than causing them.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}

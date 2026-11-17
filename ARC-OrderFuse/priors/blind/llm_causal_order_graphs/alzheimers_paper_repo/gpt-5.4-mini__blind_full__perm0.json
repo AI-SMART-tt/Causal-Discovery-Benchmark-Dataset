@@ -1,0 +1,98 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "alzheimers_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_full",
+  "listing_perm": 0,
+  "created_at": "2026-11-12T15:29:42.253620+00:00",
+  "prompt_hash": "a780714485363233",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"brain MRI\",\n    \"description\": \"brain MRI\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"moca\",\n    \"description\": \"Montreal Cognitive Assessment Score\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"sex\",\n    \"description\": \"Biological Sex of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"slice number\",\n    \"description\": \"MRI Image slice number\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"brain volume\",\n    \"description\": \"Total Brain Matter Volume of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"ventricular volume\",\n    \"description\": \"Total Ventricular Volume of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"age\",\n    \"description\": \"Age of Patient\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"tau\",\n    \"description\": \"Phosphorylated-tau deposition\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"education\",\n    \"description\": \"Educational attainment (years)\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"av45\",\n    \"description\": \"Beta Amyloid protein level measured by Florbetapir F18\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  },\n  {\n    \"id\": \"APOE4\",\n    \"description\": \"Expression level of APOE4 gene\",\n    \"states\": \"\",\n    \"state_count\": \"\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\n    \"sex\",\n    \"age\",\n    \"APOE4\",\n    \"education\",\n    \"av45\",\n    \"tau\",\n    \"brain volume\",\n    \"ventricular volume\",\n    \"brain MRI\",\n    \"slice number\",\n    \"moca\"\n  ],\n  \"confidence\": 0.72,\n  \"high_confidence_pairs\": [\n    {\n      \"before\": \"age\",\n      \"after\": \"moca\",\n      \"confidence\": 0.9\n    },\n    {\n      \"before\": \"age\",\n      \"after\": \"brain volume\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"age\",\n      \"after\": \"ventricular volume\",\n      \"confidence\": 0.88\n    },\n    {\n      \"before\": \"APOE4\",\n      \"after\": \"av45\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"av45\",\n      \"after\": \"tau\",\n      \"confidence\": 0.76\n    },\n    {\n      \"before\": \"tau\",\n      \"after\": \"brain volume\",\n      \"confidence\": 0.74\n    },\n    {\n      \"before\": \"tau\",\n      \"after\": \"ventricular volume\",\n      \"confidence\": 0.74\n    },\n    {\n      \"before\": \"brain volume\",\n      \"after\": \"brain MRI\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"ventricular volume\",\n      \"after\": \"brain MRI\",\n      \"confidence\": 0.8\n    },\n    {\n      \"before\": \"brain MRI\",\n      \"after\": \"slice number\",\n      \"confidence\": 0.95\n    }\n  ],\n  \"rationale\": \"Baseline demographics and genetic risk factors precede biomarker deposition, structural brain changes, imaging-derived measures, and cognitive performance. Education and sex are upstream background variables. MRI slice number is a measurement/indexing variable, and MOCA is a downstream clinical outcome influenced by neurodegeneration and age.\"\n}",
+  "id_map": {
+    "brain MRI": "brain MRI",
+    "moca": "moca",
+    "sex": "sex",
+    "slice number": "slice number",
+    "brain volume": "brain volume",
+    "ventricular volume": "ventricular volume",
+    "age": "age",
+    "tau": "tau",
+    "education": "education",
+    "av45": "av45",
+    "APOE4": "APOE4"
+  },
+  "ordered_nodes": [
+    "sex",
+    "age",
+    "APOE4",
+    "education",
+    "av45",
+    "tau",
+    "brain volume",
+    "ventricular volume",
+    "brain MRI",
+    "slice number",
+    "moca"
+  ],
+  "confidence": 0.72,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "age",
+      "after": "moca",
+      "confidence": 0.9
+    },
+    {
+      "before": "age",
+      "after": "brain volume",
+      "confidence": 0.88
+    },
+    {
+      "before": "age",
+      "after": "ventricular volume",
+      "confidence": 0.88
+    },
+    {
+      "before": "APOE4",
+      "after": "av45",
+      "confidence": 0.8
+    },
+    {
+      "before": "av45",
+      "after": "tau",
+      "confidence": 0.76
+    },
+    {
+      "before": "tau",
+      "after": "brain volume",
+      "confidence": 0.74
+    },
+    {
+      "before": "tau",
+      "after": "ventricular volume",
+      "confidence": 0.74
+    },
+    {
+      "before": "brain volume",
+      "after": "brain MRI",
+      "confidence": 0.8
+    },
+    {
+      "before": "ventricular volume",
+      "after": "brain MRI",
+      "confidence": 0.8
+    },
+    {
+      "before": "brain MRI",
+      "after": "slice number",
+      "confidence": 0.95
+    }
+  ],
+  "rationale": "Baseline demographics and genetic risk factors precede biomarker deposition, structural brain changes, imaging-derived measures, and cognitive performance. Education and sex are upstream background variables. MRI slice number is a measurement/indexing variable, and MOCA is a downstream clinical outcome influenced by neurodegeneration and age.",
+  "direct_edge_accuracy": 0.947368,
+  "pair_accuracy": 0.967742
+}

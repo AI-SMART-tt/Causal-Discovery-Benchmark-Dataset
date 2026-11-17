@@ -1,0 +1,63 @@
+{
+  "collection": "bnlearn",
+  "dataset": "survey",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:15:03.747783+00:00",
+  "prompt_hash": "848705ef4c197ecb",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"E\"\n  },\n  {\n    \"id\": \"R\"\n  },\n  {\n    \"id\": \"S\"\n  },\n  {\n    \"id\": \"A\"\n  },\n  {\n    \"id\": \"O\"\n  },\n  {\n    \"id\": \"T\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"A\", \"E\", \"R\", \"S\", \"T\", \"O\"],\n  \"confidence\": 0.22,\n  \"high_confidence_pairs\": [\n    {\"before\": \"A\", \"after\": \"E\", \"confidence\": 0.58},\n    {\"before\": \"E\", \"after\": \"R\", \"confidence\": 0.56},\n    {\"before\": \"R\", \"after\": \"S\", \"confidence\": 0.54},\n    {\"before\": \"S\", \"after\": \"T\", \"confidence\": 0.52},\n    {\"before\": \"T\", \"after\": \"O\", \"confidence\": 0.51}\n  ],\n  \"rationale\": \"The single-letter ids provide no clear semantics, so this is only a weak structural prior. I place the variables in a simple upstream-to-downstream chain to reflect a generic causal progression from antecedent conditions to later outcomes or measurements, while acknowledging substantial uncertainty.\"\n}",
+  "id_map": {
+    "E": "E",
+    "R": "R",
+    "S": "S",
+    "A": "A",
+    "O": "O",
+    "T": "T"
+  },
+  "ordered_nodes": [
+    "A",
+    "E",
+    "R",
+    "S",
+    "T",
+    "O"
+  ],
+  "confidence": 0.22,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "A",
+      "after": "E",
+      "confidence": 0.58
+    },
+    {
+      "before": "E",
+      "after": "R",
+      "confidence": 0.56
+    },
+    {
+      "before": "R",
+      "after": "S",
+      "confidence": 0.54
+    },
+    {
+      "before": "S",
+      "after": "T",
+      "confidence": 0.52
+    },
+    {
+      "before": "T",
+      "after": "O",
+      "confidence": 0.51
+    }
+  ],
+  "rationale": "The single-letter ids provide no clear semantics, so this is only a weak structural prior. I place the variables in a simple upstream-to-downstream chain to reflect a generic causal progression from antecedent conditions to later outcomes or measurements, while acknowledging substantial uncertainty.",
+  "direct_edge_accuracy": 0.666667,
+  "pair_accuracy": 0.769231
+}

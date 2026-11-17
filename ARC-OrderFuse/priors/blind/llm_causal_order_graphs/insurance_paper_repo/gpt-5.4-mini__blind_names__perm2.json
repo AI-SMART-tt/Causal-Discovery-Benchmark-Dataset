@@ -1,0 +1,150 @@
+{
+  "collection": "llm_causal_order_graphs",
+  "dataset": "insurance_paper_repo",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 2,
+  "created_at": "2026-11-12T15:27:52.341891+00:00",
+  "prompt_hash": "1700db1f6f3aee3f",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"SeniorTrain\"\n  },\n  {\n    \"id\": \"Antilock\"\n  },\n  {\n    \"id\": \"AntiTheft\"\n  },\n  {\n    \"id\": \"DrivHist\"\n  },\n  {\n    \"id\": \"VehicleYear\"\n  },\n  {\n    \"id\": \"DrivingSkill\"\n  },\n  {\n    \"id\": \"GoodStudent\"\n  },\n  {\n    \"id\": \"OtherCar\"\n  },\n  {\n    \"id\": \"CarValue\"\n  },\n  {\n    \"id\": \"HomeBase\"\n  },\n  {\n    \"id\": \"RiskAversion\"\n  },\n  {\n    \"id\": \"MedCost\"\n  },\n  {\n    \"id\": \"OtherCarCost\"\n  },\n  {\n    \"id\": \"PropCost\"\n  },\n  {\n    \"id\": \"SocioEcon\"\n  },\n  {\n    \"id\": \"RuggedAuto\"\n  },\n  {\n    \"id\": \"DrivQuality\"\n  },\n  {\n    \"id\": \"Age\"\n  },\n  {\n    \"id\": \"ThisCarCost\"\n  },\n  {\n    \"id\": \"ThisCarDam\"\n  },\n  {\n    \"id\": \"ILiCost\"\n  },\n  {\n    \"id\": \"Accident\"\n  },\n  {\n    \"id\": \"Cushioning\"\n  },\n  {\n    \"id\": \"Airbag\"\n  },\n  {\n    \"id\": \"Mileage\"\n  },\n  {\n    \"id\": \"Theft\"\n  },\n  {\n    \"id\": \"MakeModel\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Age\", \"SocioEcon\", \"HomeBase\", \"RiskAversion\", \"GoodStudent\", \"SeniorTrain\", \"DrivingSkill\", \"DrivHist\", \"DrivQuality\", \"VehicleYear\", \"MakeModel\", \"CarValue\", \"RuggedAuto\", \"Mileage\", \"OtherCar\", \"AntiTheft\", \"Antilock\", \"Airbag\", \"Cushioning\", \"Accident\", \"ThisCarDam\", \"Theft\", \"MedCost\", \"PropCost\", \"ThisCarCost\", \"OtherCarCost\", \"ILiCost\"],\n  \"confidence\": 0.62,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Age\", \"after\": \"DrivingSkill\", \"confidence\": 0.88},\n    {\"before\": \"Age\", \"after\": \"RiskAversion\", \"confidence\": 0.84},\n    {\"before\": \"SocioEcon\", \"after\": \"HomeBase\", \"confidence\": 0.72},\n    {\"before\": \"DrivingSkill\", \"after\": \"DrivHist\", \"confidence\": 0.8},\n    {\"before\": \"VehicleYear\", \"after\": \"CarValue\", \"confidence\": 0.9},\n    {\"before\": \"MakeModel\", \"after\": \"CarValue\", \"confidence\": 0.88},\n    {\"before\": \"CarValue\", \"after\": \"AntiTheft\", \"confidence\": 0.76},\n    {\"before\": \"CarValue\", \"after\": \"Antilock\", \"confidence\": 0.7},\n    {\"before\": \"CarValue\", \"after\": \"Airbag\", \"confidence\": 0.7},\n    {\"before\": \"Accident\", \"after\": \"ThisCarDam\", \"confidence\": 0.95},\n    {\"before\": \"Theft\", \"after\": \"PropCost\", \"confidence\": 0.9},\n    {\"before\": \"Accident\", \"after\": \"ThisCarCost\", \"confidence\": 0.9},\n    {\"before\": \"Accident\", \"after\": \"OtherCarCost\", \"confidence\": 0.82},\n    {\"before\": \"Accident\", \"after\": \"ILiCost\", \"confidence\": 0.82}\n  ],\n  \"rationale\": \"Older/background traits plausibly precede driving behavior and insurance-related choices. Vehicle attributes and safety equipment come before outcomes like accidents, theft, and resulting damage or costs. Premium/cost variables are placed last as downstream consequences of risks and claims. This is a semantic prior only, not ground truth.\"\n}",
+  "id_map": {
+    "SeniorTrain": "SeniorTrain",
+    "Antilock": "Antilock",
+    "AntiTheft": "AntiTheft",
+    "DrivHist": "DrivHist",
+    "VehicleYear": "VehicleYear",
+    "DrivingSkill": "DrivingSkill",
+    "GoodStudent": "GoodStudent",
+    "OtherCar": "OtherCar",
+    "CarValue": "CarValue",
+    "HomeBase": "HomeBase",
+    "RiskAversion": "RiskAversion",
+    "MedCost": "MedCost",
+    "OtherCarCost": "OtherCarCost",
+    "PropCost": "PropCost",
+    "SocioEcon": "SocioEcon",
+    "RuggedAuto": "RuggedAuto",
+    "DrivQuality": "DrivQuality",
+    "Age": "Age",
+    "ThisCarCost": "ThisCarCost",
+    "ThisCarDam": "ThisCarDam",
+    "ILiCost": "ILiCost",
+    "Accident": "Accident",
+    "Cushioning": "Cushioning",
+    "Airbag": "Airbag",
+    "Mileage": "Mileage",
+    "Theft": "Theft",
+    "MakeModel": "MakeModel"
+  },
+  "ordered_nodes": [
+    "Age",
+    "SocioEcon",
+    "HomeBase",
+    "RiskAversion",
+    "GoodStudent",
+    "SeniorTrain",
+    "DrivingSkill",
+    "DrivHist",
+    "DrivQuality",
+    "VehicleYear",
+    "MakeModel",
+    "CarValue",
+    "RuggedAuto",
+    "Mileage",
+    "OtherCar",
+    "AntiTheft",
+    "Antilock",
+    "Airbag",
+    "Cushioning",
+    "Accident",
+    "ThisCarDam",
+    "Theft",
+    "MedCost",
+    "PropCost",
+    "ThisCarCost",
+    "OtherCarCost",
+    "ILiCost"
+  ],
+  "confidence": 0.62,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Age",
+      "after": "DrivingSkill",
+      "confidence": 0.88
+    },
+    {
+      "before": "Age",
+      "after": "RiskAversion",
+      "confidence": 0.84
+    },
+    {
+      "before": "SocioEcon",
+      "after": "HomeBase",
+      "confidence": 0.72
+    },
+    {
+      "before": "DrivingSkill",
+      "after": "DrivHist",
+      "confidence": 0.8
+    },
+    {
+      "before": "VehicleYear",
+      "after": "CarValue",
+      "confidence": 0.9
+    },
+    {
+      "before": "MakeModel",
+      "after": "CarValue",
+      "confidence": 0.88
+    },
+    {
+      "before": "CarValue",
+      "after": "AntiTheft",
+      "confidence": 0.76
+    },
+    {
+      "before": "CarValue",
+      "after": "Antilock",
+      "confidence": 0.7
+    },
+    {
+      "before": "CarValue",
+      "after": "Airbag",
+      "confidence": 0.7
+    },
+    {
+      "before": "Accident",
+      "after": "ThisCarDam",
+      "confidence": 0.95
+    },
+    {
+      "before": "Theft",
+      "after": "PropCost",
+      "confidence": 0.9
+    },
+    {
+      "before": "Accident",
+      "after": "ThisCarCost",
+      "confidence": 0.9
+    },
+    {
+      "before": "Accident",
+      "after": "OtherCarCost",
+      "confidence": 0.82
+    },
+    {
+      "before": "Accident",
+      "after": "ILiCost",
+      "confidence": 0.82
+    }
+  ],
+  "rationale": "Older/background traits plausibly precede driving behavior and insurance-related choices. Vehicle attributes and safety equipment come before outcomes like accidents, theft, and resulting damage or costs. Premium/cost variables are placed last as downstream consequences of risks and claims. This is a semantic prior only, not ground truth.",
+  "direct_edge_accuracy": 0.923077,
+  "pair_accuracy": 0.97619
+}

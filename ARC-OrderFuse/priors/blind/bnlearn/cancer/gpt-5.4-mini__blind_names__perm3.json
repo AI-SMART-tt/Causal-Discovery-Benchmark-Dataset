@@ -1,0 +1,56 @@
+{
+  "collection": "bnlearn",
+  "dataset": "cancer",
+  "model": "gpt-5.4-mini",
+  "provider": "openai",
+  "source": "openai_api",
+  "prompt_mode": "blind_names",
+  "listing_perm": 3,
+  "created_at": "2026-11-12T15:13:16.633808+00:00",
+  "prompt_hash": "383ee5e1defbe450",
+  "system_prompt": "You are a careful causal discovery expert. Your task is to convert variable semantics into a plausible causal order prior. Do not claim that the order is ground truth. Return strict JSON only.",
+  "user_prompt": "Variables are listed below in random order. Use the exact id strings.\n[\n  {\n    \"id\": \"Dyspnoea\"\n  },\n  {\n    \"id\": \"Cancer\"\n  },\n  {\n    \"id\": \"Pollution\"\n  },\n  {\n    \"id\": \"Xray\"\n  },\n  {\n    \"id\": \"Smoker\"\n  }\n]\n\nTask: propose a causal order prior. Earlier variables are potential causes or upstream conditions; later variables are downstream effects, measurements, symptoms, decisions, or aggregate outcomes.\n\nReturn one JSON object with this schema:\n{\n  \"ordered_nodes\": [\"exact id 1\", \"exact id 2\", \"...\"],\n  \"confidence\": 0.0,\n  \"high_confidence_pairs\": [\n    {\"before\": \"exact id\", \"after\": \"exact id\", \"confidence\": 0.0}\n  ],\n  \"rationale\": \"brief, no more than 80 words\"\n}\n\nConstraints: ordered_nodes must contain every provided id exactly once; do not invent nodes; if evidence is weak, still provide the best semantic prior and lower the confidence.",
+  "raw_response": "{\n  \"ordered_nodes\": [\"Smoker\", \"Pollution\", \"Cancer\", \"Xray\", \"Dyspnoea\"],\n  \"confidence\": 0.78,\n  \"high_confidence_pairs\": [\n    {\"before\": \"Smoker\", \"after\": \"Cancer\", \"confidence\": 0.94},\n    {\"before\": \"Pollution\", \"after\": \"Cancer\", \"confidence\": 0.88},\n    {\"before\": \"Cancer\", \"after\": \"Xray\", \"confidence\": 0.72},\n    {\"before\": \"Cancer\", \"after\": \"Dyspnoea\", \"confidence\": 0.86}\n  ],\n  \"rationale\": \"Smoking and pollution are upstream exposures that can contribute to cancer. Cancer is a latent disease state that can lead to diagnostic imaging and symptoms such as dyspnoea. Xray is a downstream measurement or test outcome, so it is placed after the disease variables.\"\n}",
+  "id_map": {
+    "Dyspnoea": "Dyspnoea",
+    "Cancer": "Cancer",
+    "Pollution": "Pollution",
+    "Xray": "Xray",
+    "Smoker": "Smoker"
+  },
+  "ordered_nodes": [
+    "Smoker",
+    "Pollution",
+    "Cancer",
+    "Xray",
+    "Dyspnoea"
+  ],
+  "confidence": 0.78,
+  "missing_nodes_appended": [],
+  "unknown_nodes_ignored": [],
+  "high_confidence_pairs": [
+    {
+      "before": "Smoker",
+      "after": "Cancer",
+      "confidence": 0.94
+    },
+    {
+      "before": "Pollution",
+      "after": "Cancer",
+      "confidence": 0.88
+    },
+    {
+      "before": "Cancer",
+      "after": "Xray",
+      "confidence": 0.72
+    },
+    {
+      "before": "Cancer",
+      "after": "Dyspnoea",
+      "confidence": 0.86
+    }
+  ],
+  "rationale": "Smoking and pollution are upstream exposures that can contribute to cancer. Cancer is a latent disease state that can lead to diagnostic imaging and symptoms such as dyspnoea. Xray is a downstream measurement or test outcome, so it is placed after the disease variables.",
+  "direct_edge_accuracy": 1.0,
+  "pair_accuracy": 1.0
+}
